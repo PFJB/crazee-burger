@@ -1,7 +1,5 @@
-import Form from "./Form";
+import LogingForm from "./LogingForm";
 
 export default function HomePage() {
-
-
-    return (<Form />)
+    return (<LogingForm />)
 }

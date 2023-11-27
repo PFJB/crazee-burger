@@ -1,9 +1,11 @@
 import { useState } from "react";
 
-export default function Form() {
+export default function LogingForm() {
 
+    // state
     const [input, setInput] = useState("")
 
+    // comportements
     const handleClick = (event) => {
         event.preventDefault();
         setInput("");
@@ -14,15 +16,14 @@ export default function Form() {
     setInput(event.target.value)
     }
 
+    // affichage
     return (
-        <div>
-            <h1>Bienvenue chez nous</h1>
-            <br />
-            <h2>Connectez vous ici</h2>
                 <form action="submit" onSubmit={handleClick}>
+                    <h1>Bienvenue chez nous</h1>
+                    <br />
+                    <h2>Connectez vous ici</h2>
                     <input type="text" value={input} placeholder="Entrez votre prénom..."  onChange={handleChange}  required />
                     <button>Accédez a votre espace</button>
                 </form>
-        </div>
     )
 }
