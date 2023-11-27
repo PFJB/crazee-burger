@@ -19,7 +19,7 @@ export default function LogingForm() {
     // affichage
     return (
                 <form action="submit" onSubmit={handleClick}>
-                    <h1>Bienvenue chez nous</h1>
+                    <h1>Bienvenue chez nous !</h1>
                     <br />
                     <h2>Connectez vous ici</h2>
                     <input type="text" value={input} placeholder="Entrez votre prénom..."  onChange={handleChange}  required />
