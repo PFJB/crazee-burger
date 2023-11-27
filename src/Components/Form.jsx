@@ -19,7 +19,7 @@ export default function Form() {
             <h1>Bienvenue chez nous</h1>
             <h2>Connectez vous ici</h2>
                 <form action="submit">
-                    <input type="text" value={input} placeholder="Entrez votre prénom..." onChange={handleChange}/>
+                    <input type="text" value={input} placeholder="Entrez votre prénom..." onChange={handleChange} required />
                     <button onClick={handleClick}>Accédez a votre espace</button>
                 </form>
         </div>
