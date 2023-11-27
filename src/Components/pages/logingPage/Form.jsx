@@ -7,7 +7,7 @@ export default function Form() {
     const handleClick = (event) => {
         event.preventDefault();
         setInput("");
-        input === "" ? console.error('champ obligatoire') : alert(`Bonjour, ${input}`)
+        alert(`Bonjour ${input}`)
     }
 
     const handleChange = (event) => {
@@ -17,10 +17,11 @@ export default function Form() {
     return (
         <div>
             <h1>Bienvenue chez nous</h1>
+            <br />
             <h2>Connectez vous ici</h2>
-                <form action="submit">
-                    <input type="text" value={input} placeholder="Entrez votre prénom..." onChange={handleChange} required />
-                    <button onClick={handleClick}>Accédez a votre espace</button>
+                <form action="submit" onSubmit={handleClick}>
+                    <input type="text" value={input} placeholder="Entrez votre prénom..."  onChange={handleChange}  required />
+                    <button>Accédez a votre espace</button>
                 </form>
         </div>
     )

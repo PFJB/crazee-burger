@@ -1,5 +1,5 @@
 
-import HomePage from "./Components/HomePage";
+import HomePage from "./Components/pages/logingPage/HomePage";
 
 
 
