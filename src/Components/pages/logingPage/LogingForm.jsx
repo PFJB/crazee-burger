@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function LogingForm() {
 
@@ -12,8 +12,6 @@ export default function LogingForm() {
         event.preventDefault();
         navigate(`order/${input}`)
         setInput("");
-        // alert(`Bonjour ${input}`)
-    
     }
 
     const handleChange = (event) => {
@@ -28,7 +26,6 @@ export default function LogingForm() {
                     <h2>Connectez vous ici</h2>
                     <input type="text" value={input} placeholder="Entrez votre prénom..."  onChange={handleChange}  required />
                     <button>Accédez a votre espace</button>
-
                 </form>
     )
 }

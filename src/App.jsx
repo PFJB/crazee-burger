@@ -1,4 +1,3 @@
-
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./Components/pages/logingPage/HomePage";
 import ErrorPage from "./Components/pages/ErrorPage/ErrorPage";
@@ -8,10 +7,9 @@ function App(){
   return (
   <Routes>
     <Route path="/" element={<HomePage />} />
-    <Route path="/order/:input" element={<OrderPage />} />
+    <Route path="/order/:userName" element={<OrderPage />} />
     <Route path="*" element={<ErrorPage />} />
   </ Routes>
-  
   )
 }
 

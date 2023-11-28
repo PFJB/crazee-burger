@@ -2,14 +2,14 @@ import { Link, useParams } from "react-router-dom";
 
 export default function LogingOrderPage() {
     //state
-    const {input} = useParams()
+    const {userName} = useParams();
 
     //Comportements
 
     //affichage
   return (
     <div>
-        <p>Bonjour {input}</p>
+        <p>Bonjour {userName}</p>
         <Link to={"/"}><button>Déconnexion</button></Link>
     </div>
   )
