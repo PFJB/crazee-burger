@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../theme/index";
+import { theme } from "../../../theme/theme";
 
 export default function ButtonIcone({label, iconeButton}) {
   return (
@@ -15,7 +15,7 @@ const ButtonIconeStyled = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: ${theme.weights.bold};
+    font-weight: ${theme.fonts.weights.bold};
     font-size: ${theme.fonts.P0};
     height: 53px;
     width: 400px;

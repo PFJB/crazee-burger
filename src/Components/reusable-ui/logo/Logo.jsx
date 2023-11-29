@@ -1,6 +1,6 @@
-import { theme } from "../../../theme";
 import styled from "styled-components"
 import LogoImg from "./logo.png"
+import { theme } from "../../../theme/theme";
 
 
 export default function Logo() {
@@ -22,8 +22,8 @@ const LogoStyled = styled.div`
     p {
         font-family: 'Amatic SC', sans-serif;
         color: ${theme.colors.primary_burger};
-        font-weight: ${theme.weights.bold};
-        font-size: 110px;
+        font-weight: ${theme.fonts.weights.bold};
+        font-size: ${theme.fonts.size.P7};
         text-transform: uppercase;
         letter-spacing: 1.5px;
         line-height: 115px;

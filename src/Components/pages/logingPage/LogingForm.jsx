@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
 import styled from "styled-components";
-import { theme } from "../../../theme/index";
+import { theme } from "../../../theme/theme";
 import { FaChevronRight } from "react-icons/fa";
 import TextInput from "../../reusable-ui/textInput/TextInput";
 import ButtonIcone from "../../reusable-ui/button/ButtonIcone";
@@ -61,16 +61,16 @@ const LogingFormStyled = styled.form`
     h1, h2 {
         font-family: 'Amatic SC', sans-serif;
         color: ${theme.colors.white};
-        font-weight: ${theme.fonts.bold};
+        font-weight: ${theme.fonts.weights.bold};
     }
 
     h1 {
-        font-size: ${theme.fonts.P5};
+        font-size: ${theme.fonts.size.P5};
     }
 
     h2 {
         margin-top: 40px;
-        font-size: ${theme.fonts.P4};
+        font-size: ${theme.fonts.size.P4};
     }
 
     hr {
