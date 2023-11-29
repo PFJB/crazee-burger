@@ -7,7 +7,7 @@ export default function HomePage() {
     // affichage
     return (
     <HomePageStyled>
-        <Logo />
+        <Logo scale="0.1" />
         <LogingForm />
     </HomePageStyled>
     )

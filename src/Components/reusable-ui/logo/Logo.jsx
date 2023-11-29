@@ -4,6 +4,7 @@ import { theme } from "../../../theme/theme";
 
 
 export default function Logo() {
+
   return (
     <LogoStyled>
         <p>crazee</p>
@@ -16,6 +17,7 @@ export default function Logo() {
 const LogoStyled = styled.div`
     display: flex;
     height: 150px;
+    width: auto;
     align-items: center;
     justify-content: center;
 
