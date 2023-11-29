@@ -2,34 +2,38 @@ import styled from 'styled-components';
 import Logo from '../../reusable-ui/logo/Logo'
 import LogingOrderPage from './LogingOrderPage'
 import { FaCircleUser } from "react-icons/fa6";
+import { useParams } from 'react-router-dom';
 
 export default function Header() {
 
+    const {userName} = useParams();
+
   return (
     <OrderPagestyled>
-            <a href="/"><Logo/></a>
-            <NavRightUserStyled>
+            <a href={`${userName}`}><Logo/></a>
+            <NavRight>
                 <LogingOrderPage />
                 <FaCircleUser className='icone'/>
-            </NavRightUserStyled>
+            </NavRight>
     </OrderPagestyled>
   )
 }
 
-const OrderPagestyled = styled.div`
+const OrderPagestyled = styled.nav`
 
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100px;
     padding: 0px 70px 0px 20px;
+    background-color: white;
 
     a {
   text-decoration: none;
  }
 `;
 
-const NavRightUserStyled = styled.div`
+const NavRight = styled.div`
 
     display: flex;
     align-items: center;
