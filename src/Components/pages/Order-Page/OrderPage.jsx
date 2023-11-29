@@ -1,7 +1,7 @@
-import LogingOrderPage from "./LogingOrderPage";
+import Header from "./Header";
 
 export default function OrderPage() {
   return (
-    <div><LogingOrderPage /></div>
+    <div><Header /></div>
   )
 }
