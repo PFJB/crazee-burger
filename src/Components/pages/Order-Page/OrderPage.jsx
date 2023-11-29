@@ -15,18 +15,15 @@ export default function OrderPage() {
 const OrderPagestyled = styled.div`
 
 display: flex;
-position: absolute;
-flex-wrap: wrap;
-width: 100%;
-height: 100%;
-background-color: aliceblue;
+flex-direction: column;
 
+width: 100vw;
+height: 100vh;  
 `;
 
 const PageStyled = styled.div`
 
 display: flex;
-position: relative;
 width: 100%;
 height: 100%;
 box-shadow: 0px 8px 20px 8px #00000033 inset;
