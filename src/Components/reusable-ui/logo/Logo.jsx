@@ -1,4 +1,4 @@
-import { theme } from "../../theme";
+import { theme } from "../../../theme";
 import styled from "styled-components"
 import LogoImg from "./logo.png"
 

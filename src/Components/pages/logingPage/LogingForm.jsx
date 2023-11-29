@@ -4,8 +4,8 @@ import { FaCircleUser } from "react-icons/fa6";
 import styled from "styled-components"
 import { theme } from "../../../theme/index";
 import { FaChevronRight } from "react-icons/fa";
-import TextInput from "./TextInput";
-
+import TextInput from "../../reusable-ui/textInput/TextInput";
+import ButtonIcone from "../../reusable-ui/button/ButtonIcone";
 
 export default function LogingForm() {
 
@@ -27,8 +27,6 @@ export default function LogingForm() {
     const onBlur = (e) => {e.target.placeholder = "Entrez votre prénom"};
     const onFocus = (e) => {e.target.placeholder = ''};
     
-    
-
     // affichage
     return (
     <LogingFormStyled action="submit" onSubmit={handleClick}>
@@ -36,15 +34,18 @@ export default function LogingForm() {
         <hr />
         <h2>Connectez-vous</h2>
         <TextInput
-            value={input} 
+            value={input}
+            IconeBeforeInput={<FaCircleUser />}
             onChange={handleChange}
             placeholder="Entrez votre prénom"
             onBlur={onBlur}
             onFocus={onFocus}
-            IconeBeforeInput={<FaCircleUser />}
             required
         />
-        <button>Accéder à mon espace <FaChevronRight/></button>
+        <ButtonIcone
+            label="Accéder à mon espace"
+            iconeButton={<FaChevronRight />}
+        />
 
     </LogingFormStyled>
     )
@@ -78,27 +79,5 @@ const LogingFormStyled = styled.form`
         width: 400px;
         border: none;
         margin-top: 32px;
-    }
-
-    button{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-weight: ${theme.weights.bold};
-        font-size: ${theme.fonts.P0};
-        height: 53px;
-        width: 400px;
-        border: solid 1px ${theme.colors.primary_burger};
-        border-radius: ${theme.borderRadius.round};
-        color: ${theme.colors.white};
-        background-color: ${theme.colors.primary_burger};
-        margin-top: 18px;
-        gap: 10px;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: ${theme.colors.white};
-        color: ${theme.colors.primary_burger};
     }
 `;

@@ -1,7 +1,7 @@
 import LogingForm from "./LogingForm";
 import styled from "styled-components";
 import bgburger from "./burger-background.jpg";
-import Logo from "../../reusable-ui/Logo";
+import Logo from "../../reusable-ui/logo/Logo";
 
 export default function HomePage() {
     // affichage
