@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCircleUser } from "react-icons/fa6";
-import styled from "styled-components"
+import styled from "styled-components";
 import { theme } from "../../../theme/index";
 import { FaChevronRight } from "react-icons/fa";
 import TextInput from "../../reusable-ui/textInput/TextInput";
@@ -44,7 +44,7 @@ export default function LogingForm() {
         />
         <ButtonIcone
             label="Accéder à mon espace"
-            iconeButton={<FaChevronRight className="icone"/>}
+            iconeButton={<FaChevronRight />}
         />
 
     </LogingFormStyled>
@@ -79,10 +79,5 @@ const LogingFormStyled = styled.form`
         width: 400px;
         border: none;
         margin-top: 32px;
-    }
-
-    .icone {
-        color: black;
-        height: 50px;
     }
 `;
