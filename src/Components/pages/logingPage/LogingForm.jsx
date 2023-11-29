@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaCircleUser } from "react-icons/fa6";
 import styled from "styled-components"
 import { theme } from "../../../theme/index";
-import { FaCircleUser } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa";
+import TextInput from "./TextInput";
 
 
 export default function LogingForm() {
@@ -20,12 +21,13 @@ export default function LogingForm() {
     }
 
     const handleChange = (event) => {
-    setInput(event.target.value);
-    }
+        setInput(event.target.value);
+        }
 
-    const onBlur = (e) => {e.target.placeholder = 'Entrez votre prénom'};
+    const onBlur = (e) => {e.target.placeholder = "Entrez votre prénom"};
     const onFocus = (e) => {e.target.placeholder = ''};
-
+    
+    
 
     // affichage
     return (
@@ -33,12 +35,16 @@ export default function LogingForm() {
         <h1>Bienvenue chez nous !</h1>
         <hr />
         <h2>Connectez-vous</h2>
-        <div className="logingStyle">
-            <FaCircleUser />
-            <input type="text" onBlur={onBlur} onFocus={onFocus} value={input} 
-                    placeholder="Entrez votre prénom"  onChange={handleChange}  required />
-        </div>
-        <button onFocus={(e) => e.target.placeholder = ''}>Accéder à mon espace<span><FaChevronRight/></span></button>
+        <TextInput
+            value={input} 
+            onChange={handleChange}
+            placeholder="Entrez votre prénom"
+            onBlur={onBlur}
+            onFocus={onFocus}
+            IconeBeforeInput={<FaCircleUser />}
+            required
+        />
+        <button>Accéder à mon espace <FaChevronRight/></button>
 
     </LogingFormStyled>
     )
@@ -66,21 +72,6 @@ const LogingFormStyled = styled.form`
         font-size: ${theme.fonts.P4};
     }
 
-    .logingStyle {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        height: 53px;
-        width: 400px;
-        padding: 18px 24px 18px 24px;
-        border: none;
-        border-radius: ${theme.borderRadius.round};
-        background-color: ${theme.colors.white};
-        margin-top: 18px;
-        color: ${theme.colors.greySemiDark};
-    }
-
     hr {
         background-color: ${theme.colors.primary_burger};
         height: 3px;
@@ -102,28 +93,8 @@ const LogingFormStyled = styled.form`
         color: ${theme.colors.white};
         background-color: ${theme.colors.primary_burger};
         margin-top: 18px;
+        gap: 10px;
         cursor: pointer;
-    }
-
-    button span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: 10px;
-    }
-
-    input{
-        width: 90%;
-        border: none;
-        border-radius: ${theme.borderRadius.round};
-        background-color: ${theme.colors.white};
-        outline-style: none;
-    }
-
-    input::placeholder {
-        color:  #D3D3D3;
-        font-size: ${theme.fonts.P0};
-;
     }
 
     button:hover {
