@@ -44,7 +44,7 @@ export default function LogingForm() {
         />
         <ButtonIcone
             label="Accéder à mon espace"
-            iconeButton={<FaChevronRight />}
+            iconeButton={<FaChevronRight className="icone"/>}
         />
 
     </LogingFormStyled>
@@ -79,5 +79,10 @@ const LogingFormStyled = styled.form`
         width: 400px;
         border: none;
         margin-top: 32px;
+    }
+
+    .icone {
+        color: black;
+        height: 50px;
     }
 `;
