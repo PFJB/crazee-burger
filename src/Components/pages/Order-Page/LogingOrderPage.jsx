@@ -20,6 +20,9 @@ export default function LogingOrderPage() {
 const LogingOrderPageStyled = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
+    width: fit-content;
+    height: fit-content;
     font-size: ${theme.fonts.size.P0};
     font-weight: ${theme.fonts.weights.regular};
     font-family: 'Open Sans', sans-serif;
@@ -32,7 +35,13 @@ const LogingOrderPageStyled = styled.div`
       line-height: 14px;
       letter-spacing: 0em;
       text-align: right;
-      text-decoration: none;
+      width: fit-content;
+
+      &:hover{
+        border-bottom: solid black 1px;
+        border-color: ${theme.colors.greyBlue};
+      }
+
     }
 
     span {

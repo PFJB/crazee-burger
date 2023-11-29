@@ -4,10 +4,10 @@ import LogingOrderPage from './LogingOrderPage'
 import { FaCircleUser } from "react-icons/fa6";
 
 export default function Header() {
-    
+
   return (
     <OrderPagestyled>
-            <Logo/>
+            <a href="/"><Logo/></a>
             <NavRightUserStyled>
                 <LogingOrderPage />
                 <FaCircleUser className='icone'/>
@@ -23,6 +23,10 @@ const OrderPagestyled = styled.div`
     align-items: center;
     height: 100px;
     padding: 0px 70px 0px 20px;
+
+    a {
+  text-decoration: none;
+ }
 `;
 
 const NavRightUserStyled = styled.div`
