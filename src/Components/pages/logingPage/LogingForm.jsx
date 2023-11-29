@@ -69,15 +69,15 @@ const LogingFormStyled = styled.form`
     }
 
     h2 {
-        margin-top: 40px;
+        margin-top: ${theme.gridUnit * 5}px;
         font-size: ${theme.fonts.size.P4};
     }
 
     hr {
-        background-color: ${theme.colors.primary_burger};
+        background-color: ${theme.colors.hr};
         height: 3px;
-        width: 400px;
+        width: 100%;
         border: none;
-        margin-top: 32px;
+        margin-top: ${theme.spacing.lg};
     }
 `;

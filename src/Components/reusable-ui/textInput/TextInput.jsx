@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../../theme/theme";
 
-
-
-
 export default function TextInput({value, onChange, IconeBeforeInput, ...others}) {
 
   return (
@@ -28,7 +25,6 @@ const InputStyled = styled.div`
         height: 53px;
         width: 400px;
         padding: 18px 24px 18px 24px;
-        border: none;
         border-radius: ${theme.borderRadius.round};
         background-color: ${theme.colors.white};
         margin-top: 18px;
@@ -48,4 +44,3 @@ const InputStyled = styled.div`
         }
     
 `;
-
