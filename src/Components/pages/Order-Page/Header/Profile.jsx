@@ -35,8 +35,8 @@ const ProfileStyled = styled.div`
       width: fit-content;
 
       &:hover{
-        border-bottom: solid black 1px;
-        border-color: ${theme.colors.greyBlue};
+        text-decoration: underline;
+        color: ${theme.colors.greyBlue};
       }
 
     }
