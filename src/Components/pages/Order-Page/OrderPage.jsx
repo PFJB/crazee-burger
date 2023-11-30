@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Header from "./Header/Header";
 import { theme } from "../../../theme/theme";
+import Main from "./Main/Main";
 
 export default function OrderPage() {
 
@@ -8,7 +9,7 @@ export default function OrderPage() {
     <OrderPagestyled>
           <div className="container">
             <Header />
-            <PageStyled></PageStyled>
+            <Main />
           </div>
     </OrderPagestyled>
   )
@@ -29,13 +30,4 @@ const OrderPagestyled = styled.div`
       width: min(100%, 1400px);
       height: 95%;
     }
-`;
-
-const PageStyled = styled.div`
-
-    display: flex;
-    flex: 1;
-    background-color: white;
-    box-shadow: 0px 8px 20px 8px #00000033 inset;
-    border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
 `;
