@@ -6,12 +6,10 @@ export default function OrderPage() {
 
   return (
     <OrderPagestyled>
-   
           <div className="container">
             <Header />
             <PageStyled></PageStyled>
           </div>
-        
     </OrderPagestyled>
   )
 }
@@ -23,7 +21,7 @@ const OrderPagestyled = styled.div`
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: orange;
+    background-color: ${theme.colors.primary};
 
     .container {
       display: flex;
