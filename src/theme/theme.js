@@ -63,6 +63,10 @@ const borderRadius = {
   circle: "50%",
 }
 const shadows = {}
+const sizeLogo ={
+  normal: 1,
+  petit: 0.5,
+}
 
 export const theme = {
   colors,
@@ -71,4 +75,5 @@ export const theme = {
   borderRadius,
   shadows,
   spacing,
+  sizeLogo,
 }
