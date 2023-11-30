@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme/theme";
+import Card from "./Card";
 
 export default function Main() {
   return (
     <Mainstyled>
-        <div className="test"></div>
-        <div className="test"></div>
-        <div className="test"></div>
-        <div className="test"></div>
+        <Card />
+        <Card />
 
     </Mainstyled>
   )
