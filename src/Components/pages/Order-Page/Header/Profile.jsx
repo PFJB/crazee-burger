@@ -20,6 +20,7 @@ const ProfileStyled = styled.div`
     align-items: flex-end;
     width: fit-content;
     height: fit-content;
+    color: ${theme.colors.greyBlue};
     font-size: ${theme.fonts.size.P0};
     font-weight: ${theme.fonts.weights.regular};
     font-family: 'Open Sans', sans-serif;
@@ -33,12 +34,11 @@ const ProfileStyled = styled.div`
       letter-spacing: 0em;
       text-align: right;
       width: fit-content;
+      color: ${theme.colors.greyBlue};
 
       &:hover{
         text-decoration: underline;
-        color: ${theme.colors.greyBlue};
       }
-
     }
 
     span {
