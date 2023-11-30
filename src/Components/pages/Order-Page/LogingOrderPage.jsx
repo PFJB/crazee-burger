@@ -3,12 +3,9 @@ import styled from "styled-components";
 import { theme } from "../../../theme/theme";
 
 export default function LogingOrderPage() {
-    //state
-    const {userName} = useParams();
 
-    //Comportements
+  const {userName} = useParams();
 
-    //affichage
   return (
     <LogingOrderPageStyled>
         <p>Hey, <span>{userName}</span></p>

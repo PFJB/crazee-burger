@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import Header from "./Header";
+import Header from "./Header/Header";
+import { theme } from "../../../theme/theme";
 
 export default function OrderPage() {
-
-
 
   return (
     <OrderPagestyled>
@@ -18,10 +17,11 @@ export default function OrderPage() {
 }
 
 const OrderPagestyled = styled.div`
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100vw;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
     height: 100vh;
     background-color: orange;
 
@@ -39,4 +39,5 @@ const PageStyled = styled.div`
     flex: 1;
     background-color: white;
     box-shadow: 0px 8px 20px 8px #00000033 inset;
+    border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
 `;
