@@ -7,7 +7,7 @@ export default function HomePage() {
     // affichage
     return (
     <HomePageStyled>
-        <Logo scale="0.1" />
+        <Logo className="logo-order-page"/>
         <LogingForm />
     </HomePageStyled>
     )
@@ -21,5 +21,9 @@ flex-direction: column;
 height: 100vh;
 background: url("${bgburger}") rgba(0, 0, 0, 0.5) center / cover;
 background-blend-mode: darken;
-gap: 40px;
+gap: 85px;
+
+.logo-order-page {
+    scale: 2.5;
+}
 `;

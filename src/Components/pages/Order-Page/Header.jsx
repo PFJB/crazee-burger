@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Logo from '../../reusable-ui/logo/Logo'
 import LogingOrderPage from './LogingOrderPage'
 import { FaCircleUser } from "react-icons/fa6";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export default function Header() {
 
@@ -10,7 +10,9 @@ export default function Header() {
 
   return (
     <OrderPagestyled>
-            <a href={`${userName}`}><Logo/></a>
+            <a href={`/order/${userName}`}>
+              <Logo  />
+            </a>
             <NavRight>
                 <LogingOrderPage />
                 <FaCircleUser className='icone'/>
@@ -29,8 +31,11 @@ const OrderPagestyled = styled.nav`
     background-color: white;
 
     a {
-  text-decoration: none;
+
+      text-decoration: none;
  }
+
+ 
 `;
 
 const NavRight = styled.div`

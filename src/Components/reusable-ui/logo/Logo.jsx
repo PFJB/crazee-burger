@@ -3,10 +3,10 @@ import LogoImg from "./logo.png"
 import { theme } from "../../../theme/theme";
 
 
-export default function Logo() {
+export default function Logo({className}) {
 
   return (
-    <LogoStyled>
+    <LogoStyled className= {className}>
         <p>crazee</p>
         <img src={LogoImg} alt="Logo burger" />
         <p>burger</p>
@@ -16,8 +16,8 @@ export default function Logo() {
 
 const LogoStyled = styled.div`
     display: flex;
-    height: 150px;
-    width: auto;
+    height: fit-content;
+    width: fit-content;
     align-items: center;
     justify-content: center;
 
@@ -25,15 +25,14 @@ const LogoStyled = styled.div`
         font-family: 'Amatic SC', sans-serif;
         color: ${theme.colors.primary_burger};
         font-weight: ${theme.fonts.weights.bold};
-        font-size: ${theme.fonts.size.P7};
+        font-size: ${theme.fonts.size.P4};
         text-transform: uppercase;
         letter-spacing: 1.5px;
-        line-height: 115px;
     }
 
     img {
-        height: 150px;
-        width: 200px;
+        height: 60px;
+        width: 80px;
     }
   
 `;
