@@ -1,16 +1,16 @@
 import { FaCircleUser } from "react-icons/fa6";
-import LogingOrderPage from "../LogingOrderPage";
+import Profile from "./Profile";
 import styled from "styled-components";
 
 export default function NavRightSide() {
   return (
     <NavRight>
-        <LogingOrderPage />
+      <div className="admin-button"></div>
+        <Profile />
         <FaCircleUser className='icone'/>
     </NavRight>
   )
 }
-
 
 const NavRight = styled.div`
 
@@ -24,5 +24,11 @@ const NavRight = styled.div`
         width: auto;
         margin-left: 10px;
         color: #747B91;
+    }
+
+    .admin-button {
+      width: 50px;
+      height: 50px;
+      background-color: aliceblue;
     }
 `

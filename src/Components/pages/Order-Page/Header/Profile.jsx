@@ -1,20 +1,20 @@
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { theme } from "../../../theme/theme";
+import { theme } from "../../../../theme/theme";
 
-export default function LogingOrderPage() {
-
-  const {userName} = useParams();
+export default function Profile() {
+  
+    const {userName} = useParams();
 
   return (
-    <LogingOrderPageStyled>
+    <ProfileStyled>
         <p>Hey, <span>{userName}</span></p>
         <Link to={"/"} className="decoStyle">Se déconnecter</Link>
-    </LogingOrderPageStyled>
+    </ProfileStyled>
   )
 }
 
-const LogingOrderPageStyled = styled.div`
+const ProfileStyled = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-end;
