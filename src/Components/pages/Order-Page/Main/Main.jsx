@@ -1,18 +1,19 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme/theme";
-import Card from "./Card";
-import imgg from "/assets/images/burger1.png";
-import { fakeMenu2 } from "../../../../assets/fakeData/fakeMenu";
+import Card from "../../../reusable-ui/card/Card";
+import { fakeMenu1, fakeMenu2 } from "../../../../assets/fakeData/fakeMenu";
+import { useState } from "react";
 
 
 export default function Main() {
 
+  const [menuData, setMenuData] = useState(fakeMenu2)
+
   const menu = [];
   
 
-  fakeMenu2.map(x => {
-    
-    menu.push(<Card title={x.title} price={x.price} img={imgg}/>)
+  menuData.map(x => {
+    menu.push(<Card key={x.id} title={x.title} price={x.price} img={x.imageSource}/>)
   })
 
   return (
@@ -29,7 +30,7 @@ const Mainstyled = styled.div`
     grid-template-columns:  repeat( auto-fit, 240px ) ;
     grid-template-rows: max-content;
     grid-row-gap: 60px;
-    grid-column-gap: clamp(40px, 85px, 5vw);
+    grid-column-gap: clamp(40px, 85px, 100%);
     flex: 1;
     background-color: white;
     box-shadow: 0px 8px 20px 8px #00000033 inset;

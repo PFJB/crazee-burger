@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import ButtonIcone from "../../../reusable-ui/button/ButtonIcone";
-import { theme } from "../../../../theme/theme";
-import { formatPrice } from "../../../../utils/maths";
+import ButtonIcone from "../button/ButtonIcone";
+import { theme } from "../../../theme/theme";
+import { formatPrice } from "../../../utils/maths";
 
 
 export default function Card(props) {
@@ -9,7 +9,7 @@ export default function Card(props) {
 
   return (
     <CardStyled>
-       <img className="img"  src={props.img} alt="burger" />
+       <div className="picture"><img src={props.img} alt={props.title} /></div>
         <div className="title"><p>{props.title}</p></div>
         <div className="priceAdd">
             <p className="price">{newprice}</p>
@@ -30,11 +30,16 @@ const CardStyled = styled.div`
     padding: 50px 25px 30px 25px;
     border-radius: ${theme.borderRadius.extraRound};
 
-
-    .img {
+    .picture {
         width: 200px;
         height: 145px;
         margin-bottom: 15px;
+      
+        img {
+            width: 100%;
+            height: 100%;  
+            object-fit: contain;
+        }
     }
 
     .title {
@@ -57,8 +62,6 @@ const CardStyled = styled.div`
         width: 190px;
         height: 46px;
         font-family: 'Open Sans', sans-serif;
-
-
 
     .price{
         font-size: 16px;
