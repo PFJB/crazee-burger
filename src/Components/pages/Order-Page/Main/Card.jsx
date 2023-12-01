@@ -1,18 +1,19 @@
 import styled from "styled-components";
 import ButtonIcone from "../../../reusable-ui/button/ButtonIcone";
 import { theme } from "../../../../theme/theme";
-import { fakeMenu1 } from "../../../../assets/fakeData/fakeMenu";
-import imgg from "./burger1.png";
+import { formatPrice } from "../../../../utils/maths";
 
 
-export default function Card() {
+export default function Card(props) {
+    const newprice = formatPrice(props.price);
+
   return (
     <CardStyled>
-       <img className="img"  src={imgg} alt="burger" />
-        <div className="title"><p>BURGER SAMERE</p></div>
+       <img className="img"  src={props.img} alt="burger" />
+        <div className="title"><p>{props.title}</p></div>
         <div className="priceAdd">
-            <p className="price">5,37 $</p>
-            <ButtonIcone className="gr" label={"Ajouter"}/>
+            <p className="price">{newprice}</p>
+            <ButtonIcone className="label" label={"Ajouter"}/>
         </div>
     </CardStyled>
   )
@@ -27,7 +28,7 @@ const CardStyled = styled.div`
     width: 240px;
     box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
     padding: 50px 25px 30px 25px;
-    border-radius: ${theme.borderRadius.extraRound} ${fakeMenu1.t};
+    border-radius: ${theme.borderRadius.extraRound};
 
 
     .img {
@@ -62,20 +63,18 @@ const CardStyled = styled.div`
     .price{
         font-size: 16px;
         font-weight: 400;
-        letter-spacing: 0em;
         color: ${theme.colors.primary};
         font-family: 'Open Sans', sans-serif;
 
     }
 
 }
-
-    .gr {
+    .label {
         margin: 0;
         width: 95px;
         height: 38px;
+        font-size: 11px;
+        font-weight: 700;
+        text-align: center;
     }
-
-
-
 `;

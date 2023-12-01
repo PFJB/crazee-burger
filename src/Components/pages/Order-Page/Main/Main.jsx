@@ -1,21 +1,23 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme/theme";
 import Card from "./Card";
+import imgg from "/assets/images/burger1.png";
+import { fakeMenu2 } from "../../../../assets/fakeData/fakeMenu";
+
 
 export default function Main() {
+
+  const menu = [];
+  
+
+  fakeMenu2.map(x => {
+    
+    menu.push(<Card title={x.title} price={x.price} img={imgg}/>)
+  })
+
   return (
     <Mainstyled>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-
+        {menu}
     </Mainstyled>
   )
 }
@@ -27,7 +29,7 @@ const Mainstyled = styled.div`
     grid-template-columns:  repeat( auto-fit, 240px ) ;
     grid-template-rows: max-content;
     grid-row-gap: 60px;
-    grid-column-gap: clamp(85px, 85px, 5vw);
+    grid-column-gap: clamp(40px, 85px, 5vw);
     flex: 1;
     background-color: white;
     box-shadow: 0px 8px 20px 8px #00000033 inset;
