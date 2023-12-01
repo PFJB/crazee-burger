@@ -4,15 +4,14 @@ import { theme } from "../../../theme/theme";
 import { formatPrice } from "../../../utils/maths";
 
 
-export default function Card(props) {
-    const newprice = formatPrice(props.price);
+export default function Card({price, imgSource, title}) {
 
   return (
     <CardStyled>
-       <div className="picture"><img src={props.img} alt={props.title} /></div>
-        <div className="title"><p>{props.title}</p></div>
+       <div className="picture"><img src={ imgSource } alt={ title } /></div>
+        <div className="title"><p>{ title }</p></div>
         <div className="priceAdd">
-            <p className="price">{newprice}</p>
+            <p className="price">{ formatPrice(price) }</p>
             <ButtonIcone className="label" label={"Ajouter"}/>
         </div>
     </CardStyled>
