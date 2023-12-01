@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../../theme/theme";
 
-export default function ButtonIcone({label, iconeButton}) {
+export default function ButtonIcone({label, iconeButton, className}) {
   return (
-        <ButtonIconeStyled>
+        <ButtonIconeStyled className={className}>
             <span>{label}</span>
             {iconeButton && iconeButton}
         </ButtonIconeStyled>

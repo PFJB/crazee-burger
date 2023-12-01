@@ -7,6 +7,14 @@ export default function Main() {
     <Mainstyled>
         <Card />
         <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
 
     </Mainstyled>
   )
@@ -15,15 +23,17 @@ export default function Main() {
 const Mainstyled = styled.div`
 
     display: grid;
-    grid-template-columns: repeat(5 , 240px);
-    grid-template-rows: 1fr 1fr 1fr ;
+    justify-content: center;
+    grid-template-columns:  repeat( auto-fit, 240px ) ;
+    grid-template-rows: max-content;
     grid-row-gap: 60px;
-    grid-column-gap: 5%;
+    grid-column-gap: clamp(85px, 85px, 5vw);
     flex: 1;
     background-color: white;
     box-shadow: 0px 8px 20px 8px #00000033 inset;
     border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
-    padding: 50px 50px 150px;
+    padding: 50px 92.5px;
+    overflow-x: scroll;
 
     .test{
         width: 240px;
