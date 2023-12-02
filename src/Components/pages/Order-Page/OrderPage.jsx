@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import Header from "./Header/Header";
-import { theme } from "../../../theme/theme";
 import Main from "./Main/Main";
+import PanelAdmin from "./PanelAdmin/PanelAdmin";
+import { theme } from "../../../theme/theme";
 
 export default function OrderPage() {
 
@@ -10,10 +11,7 @@ export default function OrderPage() {
           <div className="container">
             <Header />
             <Main />
-            <div className="containerPanel">
-              <div className="ButtonZone">Espace button</div>
-              <div className="ActionZone">Espace Action</div>
-            </div>
+            <PanelAdmin />
           </div>
     </OrderPagestyled>
   )
@@ -34,27 +32,5 @@ const OrderPagestyled = styled.div`
       flex-direction: column;
       width: min(100%, 1400px);
       height: 95%;
-    }
-
-    .containerPanel {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      height: 295px;
-      width: 100%;
-    }
-    .ButtonZone {
-      height: 43px;
-      width: 100%;
-    }
-    .ActionZone {
-      flex: 1;
-      border: solid 1px ${theme.colors.greyLight};
-      background-color: ${theme.colors.white};
-      border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
-      box-shadow: 0px -6px 8px -2px #0000001A;
-
     }
 `;
