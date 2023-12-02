@@ -11,10 +11,15 @@ import { useState } from "react";
 export default function PanelAdmin() {
    const [open, setOpen] = useState("none")
    const [icone, setIcone] = useState(<GoChevronDown />)
+   const [contentPanel, setContentPanel] = useState("content")
 
     const togglePanel = () => {
         setOpen(open === "none" ? "block" : "none")
         setIcone(open === "none" ? <GoChevronUp/> : <GoChevronDown />)
+    }
+
+    const toggleContent = (content) => {
+        setContentPanel(content)
     }
 
 
@@ -22,11 +27,11 @@ export default function PanelAdmin() {
     <PanelAdminStyled>
               <div className="ButtonZone">
                 <ButtonPanelAdmin icone={icone} handleClick={togglePanel} />
-                <ButtonPanelAdmin icone={<FiPlus />} text={"Ajouter un produit"}/>
+                <ButtonPanelAdmin icone={<FiPlus />} handleClick={() => toggleContent("gerg")} text={"Ajouter un produit"}/>
                 <ButtonPanelAdmin icone={<MdModeEditOutline />} text={"Modifier un produit"}/>
 
               </div>
-              <div className="ActionZone"  style={{display: open}}>Espace Action</div>
+              <div className="ActionZone"  style={{display: open}}>{contentPanel}</div>
     </PanelAdminStyled>
   )
 }
@@ -50,12 +55,12 @@ const PanelAdminStyled = styled.div`
     }
 
     .ActionZone {
-      flex: 1;
-      min-height: 250px;
-      border: solid 1px ${theme.colors.greyLight};
-      background-color: ${theme.colors.white};
-      border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
-      box-shadow: 0px -6px 8px -2px #0000001A;
+        flex: 1;
+        min-height: 250px;
+        border: solid 1px ${theme.colors.greyLight};
+        background-color: ${theme.colors.white};
+        border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
+        box-shadow: 0px -6px 8px -2px #0000001A;
 
     }
     ////////////////////////////////////////
