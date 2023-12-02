@@ -40,20 +40,21 @@ const OrderPagestyled = styled.div`
       display: flex;
       flex-direction: column;
       position: absolute;
-      background-color: white;
       bottom: 0;
       right: 0;
       height: 295px;
       width: 100%;
-      border: solid red;
     }
     .ButtonZone {
       height: 43px;
       width: 100%;
-      border: solid 1px green;
     }
     .ActionZone {
       flex: 1;
-      border: solid 1px blue;
+      border: solid 1px ${theme.colors.greyLight};
+      background-color: ${theme.colors.white};
+      border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
+      box-shadow: 0px -6px 8px -2px #0000001A;
+
     }
 `;
