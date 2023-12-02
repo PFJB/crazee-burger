@@ -5,6 +5,8 @@ import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { FiPlus } from "react-icons/fi";
 import { MdModeEditOutline } from "react-icons/md";
 import { useState } from "react";
+import AddProduct from "./panelContent/AddProduct";
+import ModifyProduct from "./panelContent/ModifyProduct";
 
 
 
@@ -27,8 +29,8 @@ export default function PanelAdmin() {
     <PanelAdminStyled>
               <div className="ButtonZone">
                 <ButtonPanelAdmin icone={icone} handleClick={togglePanel} />
-                <ButtonPanelAdmin icone={<FiPlus />} handleClick={() => toggleContent("gerg")} text={"Ajouter un produit"}/>
-                <ButtonPanelAdmin icone={<MdModeEditOutline />} text={"Modifier un produit"}/>
+                <ButtonPanelAdmin icone={<FiPlus />} handleClick={() => toggleContent(<AddProduct />)} text={"Ajouter un produit"}/>
+                <ButtonPanelAdmin icone={<MdModeEditOutline />} handleClick={() => toggleContent(<ModifyProduct />)} text={"Modifier un produit"}/>
 
               </div>
               <div className="ActionZone"  style={{display: open}}>{contentPanel}</div>
