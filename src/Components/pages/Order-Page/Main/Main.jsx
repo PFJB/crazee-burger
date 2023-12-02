@@ -31,5 +31,9 @@ const Mainstyled = styled.div`
     box-shadow: 0px 8px 20px 8px #00000033 inset;
     border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
     padding: 50px 92.5px;
-    overflow-x: scroll;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+  display: none;
+}
 `;
