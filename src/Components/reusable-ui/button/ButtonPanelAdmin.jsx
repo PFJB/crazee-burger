@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../../theme/theme";
 
-export default function ButtonPanelAdmin({icone, text, className}) {
+export default function ButtonPanelAdmin({icone, text, handleClick}) {
   return (
-    <ButtonPanelAdminStyled className={className}>
+    <ButtonPanelAdminStyled onClick={handleClick}>
         <div>
             <span>{icone && icone}</span>
             {text && text}
@@ -23,6 +23,7 @@ const ButtonPanelAdminStyled = styled.button`
     border-radius: 5px 5px 0px 0px;
     background-color: ${theme.colors.white};
     box-shadow: 0px -6px 8px -2px #0000001A;
+    cursor: pointer;
 
 
 
