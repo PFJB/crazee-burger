@@ -10,6 +10,10 @@ export default function OrderPage() {
           <div className="container">
             <Header />
             <Main />
+            <div className="containerPanel">
+              <div className="ButtonZone">Espace button</div>
+              <div className="ActionZone">Espace Action</div>
+            </div>
           </div>
     </OrderPagestyled>
   )
@@ -26,8 +30,30 @@ const OrderPagestyled = styled.div`
 
     .container {
       display: flex;
+      position: relative;
       flex-direction: column;
       width: min(100%, 1400px);
       height: 95%;
+    }
+
+    .containerPanel {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      background-color: white;
+      bottom: 0;
+      right: 0;
+      height: 295px;
+      width: 100%;
+      border: solid red;
+    }
+    .ButtonZone {
+      height: 43px;
+      width: 100%;
+      border: solid 1px green;
+    }
+    .ActionZone {
+      flex: 1;
+      border: solid 1px blue;
     }
 `;

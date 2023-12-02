@@ -14,6 +14,7 @@ export default function Main() {
         {menuData.map(x => {
           return <Card key={x.id} title={x.title} price={x.price} imgSource={x.imageSource}/>
           })}
+
     </Mainstyled>
   )
 }
@@ -34,6 +35,6 @@ const Mainstyled = styled.div`
     overflow: auto;
 
     &::-webkit-scrollbar {
-  display: none;
-}
+      display: none;
+    }
 `;
