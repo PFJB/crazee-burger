@@ -3,13 +3,13 @@ import ButtonPanelAdmin from "../../../reusable-ui/button/ButtonPanelAdmin";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { theme } from "../../../../theme/theme";
 import { useContext } from "react";
-import { getTabConfigs } from "./tabsConfigs";
 import OrderContext from "../../../../context/OrderContext";
+import { tabConfigs } from "./tabsConfigs";
 
 export default function ButtonArea() {
 
     const {tabSelected, isCollapse, SetIsCollapse , setTabSelected} = useContext(OrderContext)
-    const tabs = getTabConfigs(tabSelected)
+    const tabs = tabConfigs(tabSelected)
 
     const selectedTab = (tab) => {
         SetIsCollapse(true)
@@ -26,9 +26,10 @@ export default function ButtonArea() {
         />
         {tabs.map((tab) => (
             <ButtonPanelAdmin
+                key={tab.index}
                 label={tab.label}
                 icone={tab.icone}
-                className={tab.className}
+                className={tabSelected === tab.index ? "is-active" : ""}
                 handleClick={() => selectedTab(tab.index)}
             />
         )
