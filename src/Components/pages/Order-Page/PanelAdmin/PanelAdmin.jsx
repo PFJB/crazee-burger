@@ -7,11 +7,12 @@ import { MdModeEditOutline } from "react-icons/md";
 import { useState } from "react";
 import AddProduct from "./panelContent/AddProduct";
 import ModifyProduct from "./panelContent/ModifyProduct";
+import { useContext } from "react";
+import OrderContext from "../../../../context/OrderContext";
 
 
 
 export default function PanelAdmin() {
-   const [open, setOpen] = useState("none")
    const [icone, setIcone] = useState(<GoChevronDown />)
    const [contentPanel, setContentPanel] = useState("content")
 
@@ -19,8 +20,8 @@ export default function PanelAdmin() {
 
   
     const togglePanel = () => {
-        setOpen(open === "none" ? "block" : "none")
-        setIcone(open === "none" ? <GoChevronUp/> : <GoChevronDown />)
+        setIsAdminOn(IsAdminOn === false ? true : false)
+        setIcone(IsAdminOn === false ? <GoChevronUp/> : <GoChevronDown />)
     }
 
     const toggleContent = (content) => {

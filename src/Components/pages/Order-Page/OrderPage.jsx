@@ -17,7 +17,7 @@ export default function OrderPage() {
               <div className="container">
                 <Header />
                 <Main />
-                <PanelAdmin />
+                {IsAdminOn && <PanelAdmin />}
               </div>
         </OrderPagestyled>
       </OrderContext.Provider>
