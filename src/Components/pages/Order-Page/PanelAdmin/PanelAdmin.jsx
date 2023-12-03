@@ -7,37 +7,37 @@ import { MdModeEditOutline } from "react-icons/md";
 import { useState } from "react";
 import AddProduct from "./panelContent/AddProduct";
 import ModifyProduct from "./panelContent/ModifyProduct";
-import { useContext } from "react";
-import OrderContext from "../../../../context/OrderContext";
 
 
 
 export default function PanelAdmin() {
+   const [toggleIsOn, setToggleIsOn] = useState(false)
    const [icone, setIcone] = useState(<GoChevronDown />)
+
+   const [state, setState] = useState("close")
    const [contentPanel, setContentPanel] = useState("content")
 
-   const [ajout, setAjout] = useState("actif")
-
-  
     const togglePanel = () => {
-        setIsAdminOn(IsAdminOn === false ? true : false)
-        setIcone(IsAdminOn === false ? <GoChevronUp/> : <GoChevronDown />)
+      setToggleIsOn(toggleIsOn === false ? true : false)
+        setIcone(toggleIsOn === false ? <GoChevronUp/> : <GoChevronDown />)
+        setState(toggleIsOn === false ? "close" : "open")
     }
 
     const toggleContent = (content) => {
-        if(open === "none"){setOpen("block")}
         setContentPanel(content)
+      
+
     }
 
 
   return (
       <PanelAdminStyled>
                 <div className="ButtonZone">
-                  <ButtonPanelAdmin icone={icone} handleClick={togglePanel} />
-                  <ButtonPanelAdmin className={ajout} icone={<FiPlus />} handleClick={() => toggleContent(<AddProduct />)} text={"Ajouter un produit"}/>
-                  <ButtonPanelAdmin icone={<MdModeEditOutline />} handleClick={() => toggleContent( <ModifyProduct />)} text={"Modifier un produit"}/>
+                  <ButtonPanelAdmin className={state} icone={icone} handleClick={togglePanel} />
+                  <ButtonPanelAdmin className={state} icone={<FiPlus />} handleClick={() => toggleContent(<AddProduct />)} text={"Ajouter un produit"}/>
+                  <ButtonPanelAdmin className={state} icone={<MdModeEditOutline />} handleClick={() => toggleContent( <ModifyProduct />)} text={"Modifier un produit"}/>
                 </div>
-                <div className="ActionZone"  style={{display: open}}>{contentPanel}</div>
+                {toggleIsOn && <div className="ActionZone" >{contentPanel}</div>}
       </PanelAdminStyled>
   )
 }
@@ -53,6 +53,8 @@ const PanelAdminStyled = styled.div`
       width: 100%;
 
     .ButtonZone {
+        display: flex;
+        flex-direction: row;
         padding-left: 71px;
         height: 43px;
         width: fit-content;
@@ -72,8 +74,12 @@ const PanelAdminStyled = styled.div`
     }
     ////////////////////////////////////////
 
-.actif{
-    background-color: aqua;
+.open{
+    top: 0;
+}
+
+.close{
+    top: 1px;
 }
   
 `;
