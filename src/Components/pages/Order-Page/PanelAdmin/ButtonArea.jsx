@@ -8,12 +8,13 @@ import { tabConfigs } from "./tabsConfigs";
 
 export default function ButtonArea() {
 
-    const {tabSelected, isCollapse, SetIsCollapse , setTabSelected} = useContext(OrderContext)
+    const {tabSelected, isCollapse, SetIsCollapse , setTabSelected, SetcontentPanel} = useContext(OrderContext)
     const tabs = tabConfigs(tabSelected)
 
-    const selectedTab = (tab) => {
+    const selectedTab = (tab, content) => {
         SetIsCollapse(true)
         setTabSelected(tab)
+        SetcontentPanel(content)
     }
 
   return (
@@ -30,7 +31,7 @@ export default function ButtonArea() {
                 label={tab.label}
                 icone={tab.icone}
                 className={tabSelected === tab.index ? "is-active" : ""}
-                handleClick={() => selectedTab(tab.index)}
+                handleClick={() => selectedTab(tab.index, tab.content)}
             />
         )
         )}

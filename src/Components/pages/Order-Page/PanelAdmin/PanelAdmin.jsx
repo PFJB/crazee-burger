@@ -5,12 +5,12 @@ import OrderContext from "../../../../context/OrderContext.jsx";
 import ButtonArea from "./ButtonArea.jsx";
 
 export default function PanelAdmin() {
-   const {isCollapse} = useContext(OrderContext)
+   const {isCollapse, contentPanel} = useContext(OrderContext)
 
   return (
       <PanelAdminStyled>
                 <ButtonArea />
-                {isCollapse && <div className="ActionZone" >rtyh</div>}
+                {isCollapse && <div className="ActionZone" >{contentPanel}</div>}
       </PanelAdminStyled>
   )
 }
