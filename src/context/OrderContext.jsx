@@ -2,7 +2,11 @@ import { createContext } from "react";
 
 const OrderContext = createContext({
     IsAdminOn: false,
-    setIsAdminOn: () => {}
+    setIsAdminOn: () => {},
+    tabSelected: "",
+    setTabSelected: () => {},
+    isCollapse: true, 
+    SetIsCollapse: () => {}
 });
 
 export default OrderContext

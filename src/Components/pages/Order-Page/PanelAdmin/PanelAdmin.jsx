@@ -1,18 +1,16 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme/theme";
-
-import { useState } from "react";
-import ButtonArea from "./ButtonArea";
-
-
+import { useContext } from "react";
+import OrderContext from "../../../../context/OrderContext.jsx";
+import ButtonArea from "./ButtonArea.jsx";
 
 export default function PanelAdmin() {
-   const [isCollapse, SetIsCollapse] = useState(false)
+   const {isCollapse} = useContext(OrderContext)
 
   return (
       <PanelAdminStyled>
-                <ButtonArea  isCollapse={ isCollapse } setIsCollapse={ SetIsCollapse } />
-                {isCollapse && <div className="ActionZone" >content</div>}
+                <ButtonArea />
+                {isCollapse && <div className="ActionZone" >rtyh</div>}
       </PanelAdminStyled>
   )
 }
@@ -37,6 +35,4 @@ const PanelAdminStyled = styled.div`
         transition:all 1s;
 
     }
-    ////////////////////////////////////////
-  
 `;
