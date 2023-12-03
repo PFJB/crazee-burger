@@ -5,7 +5,7 @@ import { theme } from "../../../theme/theme";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import PanelAdmin from "./panelAdmin/PanelAdmin";
-import AddContent from "./PanelAdmin/panelContent/AddContent";
+import AddContent from "./panelAdmin/panelContent/AddContent";
 
 export default function OrderPage() {
 
