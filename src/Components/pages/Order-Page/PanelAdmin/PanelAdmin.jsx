@@ -15,26 +15,29 @@ export default function PanelAdmin() {
    const [icone, setIcone] = useState(<GoChevronDown />)
    const [contentPanel, setContentPanel] = useState("content")
 
+   const [ajout, setAjout] = useState("actif")
+
+  
     const togglePanel = () => {
         setOpen(open === "none" ? "block" : "none")
         setIcone(open === "none" ? <GoChevronUp/> : <GoChevronDown />)
     }
 
     const toggleContent = (content) => {
+        if(open === "none"){setOpen("block")}
         setContentPanel(content)
     }
 
 
   return (
-    <PanelAdminStyled>
-              <div className="ButtonZone">
-                <ButtonPanelAdmin icone={icone} handleClick={togglePanel} />
-                <ButtonPanelAdmin icone={<FiPlus />} handleClick={() => toggleContent(<AddProduct />)} text={"Ajouter un produit"}/>
-                <ButtonPanelAdmin icone={<MdModeEditOutline />} handleClick={() => toggleContent(<ModifyProduct />)} text={"Modifier un produit"}/>
-
-              </div>
-              <div className="ActionZone"  style={{display: open}}>{contentPanel}</div>
-    </PanelAdminStyled>
+      <PanelAdminStyled>
+                <div className="ButtonZone">
+                  <ButtonPanelAdmin icone={icone} handleClick={togglePanel} />
+                  <ButtonPanelAdmin className={ajout} icone={<FiPlus />} handleClick={() => toggleContent(<AddProduct />)} text={"Ajouter un produit"}/>
+                  <ButtonPanelAdmin icone={<MdModeEditOutline />} handleClick={() => toggleContent( <ModifyProduct />)} text={"Modifier un produit"}/>
+                </div>
+                <div className="ActionZone"  style={{display: open}}>{contentPanel}</div>
+      </PanelAdminStyled>
   )
 }
 
@@ -63,10 +66,13 @@ const PanelAdminStyled = styled.div`
         background-color: ${theme.colors.white};
         border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
         box-shadow: 0px -6px 8px -2px #0000001A;
+        transition:all 1s;
 
     }
     ////////////////////////////////////////
 
-
+.actif{
+    background-color: aqua;
+}
   
 `;

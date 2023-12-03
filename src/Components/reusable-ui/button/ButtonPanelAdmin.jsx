@@ -1,9 +1,22 @@
 import styled from "styled-components";
 import { theme } from "../../../theme/theme";
 
-export default function ButtonPanelAdmin({icone, text, handleClick}) {
-  return (
-    <ButtonPanelAdminStyled onClick={handleClick}>
+export default function ButtonPanelAdmin({icone, text, handleClick, className}){
+
+    let state = true;
+
+    const act = () => {
+        if (state === true) {
+            
+            handleClick()
+
+        }
+     }
+ 
+ 
+
+    return (
+    <ButtonPanelAdminStyled  className={className} onClick={act}>
         <div>
             <span>{icone && icone}</span>
             {text && text}
@@ -43,4 +56,6 @@ const ButtonPanelAdminStyled = styled.button`
             align-items: center;
         }
     }
+
+ 
 `;
