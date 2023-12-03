@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../../theme/theme";
+import { theme } from "../../../../theme/theme.js";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext.jsx";
 import ButtonArea from "./ButtonArea.jsx";

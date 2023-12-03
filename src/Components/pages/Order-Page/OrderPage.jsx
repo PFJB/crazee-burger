@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
-import PanelAdmin from "./PanelAdmin/PanelAdmin";
 import { theme } from "../../../theme/theme";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext";
+import PanelAdmin from "./panelAdmin/PanelAdmin";
 
 export default function OrderPage() {
 
