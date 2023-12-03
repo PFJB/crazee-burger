@@ -3,11 +3,12 @@ import styled from "styled-components";
 import ToggleButton from "./ToggleButton";
 import { theme } from "../../../../theme/theme";
 import { FaUserSecret } from "react-icons/fa6";
-import { useState } from "react";
+import { useContext } from "react";
+import OrderContext from "../../../../context/OrderContext";
 
 export default function ToastAdmin() {
 
-    const [IsAdminOn , setIsAdminOn] = useState(false);
+  const {IsAdminOn, setIsAdminOn} = useContext(OrderContext)
 
     const notify = () => {
     if (!IsAdminOn){
@@ -29,7 +30,10 @@ export default function ToastAdmin() {
   return (
     <ToastAdminStyled className="admin-button">
         <ToastContainer className="toaster" bodyClassName="body-toast" />
-        <ToggleButton onToggle={notify} labelIfChecked="DÉSACTIVER LE MODE ADMIN" labelIfUnchecked="ACTIVER LE MODE ADMIN" />
+        <ToggleButton onToggle={notify}
+                      isChecked={IsAdminOn}
+                      labelIfChecked="DÉSACTIVER LE MODE ADMIN"
+                      labelIfUnchecked="ACTIVER LE MODE ADMIN" />
     </ToastAdminStyled>
   )
 }
