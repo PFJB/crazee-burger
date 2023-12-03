@@ -1,43 +1,18 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme/theme";
-import ButtonPanelAdmin from "../../../reusable-ui/button/ButtonPanelAdmin";
-import { GoChevronDown, GoChevronUp } from "react-icons/go";
-import { FiPlus } from "react-icons/fi";
-import { MdModeEditOutline } from "react-icons/md";
+
 import { useState } from "react";
-import AddProduct from "./panelContent/AddProduct";
-import ModifyProduct from "./panelContent/ModifyProduct";
+import ButtonArea from "./ButtonArea";
 
 
 
 export default function PanelAdmin() {
-   const [toggleIsOn, setToggleIsOn] = useState(false)
-   const [icone, setIcone] = useState(<GoChevronDown />)
-
-   const [state, setState] = useState("close")
-   const [contentPanel, setContentPanel] = useState("content")
-
-    const togglePanel = () => {
-      setToggleIsOn(toggleIsOn === false ? true : false)
-        setIcone(toggleIsOn === false ? <GoChevronUp/> : <GoChevronDown />)
-        setState(toggleIsOn === false ? "close" : "open")
-    }
-
-    const toggleContent = (content) => {
-        setContentPanel(content)
-      
-
-    }
-
+   const [isCollapse, SetIsCollapse] = useState(false)
 
   return (
       <PanelAdminStyled>
-                <div className="ButtonZone">
-                  <ButtonPanelAdmin className={state} icone={icone} handleClick={togglePanel} />
-                  <ButtonPanelAdmin className={state} icone={<FiPlus />} handleClick={() => toggleContent(<AddProduct />)} text={"Ajouter un produit"}/>
-                  <ButtonPanelAdmin className={state} icone={<MdModeEditOutline />} handleClick={() => toggleContent( <ModifyProduct />)} text={"Modifier un produit"}/>
-                </div>
-                {toggleIsOn && <div className="ActionZone" >{contentPanel}</div>}
+                <ButtonArea  isCollapse={ isCollapse } setIsCollapse={ SetIsCollapse } />
+                {isCollapse && <div className="ActionZone" >content</div>}
       </PanelAdminStyled>
   )
 }
@@ -52,16 +27,6 @@ const PanelAdminStyled = styled.div`
       height: fit-content;
       width: 100%;
 
-    .ButtonZone {
-        display: flex;
-        flex-direction: row;
-        padding-left: 71px;
-        height: 43px;
-        width: fit-content;
-        max-width: 100%;
-
-    }
-
     .ActionZone {
         flex: 1;
         min-height: 250px;
@@ -73,13 +38,5 @@ const PanelAdminStyled = styled.div`
 
     }
     ////////////////////////////////////////
-
-.open{
-    top: 0;
-}
-
-.close{
-    top: 1px;
-}
   
 `;

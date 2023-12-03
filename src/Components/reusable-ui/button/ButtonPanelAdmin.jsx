@@ -15,8 +15,10 @@ const ButtonPanelAdminStyled = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+    
 
     position: relative;
+    top: 1px;
 
     height: 43px;
     padding: 10px 22px 11px 22px;
