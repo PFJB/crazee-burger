@@ -3,12 +3,16 @@ import ButtonIcone from "../button/ButtonIcone";
 import { theme } from "../../../theme/theme";
 import { formatPrice } from "../../../utils/maths";
 import { TiDelete } from "react-icons/ti";
+import { useContext } from "react";
+import OrderContext from "../../../context/OrderContext";
 
 export default function Card({price, imgSource, title, onClick}) {
 
+    const {IsAdminOn} = useContext(OrderContext)
+
   return (
     <CardStyled>
-        <button onClick={onClick} className="delete"><TiDelete size={40}/></button>
+        {IsAdminOn && <button onClick={onClick} className="delete"><TiDelete size={40}/></button>}
         <div className="picture"><img src={ imgSource } alt={ title } /></div>
         <div className="title"><p>{ title }</p></div>
         <div className="priceAdd">
