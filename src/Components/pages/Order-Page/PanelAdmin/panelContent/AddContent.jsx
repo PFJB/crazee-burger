@@ -9,17 +9,32 @@ import { GrValidate } from "react-icons/gr";
 
 export default function AddContent() {
 
-const {handleSubmit, handleChange, setinputName,
-  inputURL, setInputURL, setinputPrice, popup,
-  inputPrice, inputName} = useContext(OrderContext)
+const {handleAdd, popup, setNewProduct, newProduct} = useContext(OrderContext)
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    handleAdd()
+  }
+
+  const handleChange = (event, target) => {
+    setNewProduct({
+      id: newProduct.id,
+      title: target === "title" ? event.target.value : newProduct.title,
+      imageSource: target === "imageSource" ? event.target.value : newProduct.imageSource,
+      price: target === "price" ? event.target.value : newProduct.price,
+      quantity: 0,
+      isAvailable: newProduct.isAvailable,
+      isAdvertised: newProduct.isAdvertised,
+    })
+  }
 
   return (
     <AddContentStyled onSubmit={handleSubmit}>
-      <div className="image">{inputURL === "" ? "Aucune image" : <img src={inputURL} alt="Added picture"/>}</div>
+      <div className="image">{newProduct.imageSource === "" ? "Aucune image" : <img src={newProduct.imageSource} alt="Added picture"/>}</div>
       <div className="inputArea">
-        <TextInput className="popo" onChange={() => handleChange(event, setinputName)} placeholder="Nom du produit (ex: Super Burger)" IconeBeforeInput={<FaHamburger />} value={inputName}/>
-        <TextInput className="popo" onChange={() => handleChange(event, setInputURL)} placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)" IconeBeforeInput={<MdPhotoCamera />} value={inputURL}/>
-        <TextInput className="popo" onChange={() => handleChange(event, setinputPrice)} placeholder="Prix" IconeBeforeInput={<MdOutlineEuroSymbol />} value={inputPrice ? inputPrice : ""}/>
+        <TextInput className="popo" onChange={() => handleChange(event, "title")} placeholder="Nom du produit (ex: Super Burger)" IconeBeforeInput={<FaHamburger />} value={newProduct.title}/>
+        <TextInput className="popo" onChange={() => handleChange(event,"imageSource")} placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)" IconeBeforeInput={<MdPhotoCamera />} value={newProduct.imageSource}/>
+        <TextInput className="popo" onChange={() => handleChange(event,"price")} placeholder="Prix" IconeBeforeInput={<MdOutlineEuroSymbol />} value={newProduct.price ? newProduct.price : ""}/>
         <div className="buttonArea"><button className="button">Ajouter un nouveau produit au menu</button><div className={popup}><GrValidate/>Ajouté avec succès !</div></div>
         
       </div>

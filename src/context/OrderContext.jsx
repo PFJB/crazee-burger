@@ -9,14 +9,10 @@ const OrderContext = createContext({
     SetIsCollapse: () => {},
     menuData: [],
     setMenuData:() => {},
-    handleSubmit: () => {},
-    inputName: "",
-    setinputName: () => {},
-    inputURL: "",
-    setInputURL: () => {},
-    inputPrice: 0,
-    setinputPrice: () => {},
-    handleChange: () => {},
+    handleAdd: () => {},
+    newProduct: [],
+    setnewProduct:() => {},
+
     popup: "",
     setPopup: () => {},
 });

@@ -14,47 +14,44 @@ export default function OrderPage() {
   const [contentPanel , SetcontentPanel] = useState(<AddContent />);
   const [IsAdminOn , setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
-  const [inputName, setinputName] = useState("")
-  const [inputURL, setInputURL] = useState("")
-  const [inputPrice, setinputPrice] = useState(0)
 
+  const [newProduct, setNewProduct] = useState({
+    id:"",
+    title: "",
+    imageSource: "",
+    price: 0,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+  })
 
+  const [popup, setPopup] = useState("hide")
+  const closing = () => {setPopup("hide")}
 
-  const handleChange = (event, setInput) => {
-    setInput(event.target.value);
-    }
-  
-    const [popup, setPopup] = useState("hide")
-    const closing = () => {setPopup("hide")}
-
-    const handleSubmit = (event) => {
-      event.preventDefault()
+   const handleAdd = () => {
   
       const copyMenu = [...menuData]
-      const newCard  = {
-          id: copyMenu.length + 1,
-          imageSource: inputURL,
-          title: inputName,
-          price: inputPrice === "" ? "0" : inputPrice,
-          quantity: 0,
-          isAvailable: true,
-          isAdvertised: false,
-        }
-        copyMenu.push(newCard)
-        setMenuData(copyMenu)
-        setPopup("popup")
-        setTimeout(closing, 3000)
-        setinputName("")
-        setInputURL("")
-        setinputPrice("")
+      const newMenu = [{...newProduct}, ...copyMenu]
+
+      setMenuData(newMenu)
+      setNewProduct({
+        id:"",
+        title: "",
+        imageSource: "",
+        price: 0,
+        quantity: 0,
+        isAvailable: true,
+        isAdvertised: false,
+      })
+
+      setPopup("popup")
+      setTimeout(closing, 3000)
     }
 
   const orderContext = {
     IsAdminOn, setIsAdminOn, tabSelected,
     setTabSelected,isCollapse, SetIsCollapse,
-    contentPanel, SetcontentPanel, menuData, setMenuData, handleSubmit,
-    inputName, setinputName, inputURL, setInputURL,
-    inputPrice, setinputPrice, handleChange, popup, setPopup}
+    contentPanel, SetcontentPanel, menuData, setMenuData, handleAdd, newProduct, setNewProduct, popup, setPopup}
 
   return (
       <OrderContext.Provider value={orderContext}>
