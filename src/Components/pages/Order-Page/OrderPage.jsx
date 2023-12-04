@@ -14,9 +14,47 @@ export default function OrderPage() {
   const [contentPanel , SetcontentPanel] = useState(<AddContent />);
   const [IsAdminOn , setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
-  const orderContext = {IsAdminOn, setIsAdminOn, tabSelected,
+  const [inputName, setinputName] = useState("")
+  const [inputURL, setInputURL] = useState("")
+  const [inputPrice, setinputPrice] = useState(0)
+
+
+
+  const handleChange = (event, setInput) => {
+    setInput(event.target.value);
+    }
+  
+    const [popup, setPopup] = useState("hide")
+    const closing = () => {setPopup("hide")}
+
+    const handleSubmit = (event) => {
+      event.preventDefault()
+  
+      const copyMenu = [...menuData]
+      const newCard  = {
+          id: copyMenu.length + 1,
+          imageSource: inputURL,
+          title: inputName,
+          price: inputPrice === "" ? "0" : inputPrice,
+          quantity: 0,
+          isAvailable: true,
+          isAdvertised: false,
+        }
+        copyMenu.push(newCard)
+        setMenuData(copyMenu)
+        setPopup("popup")
+        setTimeout(closing, 3000)
+        setinputName("")
+        setInputURL("")
+        setinputPrice("")
+    }
+
+  const orderContext = {
+    IsAdminOn, setIsAdminOn, tabSelected,
     setTabSelected,isCollapse, SetIsCollapse,
-    contentPanel, SetcontentPanel, menuData, setMenuData}
+    contentPanel, SetcontentPanel, menuData, setMenuData, handleSubmit,
+    inputName, setinputName, inputURL, setInputURL,
+    inputPrice, setinputPrice, handleChange, popup, setPopup}
 
   return (
       <OrderContext.Provider value={orderContext}>
@@ -47,4 +85,16 @@ const OrderPagestyled = styled.div`
       width: min(100%, 1400px);
       height: 95%;
     }
+
+    .popup {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Open Sans', sans-serif;
+      font-size: ${theme.fonts.size.P0};
+      color: ${theme.colors.success};
+      gap: 8px;
+    }
+    .hide{display: none;}
+
 `;

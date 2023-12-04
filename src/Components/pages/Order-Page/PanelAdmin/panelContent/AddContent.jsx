@@ -3,52 +3,24 @@ import TextInput from "../../../../reusable-ui/textInput/TextInput";
 import { FaHamburger } from "react-icons/fa";
 import { MdPhotoCamera, MdOutlineEuroSymbol } from "react-icons/md";
 import { theme } from "../../../../../theme/theme";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
-
+import { GrValidate } from "react-icons/gr";
 
 export default function AddContent() {
 
-const {menuData, setMenuData} = useContext(OrderContext)
-const [inputName, setinputName] = useState("")
-const [inputURL, setInputURL] = useState("")
-const [inputPrice, setinputPrice] = useState("")
-
-
-const handleChange = (event, setInput) => {
-  setInput(event.target.value);
-  }
-
-  const [popup, setPopup] = useState("hide")
-  const closing = () => {setPopup("hide")}
-
-  const handleClick = (event) => {
-    event.preventDefault()
-
-    const copyMenu = [...menuData]
-    const newCard  = {
-        id: copyMenu.length + 1,
-        imageSource: inputURL,
-        title: inputName,
-        price: inputPrice === "" ? "0" : inputPrice,
-        quantity: 0,
-        isAvailable: true,
-        isAdvertised: false,
-      }
-      copyMenu.push(newCard)
-      setMenuData(copyMenu)
-      setPopup("popup")
-      setTimeout(closing, 3000)
-  }
+const {handleSubmit, handleChange, setinputName,
+  inputURL, setInputURL, setinputPrice, popup,
+  inputPrice, inputName} = useContext(OrderContext)
 
   return (
-    <AddContentStyled onSubmit={handleClick}>
+    <AddContentStyled onSubmit={handleSubmit}>
       <div className="image">{inputURL === "" ? "Aucune image" : <img src={inputURL} alt="Added picture"/>}</div>
       <div className="inputArea">
         <TextInput className="popo" onChange={() => handleChange(event, setinputName)} placeholder="Nom du produit (ex: Super Burger)" IconeBeforeInput={<FaHamburger />} value={inputName}/>
         <TextInput className="popo" onChange={() => handleChange(event, setInputURL)} placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)" IconeBeforeInput={<MdPhotoCamera />} value={inputURL}/>
-        <TextInput className="popo" onChange={() => handleChange(event, setinputPrice)} placeholder="Prix" IconeBeforeInput={<MdOutlineEuroSymbol />} value={inputPrice}/>
-        <div className="buttonArea"><button className="button">Ajouter un nouveau produit au menu</button><div className={popup}>Ajouté avec succès !</div></div>
+        <TextInput className="popo" onChange={() => handleChange(event, setinputPrice)} placeholder="Prix" IconeBeforeInput={<MdOutlineEuroSymbol />} value={inputPrice ? inputPrice : ""}/>
+        <div className="buttonArea"><button className="button">Ajouter un nouveau produit au menu</button><div className={popup}><GrValidate/>Ajouté avec succès !</div></div>
         
       </div>
       </AddContentStyled>
@@ -103,23 +75,19 @@ const AddContentStyled = styled.form`
       color: ${theme.colors.white};
       background-color: ${theme.colors.green};
       cursor: pointer;
+
+      &:hover {
+        background-color: ${theme.colors.white};
+        border-color: ${theme.colors.green};
+        color: ${theme.colors.green};
+      }
     }
 
-    .popup {
-      color: black;
-    }
     .buttonArea {
       display: flex;
       align-items: center;
       flex-direction: row;
       gap: 15px;
-    }
-    .hide{display: none;}
-
-    :hover {
-      background-color: ${theme.colors.white};
-      border-color: ${theme.colors.green};
-      color: ${theme.colors.green};
     }
 
     .popo {
