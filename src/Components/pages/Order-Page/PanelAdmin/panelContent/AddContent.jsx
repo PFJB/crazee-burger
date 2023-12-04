@@ -10,12 +10,12 @@ import { theme } from "../../../../../theme/theme";
 export default function AddContent() {
   return (
     <AddContentStyled>
-      <img src="" alt="" />
+      <div className="image">Aucune image</div>
       <div>
         <TextInput className="popo" IconeBeforeInput={<FaHamburger />} value={"Nom du produit (ex: Super Burger)"}/>
         <TextInput className="popo" IconeBeforeInput={<MdPhotoCamera />} value={"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"}/>
         <TextInput className="popo" IconeBeforeInput={<MdOutlineEuroSymbol />} value={"Prix"}/>
-        <button className="button">blblbl</button>
+        <button className="button">Ajouter un nouveau produit au menu</button>
       </div>
       </AddContentStyled>
   )
@@ -26,28 +26,47 @@ display: flex;
 position: relative;
   height: 100%;
   width: 100%;
-  background-color: aquamarine;
   gap: 20px;
 
-  img {
+  .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px ${theme.colors.greyLight};
+    border-radius: ${theme.borderRadius.round};
     width: 215px;
     height: 120px;
-    background-color: beige;
+    font-size: ${theme.fonts.size.P0};
+    font-weight: ${theme.fonts.weights.regular};
+    font-family: 'Open Sans', sans-serif;
+
   }
 
   div {
     display: flex;
     flex-direction: column;
-    background-color: blue;
     height: 100%;
     width: 100%;
     gap: 8px;
     color: ${theme.colors.greyMedium};
 
-
     button {
       width: 275px;
       height: 34px;
+      border: solid 1px ${theme.colors.green};
+      border-radius: ${theme.borderRadius.round};
+      font-family: Arial, sans-serif;
+      font-size: ${theme.fonts.size.XS};
+      font-weight: ${theme.fonts.weights.bold};
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.green};
+      cursor: pointer;
+    }
+
+    :hover {
+      background-color: ${theme.colors.white};
+      border-color: ${theme.colors.green};
+      color: ${theme.colors.green};
     }
 
     .popo {
@@ -55,10 +74,11 @@ position: relative;
       flex-direction: row;
       margin: 0;
       height: 35px;
-      background-color: white;
+      background-color: ${theme.colors.background_white};
       padding: 8px 16px, 8px 24px;
-      border-radius: 5px;
+      border-radius: ${theme.borderRadius.round};
       color: ${theme.colors.greyMedium};
+      gap: 15px;
 
     }
   }
