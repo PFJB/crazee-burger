@@ -10,7 +10,6 @@ import OrderContext from "../../../../../context/OrderContext";
 export default function AddContent() {
 
 const {menuData, setMenuData} = useContext(OrderContext)
-
 const [inputName, setinputName] = useState("")
 const [inputURL, setInputURL] = useState("")
 const [inputPrice, setinputPrice] = useState("")
@@ -41,7 +40,7 @@ const handleChange = (event, setInput) => {
 
   return (
     <AddContentStyled onSubmit={handleClick}>
-      <div className="image">Aucune image</div>
+      <div className="image">{inputURL === "" ? "Aucune image" : <img src={inputURL} alt="Added picture"/>}</div>
       <div className="inputArea">
         <TextInput className="popo" onChange={() => handleChange(event, setinputName)} placeholder="Nom du produit (ex: Super Burger)" IconeBeforeInput={<FaHamburger />} value={inputName}/>
         <TextInput className="popo" onChange={() => handleChange(event, setInputURL)} placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)" IconeBeforeInput={<MdPhotoCamera />} value={inputURL}/>
@@ -73,6 +72,11 @@ const AddContentStyled = styled.form`
     font-family: 'Open Sans', sans-serif;
     color: ${theme.colors.greyMedium};
 
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
 
   .inputArea {
