@@ -6,16 +6,17 @@ import { useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import PanelAdmin from "./panelAdmin/PanelAdmin";
 import AddContent from "./panelAdmin/panelContent/AddContent";
+import { fakeMenu1, fakeMenu2 } from "../../../assets/fakeData/fakeMenu";
 
 export default function OrderPage() {
-
+  const [menuData, setMenuData] = useState(fakeMenu1)
   const [tabSelected , setTabSelected] = useState("add");
   const [contentPanel , SetcontentPanel] = useState(<AddContent />);
   const [IsAdminOn , setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
   const orderContext = {IsAdminOn, setIsAdminOn, tabSelected,
     setTabSelected,isCollapse, SetIsCollapse,
-    contentPanel, SetcontentPanel}
+    contentPanel, SetcontentPanel, menuData, setMenuData}
 
   return (
       <OrderContext.Provider value={orderContext}>

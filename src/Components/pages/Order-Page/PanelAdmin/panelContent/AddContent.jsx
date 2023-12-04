@@ -9,7 +9,8 @@ import { theme } from "../../../../../theme/theme";
 
 export default function AddContent() {
   return (
-    <AddContentStyled>
+    <AddContentStyled onClick={() => {  event.preventDefault()
+    }}>
       <div className="image">Aucune image</div>
       <div>
         <TextInput className="popo" IconeBeforeInput={<FaHamburger />} value={"Nom du produit (ex: Super Burger)"}/>

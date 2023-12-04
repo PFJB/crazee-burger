@@ -6,7 +6,9 @@ const OrderContext = createContext({
     tabSelected: "",
     setTabSelected: () => {},
     isCollapse: true, 
-    SetIsCollapse: () => {}
+    SetIsCollapse: () => {},
+    menuData: [],
+    setMenuData:() => {},
 });
 
 export default OrderContext
