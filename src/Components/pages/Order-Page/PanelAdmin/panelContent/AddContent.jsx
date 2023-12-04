@@ -3,19 +3,49 @@ import TextInput from "../../../../reusable-ui/textInput/TextInput";
 import { FaHamburger } from "react-icons/fa";
 import { MdPhotoCamera, MdOutlineEuroSymbol } from "react-icons/md";
 import { theme } from "../../../../../theme/theme";
-
-
+import { useContext, useState } from "react";
+import OrderContext from "../../../../../context/OrderContext";
 
 
 export default function AddContent() {
+
+const {menuData, setMenuData} = useContext(OrderContext)
+
+const [inputName, setinputName] = useState("")
+const [inputURL, setInputURL] = useState("")
+const [inputPrice, setinputPrice] = useState("")
+
+
+const handleChange = (event, setInput) => {
+  setInput(event.target.value);
+  }
+
+  const handleClick = (event) => {
+    event.preventDefault()
+
+    const copyMenu = [...menuData]
+    const newCard  = {
+        id: copyMenu.length + 1,
+        imageSource: inputURL,
+        title: inputName,
+        price: inputPrice === "" ? "0" : inputPrice,
+        quantity: 0,
+        isAvailable: true,
+        isAdvertised: false,
+      }
+
+      copyMenu.push(newCard)
+      setMenuData(copyMenu)
+      console.log(copyMenu)
+  }
+
   return (
-    <AddContentStyled onClick={() => {  event.preventDefault()
-    }}>
+    <AddContentStyled onSubmit={handleClick}>
       <div className="image">Aucune image</div>
-      <div>
-        <TextInput className="popo" IconeBeforeInput={<FaHamburger />} value={"Nom du produit (ex: Super Burger)"}/>
-        <TextInput className="popo" IconeBeforeInput={<MdPhotoCamera />} value={"Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"}/>
-        <TextInput className="popo" IconeBeforeInput={<MdOutlineEuroSymbol />} value={"Prix"}/>
+      <div className="inputArea">
+        <TextInput className="popo" onChange={() => handleChange(event, setinputName)} placeholder="Nom du produit (ex: Super Burger)" IconeBeforeInput={<FaHamburger />} value={inputName}/>
+        <TextInput className="popo" onChange={() => handleChange(event, setInputURL)} placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)" IconeBeforeInput={<MdPhotoCamera />} value={inputURL}/>
+        <TextInput className="popo" onChange={() => handleChange(event, setinputPrice)} placeholder="Prix" IconeBeforeInput={<MdOutlineEuroSymbol />} value={inputPrice}/>
         <button className="button">Ajouter un nouveau produit au menu</button>
       </div>
       </AddContentStyled>
@@ -23,8 +53,9 @@ export default function AddContent() {
 }
 
 const AddContentStyled = styled.form`
-display: flex;
-position: relative;
+
+  display: flex;
+  position: relative;
   height: 100%;
   width: 100%;
   gap: 20px;
@@ -40,10 +71,11 @@ position: relative;
     font-size: ${theme.fonts.size.P0};
     font-weight: ${theme.fonts.weights.regular};
     font-family: 'Open Sans', sans-serif;
+    color: ${theme.colors.greyMedium};
 
   }
 
-  div {
+  .inputArea {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -80,12 +112,10 @@ position: relative;
       border-radius: ${theme.borderRadius.round};
       color: ${theme.colors.greyMedium};
       gap: 15px;
-
+      input::placeholder {
+        color: ${theme.colors.greyMedium};
+      }
     }
   }
-
-  
-
-  
 `;
 

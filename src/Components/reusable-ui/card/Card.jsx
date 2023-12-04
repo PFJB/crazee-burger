@@ -9,11 +9,14 @@ import OrderContext from "../../../context/OrderContext";
 export default function Card({price, imgSource, title, onClick}) {
 
     const {IsAdminOn} = useContext(OrderContext)
+    let img = "";
+    if (imgSource === ""){img = "Coming soon"}
+    else {img = <img src={ imgSource } alt={ title } />}
 
   return (
     <CardStyled>
         {IsAdminOn && <button onClick={onClick} className="delete"><TiDelete size={40}/></button>}
-        <div className="picture"><img src={ imgSource } alt={ title } /></div>
+        <div className="picture">{img}</div>
         <div className="title"><p>{ title }</p></div>
         <div className="priceAdd">
             <p className="price">{ formatPrice(price) }</p>
@@ -33,9 +36,15 @@ const CardStyled = styled.div`
     width: 240px;
     box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
     padding: 50px 25px 30px 25px;
+    font-family: 'Amatic SC', sans-serif;
+    font-size: ${theme.fonts.size.P3};
+
     border-radius: ${theme.borderRadius.extraRound};
 
     .picture {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 200px;
         height: 145px;
         margin-bottom: 15px;
