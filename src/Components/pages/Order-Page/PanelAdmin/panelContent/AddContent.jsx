@@ -19,6 +19,9 @@ const handleChange = (event, setInput) => {
   setInput(event.target.value);
   }
 
+  const [popup, setPopup] = useState("hide")
+  const closing = () => {setPopup("hide")}
+
   const handleClick = (event) => {
     event.preventDefault()
 
@@ -32,10 +35,10 @@ const handleChange = (event, setInput) => {
         isAvailable: true,
         isAdvertised: false,
       }
-
       copyMenu.push(newCard)
       setMenuData(copyMenu)
-      console.log(copyMenu)
+      setPopup("popup")
+      setTimeout(closing, 3000)
   }
 
   return (
@@ -45,7 +48,8 @@ const handleChange = (event, setInput) => {
         <TextInput className="popo" onChange={() => handleChange(event, setinputName)} placeholder="Nom du produit (ex: Super Burger)" IconeBeforeInput={<FaHamburger />} value={inputName}/>
         <TextInput className="popo" onChange={() => handleChange(event, setInputURL)} placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)" IconeBeforeInput={<MdPhotoCamera />} value={inputURL}/>
         <TextInput className="popo" onChange={() => handleChange(event, setinputPrice)} placeholder="Prix" IconeBeforeInput={<MdOutlineEuroSymbol />} value={inputPrice}/>
-        <button className="button">Ajouter un nouveau produit au menu</button>
+        <div className="buttonArea"><button className="button">Ajouter un nouveau produit au menu</button><div className={popup}>Ajouté avec succès !</div></div>
+        
       </div>
       </AddContentStyled>
   )
@@ -88,6 +92,7 @@ const AddContentStyled = styled.form`
     color: ${theme.colors.greyMedium};
 
     button {
+      position: relative;
       width: 275px;
       height: 34px;
       border: solid 1px ${theme.colors.green};
@@ -99,6 +104,17 @@ const AddContentStyled = styled.form`
       background-color: ${theme.colors.green};
       cursor: pointer;
     }
+
+    .popup {
+      color: black;
+    }
+    .buttonArea {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      gap: 15px;
+    }
+    .hide{display: none;}
 
     :hover {
       background-color: ${theme.colors.white};

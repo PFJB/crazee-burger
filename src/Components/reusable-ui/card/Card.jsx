@@ -9,14 +9,11 @@ import OrderContext from "../../../context/OrderContext";
 export default function Card({price, imgSource, title, onClick}) {
 
     const {IsAdminOn} = useContext(OrderContext)
-    let img = "";
-    if (imgSource === ""){img = "Coming soon"}
-    else {img = <img src={ imgSource } alt={ title } />}
-
+  
   return (
     <CardStyled>
         {IsAdminOn && <button onClick={onClick} className="delete"><TiDelete size={40}/></button>}
-        <div className="picture">{img}</div>
+        <div className="picture">{<img src={ imgSource === "" ? "../../../../public/images/coming-soon.png": imgSource} alt={ title } />}</div>
         <div className="title"><p>{ title }</p></div>
         <div className="priceAdd">
             <p className="price">{ formatPrice(price) }</p>
