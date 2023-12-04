@@ -9,7 +9,7 @@ import AddContent from "./panelAdmin/panelContent/AddContent";
 import { fakeMenu1, fakeMenu2 } from "../../../assets/fakeData/fakeMenu";
 
 export default function OrderPage() {
-  const [menuData, setMenuData] = useState(fakeMenu1)
+  const [menuData, setMenuData] = useState(fakeMenu2)
   const [tabSelected , setTabSelected] = useState("add");
   const [contentPanel , SetcontentPanel] = useState(<AddContent />);
   const [IsAdminOn , setIsAdminOn] = useState(false);

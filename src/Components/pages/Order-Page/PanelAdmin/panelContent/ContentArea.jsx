@@ -4,18 +4,13 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 
 export default function ContentArea() {
-    const { contentPanel } = useContext(OrderContext)
 
+    const { contentPanel } = useContext(OrderContext)
 
   return (
     <ContentAreaStyled>{ contentPanel }</ContentAreaStyled>
   )
 }
-
-
-
-
-
 
 const ContentAreaStyled = styled.div`
     display: flex;

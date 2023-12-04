@@ -5,7 +5,6 @@ import EmptyMenu from "./emptyContent/EmptyMenu";
 import OrderContext from "../../../../context/OrderContext";
 import MenuContent from "./menuContent/MenuContent";
 
-
 export default function Main() {
 
   const {menuData} = useContext(OrderContext)
@@ -15,15 +14,10 @@ export default function Main() {
 }
 
 const Mainstyled = styled.div`
-position: relative;
-
-height: 100%;
-width: 100%;
-background-color: white;
-box-shadow: 0px 8px 20px 8px #00000033 inset;
-border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
-
-
-
-
+  position: relative;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: white;
+  box-shadow: 0px 8px 20px 8px #00000033 inset;
+  border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
 `;
