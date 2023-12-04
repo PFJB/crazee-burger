@@ -8,25 +8,24 @@ import PanelAdmin from "./panelAdmin/PanelAdmin";
 import AddContent from "./panelAdmin/panelContent/AddContent";
 import { fakeMenu1, fakeMenu2 } from "../../../assets/fakeData/fakeMenu";
 
+const EMPTY_PRODUCT = {
+  id: new Date().getTime(),
+  title: "",
+  imageSource: "",
+  price: 0,
+  quantity: 0,
+  isAvailable: true,
+  isAdvertised: false,
+}
+
 export default function OrderPage() {
   const [menuData, setMenuData] = useState(fakeMenu2)
   const [tabSelected , setTabSelected] = useState("add");
   const [contentPanel , SetcontentPanel] = useState(<AddContent />);
   const [IsAdminOn , setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
-
-  const [newProduct, setNewProduct] = useState({
-    id:"",
-    title: "",
-    imageSource: "",
-    price: 0,
-    quantity: 0,
-    isAvailable: true,
-    isAdvertised: false,
-  })
-
-  const [popup, setPopup] = useState("hide")
-  const closing = () => {setPopup("hide")}
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const [popup, setPopup] = useState(false)
 
    const handleAdd = () => {
   
@@ -34,18 +33,10 @@ export default function OrderPage() {
       const newMenu = [{...newProduct}, ...copyMenu]
 
       setMenuData(newMenu)
-      setNewProduct({
-        id:"",
-        title: "",
-        imageSource: "",
-        price: 0,
-        quantity: 0,
-        isAvailable: true,
-        isAdvertised: false,
-      })
+      setNewProduct(EMPTY_PRODUCT)
 
-      setPopup("popup")
-      setTimeout(closing, 3000)
+      setPopup(true)
+      setTimeout(() => {setPopup(false)}, 3000)
     }
 
   const orderContext = {
@@ -82,16 +73,4 @@ const OrderPagestyled = styled.div`
       width: min(100%, 1400px);
       height: 95%;
     }
-
-    .popup {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Open Sans', sans-serif;
-      font-size: ${theme.fonts.size.P0};
-      color: ${theme.colors.success};
-      gap: 8px;
-    }
-    .hide{display: none;}
-
 `;

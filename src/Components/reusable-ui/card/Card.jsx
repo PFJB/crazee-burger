@@ -5,6 +5,7 @@ import { formatPrice } from "../../../utils/maths";
 import { TiDelete } from "react-icons/ti";
 import { useContext } from "react";
 import OrderContext from "../../../context/OrderContext";
+const IMAGE_by_default = "/images/coming-soon.png"
 
 export default function Card({price, imgSource, title, onClick}) {
 
@@ -13,7 +14,7 @@ export default function Card({price, imgSource, title, onClick}) {
   return (
     <CardStyled>
         {IsAdminOn && <button onClick={onClick} className="delete"><TiDelete size={40}/></button>}
-        <div className="picture">{<img src={ imgSource === "" ? "../../../../public/images/coming-soon.png": imgSource} alt={ title } />}</div>
+        <div className="picture">{<img src={ imgSource ? imgSource : IMAGE_by_default} alt={ title } />}</div>
         <div className="title"><p>{ title }</p></div>
         <div className="priceAdd">
             <p className="price">{ formatPrice(price) }</p>
