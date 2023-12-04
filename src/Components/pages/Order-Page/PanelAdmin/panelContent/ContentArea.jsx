@@ -25,7 +25,7 @@ const ContentAreaStyled = styled.div`
     padding:  31px 448px 49px 71px;
     height: 250px;
     border: solid 1px ${theme.colors.greyLight};
-    background-color: ${theme.colors.green};
+    background-color: ${theme.colors.white};
     border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
     box-shadow: 0px -6px 8px -2px #0000001A;
     transition:all 1s;

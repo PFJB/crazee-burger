@@ -9,12 +9,25 @@ export default function Main() {
 
   const [menuData, setMenuData] = useState(fakeMenu2)
 
+  const onClick = (cardId) => {
+    let newMenu = [...menuData];
+    for (let i = 0; i < newMenu.length; i++){
+      if (cardId === newMenu[i].id){
+        newMenu.splice(i, 1)
+      }
+    }
+    setMenuData(newMenu)
+  }
+
   return (
     <Mainstyled>
         {menuData.map(x => {
-          return <Card key={x.id} title={x.title} price={x.price} imgSource={x.imageSource}/>
+          return <Card key={x.id}
+                      title={x.title}
+                      price={x.price}
+                      imgSource={x.imageSource}
+                      onClick={() => onClick(x.id)}/>
           })}
-
     </Mainstyled>
   )
 }

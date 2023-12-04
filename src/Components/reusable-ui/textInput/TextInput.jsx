@@ -4,7 +4,7 @@ import { theme } from "../../../theme/theme";
 export default function TextInput({value, onChange, IconeBeforeInput, ...others}) {
 
   return (
-    <InputStyled>
+    <InputStyled className={others.className}>
         {IconeBeforeInput && IconeBeforeInput}
         <input 
             value={value} 
@@ -29,9 +29,10 @@ const InputStyled = styled.div`
         background-color: ${theme.colors.white};
         margin-top: 18px;
         color: ${theme.colors.greySemiDark};
+        gap: 13px;
 
         input{
-            width: 90%;
+            width: 100%;
             border: none;
             border-radius: ${theme.borderRadius.round};
             background-color: ${theme.colors.white};

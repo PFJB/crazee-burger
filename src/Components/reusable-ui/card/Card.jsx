@@ -2,13 +2,14 @@ import styled from "styled-components";
 import ButtonIcone from "../button/ButtonIcone";
 import { theme } from "../../../theme/theme";
 import { formatPrice } from "../../../utils/maths";
+import { TiDelete } from "react-icons/ti";
 
-
-export default function Card({price, imgSource, title}) {
+export default function Card({price, imgSource, title, onClick}) {
 
   return (
     <CardStyled>
-       <div className="picture"><img src={ imgSource } alt={ title } /></div>
+        <button onClick={onClick} className="delete"><TiDelete size={40}/></button>
+        <div className="picture"><img src={ imgSource } alt={ title } /></div>
         <div className="title"><p>{ title }</p></div>
         <div className="priceAdd">
             <p className="price">{ formatPrice(price) }</p>
@@ -23,6 +24,7 @@ const CardStyled = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    position: relative;
     height: 330px;
     width: 240px;
     box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
@@ -62,15 +64,14 @@ const CardStyled = styled.div`
         height: 46px;
         font-family: 'Open Sans', sans-serif;
 
-    .price{
-        font-size: 16px;
-        font-weight: 400;
-        color: ${theme.colors.primary};
-        font-family: 'Open Sans', sans-serif;
-
+        .price{
+            font-size: 16px;
+            font-weight: 400;
+            color: ${theme.colors.primary};
+            font-family: 'Open Sans', sans-serif;
+        }
     }
 
-}
     .label {
         margin: 0;
         width: 95px;
@@ -78,5 +79,22 @@ const CardStyled = styled.div`
         font-size: 11px;
         font-weight: 700;
         text-align: center;
+    }
+
+    .delete {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        border: none;
+        background: none;
+        color: ${theme.colors.primary};
+        cursor: pointer;
+
+        :hover {
+            color: ${theme.colors.red};
+        }
     }
 `;
