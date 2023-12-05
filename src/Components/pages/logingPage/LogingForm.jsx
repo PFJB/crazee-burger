@@ -20,9 +20,7 @@ export default function LogingForm() {
         setInput("");
     }
 
-    const handleChange = (event) => {
-        setInput(event.target.value);
-    }
+    const handleChange = (event) => { setInput(event.target.value); }
 
     const onBlur = (e) => { e.target.placeholder = "Entrez votre prénom" };
     const onFocus = (e) => { e.target.placeholder = '' };

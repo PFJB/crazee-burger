@@ -24,7 +24,6 @@ export default function AddContent() {
       <div className="inputArea">
         <TextInput
           name="title"
-          className="popo"
           onChange={handleChange}
           placeholder="Nom du produit (ex: Super Burger)"
           IconeBeforeInput={<FaHamburger />}
@@ -32,16 +31,17 @@ export default function AddContent() {
           version={"panelAdmin"}
         />
 
-        <TextInput name="imageSource"
-          className="popo" onChange={handleChange}
+        <TextInput
+          name="imageSource"
+          onChange={handleChange}
           placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           IconeBeforeInput={<MdPhotoCamera />}
           value={newProduct.imageSource}
           version={"panelAdmin"}
         />
 
-        <TextInput name="price"
-          className="popo"
+        <TextInput
+          name="price"
           onChange={handleChange}
           placeholder="Prix"
           IconeBeforeInput={<MdOutlineEuroSymbol />}

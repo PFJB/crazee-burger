@@ -32,7 +32,7 @@ export default function OrderPage() {
     const newMenu = [{ ...newProduct }, ...copyMenu]
 
     setMenuData(newMenu)
-    setNewProduct(EMPTY_PRODUCT)
+    setNewProduct({ ...EMPTY_PRODUCT, id: new Date().getTime() })
     setPopup(true)
     setTimeout(() => { setPopup(false) }, 3000)
   }
@@ -50,8 +50,6 @@ export default function OrderPage() {
     setMenuData, handleAdd, newProduct,
     setNewProduct, popup, setPopup, handleCardDelete
   }
-
-
 
   return (
     <OrderContext.Provider value={orderContext}>
