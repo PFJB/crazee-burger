@@ -20,34 +20,34 @@ export default function LogingForm() {
         setInput("");
     }
 
-    const handleChange = (event) => {
-        setInput(event.target.value);
-        }
+    const handleChange = (event) => { setInput(event.target.value); }
 
-    const onBlur = (e) => {e.target.placeholder = "Entrez votre prénom"};
-    const onFocus = (e) => {e.target.placeholder = ''};
-    
+    const onBlur = (e) => { e.target.placeholder = "Entrez votre prénom" };
+    const onFocus = (e) => { e.target.placeholder = '' };
+
     // affichage
     return (
-    <LogingFormStyled action="submit" onSubmit={handleClick}>
-        <h1>Bienvenue chez nous !</h1>
-        <hr />
-        <h2>Connectez-vous</h2>
-        <TextInput
-            value={input}
-            IconeBeforeInput={<FaCircleUser />}
-            onChange={handleChange}
-            placeholder="Entrez votre prénom"
-            onBlur={onBlur}
-            onFocus={onFocus}
-            required
-        />
-        <ButtonIcone
-            label="Accéder à mon espace"
-            iconeButton={<FaChevronRight />}
-        />
+        <LogingFormStyled action="submit" onSubmit={handleClick}>
+            <h1>Bienvenue chez nous !</h1>
+            <hr />
+            <h2>Connectez-vous</h2>
+            <TextInput
+                value={input}
+                IconeBeforeInput={<FaCircleUser />}
+                onChange={handleChange}
+                placeholder="Entrez votre prénom"
+                onBlur={onBlur}
+                onFocus={onFocus}
+                version={"normal"}
+                required
+            />
+            <ButtonIcone
+                label="Accéder à mon espace"
+                iconeButton={<FaChevronRight />}
+                version={"normal"}
+            />
 
-    </LogingFormStyled>
+        </LogingFormStyled>
     )
 }
 
@@ -57,6 +57,7 @@ const LogingFormStyled = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 18px;
 
     h1, h2 {
         font-family: 'Amatic SC', sans-serif;
@@ -69,7 +70,6 @@ const LogingFormStyled = styled.form`
     }
 
     h2 {
-        margin-top: ${theme.gridUnit * 5}px;
         font-size: ${theme.fonts.size.P4};
     }
 
@@ -78,6 +78,5 @@ const LogingFormStyled = styled.form`
         height: 3px;
         width: 100%;
         border: none;
-        margin-top: ${theme.spacing.lg};
     }
 `;

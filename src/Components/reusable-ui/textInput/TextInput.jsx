@@ -1,46 +1,68 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../../theme/theme";
 
-export default function TextInput({value, onChange, IconeBeforeInput, ...others}) {
+export default function TextInput({ value, onChange, IconeBeforeInput, version, name, placeholder }) {
 
   return (
-    <InputStyled>
-        {IconeBeforeInput && IconeBeforeInput}
-        <input 
-            value={value} 
-            onChange={onChange}
-            type="text" 
-            {...others}
-        />
+    <InputStyled version={version}>
+      {IconeBeforeInput && IconeBeforeInput}
+      <input
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        type="text"
+      />
     </InputStyled>
   )
 }
 
 const InputStyled = styled.div`
 
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        height: 53px;
-        width: 400px;
-        padding: 18px 24px 18px 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: ${theme.borderRadius.round};
+    input{
+        width: 100%;
+        border: none;
         border-radius: ${theme.borderRadius.round};
-        background-color: ${theme.colors.white};
-        margin-top: 18px;
-        color: ${theme.colors.greySemiDark};
+        outline-style: none;
+    }
+    input::placeholder {
+      font-size: ${theme.fonts.P0};
+      color: ${theme.colors.greyMedium};
+    }
 
-        input{
-            width: 90%;
-            border: none;
-            border-radius: ${theme.borderRadius.round};
-            background-color: ${theme.colors.white};
-            outline-style: none;
-        }
-
-        input::placeholder {
-            color:  #D3D3D3;
-            font-size: ${theme.fonts.P0};
-        }
-    
+    ${({ version }) => extraStyle[version]}
 `;
+
+const extraStyleNormal = css`
+
+    width: 400px;
+    color: ${theme.colors.greySemiDark};
+    background-color: ${theme.colors.white};
+    gap: 13px;
+    padding: 18px 24px 18px 24px;
+
+    input{
+      background-color: ${theme.colors.white};
+    }
+  `
+const extraStyledPanel = css`
+
+    height: 35px;
+    color: ${theme.colors.greyMedium};
+    background-color: ${theme.colors.background_white};
+    padding: 8px 16px 8px 24px;
+    gap: 15px;
+
+    input{
+      background-color: ${theme.colors.background_white};
+    }
+`
+const extraStyle = {
+  normal: extraStyleNormal,
+  panelAdmin: extraStyledPanel,
+}

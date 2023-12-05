@@ -19,7 +19,7 @@ const OrderPagestyled = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100px;
+    min-height: 100px;
     padding: 0px 70px 0px 20px;
     background-color: white;
     border-radius: ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound} 0 0;

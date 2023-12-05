@@ -8,7 +8,7 @@ const colors = {
   primary_burger: "#ff9f1b",
   green: "green",
   success: "#60bd4f",
-  red: "#e25549",
+  red: "#E25549",
   redSecondary: "#c4151c",
   blue: "#51a7e1",
   greyLight: "#e4e5e9",
