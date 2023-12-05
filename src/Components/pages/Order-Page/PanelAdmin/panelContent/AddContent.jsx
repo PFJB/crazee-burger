@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import TextInput from "../../../../reusable-ui/textInput/TextInput";
-import { FaHamburger } from "react-icons/fa";
-import { MdPhotoCamera, MdOutlineEuroSymbol } from "react-icons/md";
 import { theme } from "../../../../../theme/theme";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { GrValidate } from "react-icons/gr";
 import ButtonIcone from "../../../../reusable-ui/button/ButtonIcone";
 import ImagePreview from "./ImagePreview";
+import { GetTextInputConfigs } from "./inputTextConfigs";
 
 export default function AddContent() {
 
@@ -19,40 +18,19 @@ export default function AddContent() {
   }
 
   const handleChange = (event) => { setNewProduct({ ...newProduct, [event.target.name]: event.target.value }) }
+  const textInputs = GetTextInputConfigs(newProduct)
 
   return (
     <AddContentStyled onSubmit={handleSubmit}>
-
       <ImagePreview imageSource={newProduct.imageSource} />
-
       <div className="inputArea">
-        <TextInput
-          name="title"
-          onChange={handleChange}
-          placeholder="Nom du produit (ex: Super Burger)"
-          IconeBeforeInput={<FaHamburger />}
-          value={newProduct.title}
-          version={"panelAdmin"}
-        />
-
-        <TextInput
-          name="imageSource"
-          onChange={handleChange}
-          placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
-          IconeBeforeInput={<MdPhotoCamera />}
-          value={newProduct.imageSource}
-          version={"panelAdmin"}
-        />
-
-        <TextInput
-          name="price"
-          onChange={handleChange}
-          placeholder="Prix"
-          IconeBeforeInput={<MdOutlineEuroSymbol />}
-          value={newProduct.price ? newProduct.price : ""}
-          version={"panelAdmin"}
-        />
-
+        {textInputs.map((input) => (
+          <TextInput
+            {...input}
+            key={input.id}
+            onChange={handleChange}
+            version="panelAdmin"
+          />))}
         <div className="buttonArea">
           <ButtonIcone
             label="Ajouter un nouveau produit au menu"
@@ -60,9 +38,8 @@ export default function AddContent() {
           </ButtonIcone>
           {popup ? <span><GrValidate />Ajouté avec succès !</span> : ""}
         </div>
-
       </div>
-    </AddContentStyled>
+    </AddContentStyled >
   )
 }
 
