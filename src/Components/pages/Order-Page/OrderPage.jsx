@@ -4,9 +4,9 @@ import Main from "./Main/Main";
 import { theme } from "../../../theme/theme";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext";
-import PanelAdmin from "./panelAdmin/PanelAdmin";
-import AddContent from "./panelAdmin/panelContent/AddContent";
 import { fakeMenu1, fakeMenu2 } from "../../../assets/fakeData/fakeMenu";
+import AddContent from "./PanelAdmin/panelContent/AddContent";
+import PanelAdmin from "./panelAdmin/PanelAdmin";
 
 const EMPTY_PRODUCT = {
   id: new Date().getTime(),
