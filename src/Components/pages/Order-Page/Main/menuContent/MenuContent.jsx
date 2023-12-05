@@ -4,28 +4,18 @@ import { useContext } from 'react';
 import OrderContext from '../../../../../context/OrderContext';
 
 export default function MenuContent() {
-    const {setMenuData, menuData} = useContext(OrderContext)
-
-    const onClick = (cardId) => {
-        let newMenu = [...menuData];
-        for (let i = 0; i < newMenu.length; i++){
-          if (cardId === newMenu[i].id){
-            newMenu.splice(i, 1)
-          }
-        }
-        setMenuData(newMenu)
-      }
+  const { menuData, handleCardDelete } = useContext(OrderContext)
 
   return (
     <MenuContentStyled>
-        {menuData.map(x => {
-            return <Card key={x.id}
-                title={x.title}
-                price={x.price}
-                imgSource={x.imageSource}
-                onClick={() => onClick(x.id)}/>
-  })}
-</MenuContentStyled>
+      {menuData.map(({ id, title, price, imageSource }) => {
+        return <Card key={id}
+          title={title}
+          price={price}
+          imgSource={imageSource}
+          onClick={() => handleCardDelete(id)} />
+      })}
+    </MenuContentStyled>
   )
 }
 

@@ -22,32 +22,33 @@ export default function LogingForm() {
 
     const handleChange = (event) => {
         setInput(event.target.value);
-        }
+    }
 
-    const onBlur = (e) => {e.target.placeholder = "Entrez votre prénom"};
-    const onFocus = (e) => {e.target.placeholder = ''};
-    
+    const onBlur = (e) => { e.target.placeholder = "Entrez votre prénom" };
+    const onFocus = (e) => { e.target.placeholder = '' };
+
     // affichage
     return (
-    <LogingFormStyled action="submit" onSubmit={handleClick}>
-        <h1>Bienvenue chez nous !</h1>
-        <hr />
-        <h2>Connectez-vous</h2>
-        <TextInput
-            value={input}
-            IconeBeforeInput={<FaCircleUser />}
-            onChange={handleChange}
-            placeholder="Entrez votre prénom"
-            onBlur={onBlur}
-            onFocus={onFocus}
-            required
-        />
-        <ButtonIcone
-            label="Accéder à mon espace"
-            iconeButton={<FaChevronRight />}
-        />
+        <LogingFormStyled action="submit" onSubmit={handleClick}>
+            <h1>Bienvenue chez nous !</h1>
+            <hr />
+            <h2>Connectez-vous</h2>
+            <TextInput
+                value={input}
+                IconeBeforeInput={<FaCircleUser />}
+                onChange={handleChange}
+                placeholder="Entrez votre prénom"
+                onBlur={onBlur}
+                onFocus={onFocus}
+                version={"normal"}
+                required
+            />
+            <ButtonIcone
+                label="Accéder à mon espace"
+                iconeButton={<FaChevronRight />}
+            />
 
-    </LogingFormStyled>
+        </LogingFormStyled>
     )
 }
 

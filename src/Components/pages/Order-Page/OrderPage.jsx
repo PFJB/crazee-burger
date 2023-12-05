@@ -20,40 +20,49 @@ const EMPTY_PRODUCT = {
 
 export default function OrderPage() {
   const [menuData, setMenuData] = useState(fakeMenu2)
-  const [tabSelected , setTabSelected] = useState("add");
-  const [contentPanel , SetcontentPanel] = useState(<AddContent />);
-  const [IsAdminOn , setIsAdminOn] = useState(false);
+  const [tabSelected, setTabSelected] = useState("add");
+  const [contentPanel, SetcontentPanel] = useState(<AddContent />);
+  const [IsAdminOn, setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [popup, setPopup] = useState(false)
 
-   const handleAdd = () => {
-  
-      const copyMenu = [...menuData]
-      const newMenu = [{...newProduct}, ...copyMenu]
+  const handleAdd = () => {
+    const copyMenu = [...menuData]
+    const newMenu = [{ ...newProduct }, ...copyMenu]
 
-      setMenuData(newMenu)
-      setNewProduct(EMPTY_PRODUCT)
+    setMenuData(newMenu)
+    setNewProduct(EMPTY_PRODUCT)
+    setPopup(true)
+    setTimeout(() => { setPopup(false) }, 3000)
+  }
 
-      setPopup(true)
-      setTimeout(() => {setPopup(false)}, 3000)
-    }
+  const handleCardDelete = (cardId) => {
+    let newMenu = [...menuData];
+    const menuUpdated = newMenu.filter((product) => product.id !== cardId)
+    setMenuData(menuUpdated)
+  }
 
   const orderContext = {
     IsAdminOn, setIsAdminOn, tabSelected,
-    setTabSelected,isCollapse, SetIsCollapse,
-    contentPanel, SetcontentPanel, menuData, setMenuData, handleAdd, newProduct, setNewProduct, popup, setPopup}
+    setTabSelected, isCollapse, SetIsCollapse,
+    contentPanel, SetcontentPanel, menuData,
+    setMenuData, handleAdd, newProduct,
+    setNewProduct, popup, setPopup, handleCardDelete
+  }
+
+
 
   return (
-      <OrderContext.Provider value={orderContext}>
-        <OrderPagestyled>
-              <div className="container">
-                <Header />
-                <Main />
-                {IsAdminOn && <PanelAdmin />}
-              </div>
-        </OrderPagestyled>
-      </OrderContext.Provider>
+    <OrderContext.Provider value={orderContext}>
+      <OrderPagestyled>
+        <div className="container">
+          <Header />
+          <Main />
+          {IsAdminOn && <PanelAdmin />}
+        </div>
+      </OrderPagestyled>
+    </OrderContext.Provider>
   )
 }
 

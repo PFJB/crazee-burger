@@ -9,29 +9,52 @@ import { GrValidate } from "react-icons/gr";
 
 export default function AddContent() {
 
-const {handleAdd, popup, setNewProduct, newProduct} = useContext(OrderContext)
+  const { handleAdd, popup, setNewProduct, newProduct } = useContext(OrderContext)
 
   const handleSubmit = (event) => {
     event.preventDefault()
     handleAdd()
   }
 
-  const handleChange = (event) => {setNewProduct({...newProduct, [event.target.name]: event.target.value})}
+  const handleChange = (event) => { setNewProduct({ ...newProduct, [event.target.name]: event.target.value }) }
 
   return (
     <AddContentStyled onSubmit={handleSubmit}>
-      <div className="image">{newProduct.imageSource ? <img src={newProduct.imageSource} alt="Added picture"/> : "Aucune image"}</div>
+      <div className="image">{newProduct.imageSource ? <img src={newProduct.imageSource} alt="Added picture" /> : "Aucune image"}</div>
       <div className="inputArea">
-        <TextInput name="title" className="popo" onChange={handleChange} placeholder="Nom du produit (ex: Super Burger)" IconeBeforeInput={<FaHamburger />} value={newProduct.title}/>
-        <TextInput name="imageSource" className="popo" onChange={handleChange} placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)" IconeBeforeInput={<MdPhotoCamera />} value={newProduct.imageSource}/>
-        <TextInput name="price" className="popo" onChange={handleChange} placeholder="Prix" IconeBeforeInput={<MdOutlineEuroSymbol />} value={newProduct.price ? newProduct.price : ""}/>
+        <TextInput
+          name="title"
+          className="popo"
+          onChange={handleChange}
+          placeholder="Nom du produit (ex: Super Burger)"
+          IconeBeforeInput={<FaHamburger />}
+          value={newProduct.title}
+          version={"panelAdmin"}
+        />
+
+        <TextInput name="imageSource"
+          className="popo" onChange={handleChange}
+          placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
+          IconeBeforeInput={<MdPhotoCamera />}
+          value={newProduct.imageSource}
+          version={"panelAdmin"}
+        />
+
+        <TextInput name="price"
+          className="popo"
+          onChange={handleChange}
+          placeholder="Prix"
+          IconeBeforeInput={<MdOutlineEuroSymbol />}
+          value={newProduct.price ? newProduct.price : ""}
+          version={"panelAdmin"}
+        />
         <div className="buttonArea">
           <button className="button">Ajouter un nouveau produit au menu</button>
-          {popup ? <span><GrValidate/>Ajouté avec succès !</span> : ""}
+          {popup ? <span><GrValidate />Ajouté avec succès !</span> : ""}
         </div>
-        
+
       </div>
-      </AddContentStyled>
+    </AddContentStyled>
   )
 }
 
@@ -106,21 +129,6 @@ const AddContentStyled = styled.form`
       color: ${theme.colors.success};
       gap: 8px;
     }
-    }
-
-    .popo {
-      display: flex;
-      flex-direction: row;
-      margin: 0;
-      height: 35px;
-      background-color: ${theme.colors.background_white};
-      padding: 8px 16px, 8px 24px;
-      border-radius: ${theme.borderRadius.round};
-      color: ${theme.colors.greyMedium};
-      gap: 15px;
-      input::placeholder {
-        color: ${theme.colors.greyMedium};
-      }
     }
   }
 `;

@@ -2,19 +2,20 @@ import { createContext } from "react";
 
 const OrderContext = createContext({
     IsAdminOn: false,
-    setIsAdminOn: () => {},
+    setIsAdminOn: () => { },
     tabSelected: "",
-    setTabSelected: () => {},
-    isCollapse: true, 
-    SetIsCollapse: () => {},
+    setTabSelected: () => { },
+    isCollapse: true,
+    SetIsCollapse: () => { },
     menuData: [],
-    setMenuData:() => {},
-    handleAdd: () => {},
+    setMenuData: () => { },
+    handleAdd: () => { },
     newProduct: [],
-    setnewProduct:() => {},
+    setnewProduct: () => { },
 
     popup: "",
-    setPopup: () => {},
+    setPopup: () => { },
+    handleCardDelete: () => { },
 });
 
 export default OrderContext
