@@ -35,10 +35,7 @@ const InputStyled = styled.div`
       color: ${theme.colors.greyMedium};
     }
 
-    ${(props) => {
-    if (props.version === 'normal') return extraStyleNormal
-    if (props.version === 'panelAdmin') return extraStyledPanel
-  }}
+    ${({ version }) => extraStyle[version]}
 `;
 
 const extraStyleNormal = css`
@@ -52,9 +49,7 @@ const extraStyleNormal = css`
     input{
       background-color: ${theme.colors.white};
     }
-
   `
-
 const extraStyledPanel = css`
 
     height: 35px;
@@ -67,3 +62,7 @@ const extraStyledPanel = css`
       background-color: ${theme.colors.background_white};
     }
 `
+const extraStyle = {
+  normal: extraStyleNormal,
+  panelAdmin: extraStyledPanel,
+}
