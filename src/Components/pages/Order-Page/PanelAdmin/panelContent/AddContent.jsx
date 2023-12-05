@@ -25,11 +25,7 @@ export default function AddContent() {
       <ImagePreview imageSource={newProduct.imageSource} />
       <div className="inputArea">
         {textInputs.map((input) => (
-          <TextInput
-            {...input}
-            key={input.id}
-            onChange={handleChange}
-            version="panelAdmin"
+          <TextInput key={input.id} {...input} onChange={handleChange} version="panelAdmin"
           />))}
         <div className="buttonArea">
           <ButtonIcone
