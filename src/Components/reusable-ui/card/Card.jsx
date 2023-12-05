@@ -18,7 +18,11 @@ export default function Card({ price, imgSource, title, onClick }) {
             <div className="title"><p>{title}</p></div>
             <div className="priceAdd">
                 <p className="price">{formatPrice(price)}</p>
-                <ButtonIcone className="label" label={"Ajouter"} />
+                <ButtonIcone
+                    className="versionNormalSmaller"
+                    label={"Ajouter"}
+                    version="normal"
+                />
             </div>
         </CardStyled>
     )
@@ -83,13 +87,11 @@ const CardStyled = styled.div`
         }
     }
 
-    .label {
-        margin: 0;
+    .versionNormalSmaller {
         width: 95px;
         height: 38px;
         font-size: 11px;
         font-weight: 700;
-        text-align: center;
     }
 
     .delete {

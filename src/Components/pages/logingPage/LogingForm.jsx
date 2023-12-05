@@ -44,6 +44,7 @@ export default function LogingForm() {
             <ButtonIcone
                 label="Accéder à mon espace"
                 iconeButton={<FaChevronRight />}
+                version={"normal"}
             />
 
         </LogingFormStyled>
@@ -56,6 +57,7 @@ const LogingFormStyled = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 18px;
 
     h1, h2 {
         font-family: 'Amatic SC', sans-serif;
@@ -68,7 +70,6 @@ const LogingFormStyled = styled.form`
     }
 
     h2 {
-        margin-top: ${theme.gridUnit * 5}px;
         font-size: ${theme.fonts.size.P4};
     }
 
@@ -77,6 +78,5 @@ const LogingFormStyled = styled.form`
         height: 3px;
         width: 100%;
         border: none;
-        margin-top: ${theme.spacing.lg};
     }
 `;

@@ -6,6 +6,7 @@ import { theme } from "../../../../../theme/theme";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { GrValidate } from "react-icons/gr";
+import ButtonIcone from "../../../../reusable-ui/button/ButtonIcone";
 
 export default function AddContent() {
 
@@ -49,7 +50,10 @@ export default function AddContent() {
           version={"panelAdmin"}
         />
         <div className="buttonArea">
-          <button className="button">Ajouter un nouveau produit au menu</button>
+          <ButtonIcone
+            label="Ajouter un nouveau produit au menu"
+            version='success'>
+          </ButtonIcone>
           {popup ? <span><GrValidate />Ajouté avec succès !</span> : ""}
         </div>
 
@@ -93,26 +97,6 @@ const AddContentStyled = styled.form`
     width: 100%;
     gap: 8px;
     color: ${theme.colors.greyMedium};
-
-    button {
-      position: relative;
-      width: 275px;
-      height: 34px;
-      border: solid 1px ${theme.colors.green};
-      border-radius: ${theme.borderRadius.round};
-      font-family: Arial, sans-serif;
-      font-size: ${theme.fonts.size.XS};
-      font-weight: ${theme.fonts.weights.bold};
-      color: ${theme.colors.white};
-      background-color: ${theme.colors.green};
-      cursor: pointer;
-
-      &:hover {
-        background-color: ${theme.colors.white};
-        border-color: ${theme.colors.green};
-        color: ${theme.colors.green};
-      }
-    }
 
     .buttonArea {
       display: flex;
