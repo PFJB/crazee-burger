@@ -7,6 +7,7 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { GrValidate } from "react-icons/gr";
 import ButtonIcone from "../../../../reusable-ui/button/ButtonIcone";
+import ImagePreview from "./ImagePreview";
 
 export default function AddContent() {
 
@@ -21,7 +22,9 @@ export default function AddContent() {
 
   return (
     <AddContentStyled onSubmit={handleSubmit}>
-      <div className="image">{newProduct.imageSource ? <img src={newProduct.imageSource} alt="Added picture" /> : "Aucune image"}</div>
+
+      <ImagePreview imageSource={newProduct.imageSource} />
+
       <div className="inputArea">
         <TextInput
           name="title"
@@ -49,6 +52,7 @@ export default function AddContent() {
           value={newProduct.price ? newProduct.price : ""}
           version={"panelAdmin"}
         />
+
         <div className="buttonArea">
           <ButtonIcone
             label="Ajouter un nouveau produit au menu"
@@ -69,26 +73,6 @@ const AddContentStyled = styled.form`
   height: 100%;
   width: 100%;
   gap: 20px;
-
-  .image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: solid 1px ${theme.colors.greyLight};
-    border-radius: ${theme.borderRadius.round};
-    width: 215px;
-    height: 120px;
-    font-size: ${theme.fonts.size.P0};
-    font-weight: ${theme.fonts.weights.regular};
-    font-family: 'Open Sans', sans-serif;
-    color: ${theme.colors.greyMedium};
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-  }
 
   .inputArea {
     display: flex;

@@ -7,15 +7,19 @@ import { fakeMenu1 } from "../../../../../assets/fakeData/fakeMenu";
 
 export default function EmptyMenu() {
 
-    const {setMenuData} = useContext(OrderContext);
+    const { setMenuData } = useContext(OrderContext);
 
-  return (
-    <EmptyMenuStyled>
-        <h1>Le menu est vide ?</h1>
-        <h2>Cliquez ci-dessous pour le réinitialiser</h2>
-        <ButtonIcone onClick={() => setMenuData(fakeMenu1)} label={"Générer de nouveaux produits"} />
-    </EmptyMenuStyled>
-  )
+    return (
+        <EmptyMenuStyled>
+            <h1>Le menu est vide ?</h1>
+            <h2>Cliquez ci-dessous pour le réinitialiser</h2>
+            <ButtonIcone
+                onClick={() => setMenuData(fakeMenu1)}
+                label={"Générer de nouveaux produits"}
+                version={"normal"}
+            />
+        </EmptyMenuStyled>
+    )
 }
 
 const EmptyMenuStyled = styled.div`
