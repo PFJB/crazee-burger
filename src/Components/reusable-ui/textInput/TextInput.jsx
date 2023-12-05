@@ -32,6 +32,7 @@ const InputStyled = styled.div`
     }
     input::placeholder {
       font-size: ${theme.fonts.P0};
+      color: ${theme.colors.greyMedium};
     }
 
     ${(props) => {
@@ -51,10 +52,7 @@ const extraStyleNormal = css`
     input{
       background-color: ${theme.colors.white};
     }
-    input::placeholder {
-      color:  #D3D3D3;
-      font-size: ${theme.fonts.P0};
-    }
+
   `
 
 const extraStyledPanel = css`
@@ -68,8 +66,4 @@ const extraStyledPanel = css`
     input{
       background-color: ${theme.colors.background_white};
     }
-    input::placeholder {
-        color: ${theme.colors.greyMedium};
-    }
-
 `
