@@ -7,12 +7,12 @@ import { useContext } from "react";
 import OrderContext from "../../../context/OrderContext";
 const IMAGE_by_default = "/images/coming-soon.png"
 
-export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable }) {
+export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected }) {
 
-    const { IsAdminOn, productSelected } = useContext(OrderContext)
+    const { IsAdminOn } = useContext(OrderContext)
 
     return (
-        <CardStyled onClick={handleClick} $isHoverable={isHoverable}>
+        <CardStyled onClick={IsAdminOn && handleClick} $isHoverable={isHoverable} $isSelected={IsAdminOn && isSelected}>
             {IsAdminOn && <button onClick={handleDelete} className="delete"><TiDelete size={40} /></button>}
             <div className="picture">{<img src={imgSource ? imgSource : IMAGE_by_default} alt={title} />}</div>
             <div className="title">{title}</div>
@@ -41,7 +41,7 @@ const CardStyled = styled.div`
     font-family: 'Amatic SC', sans-serif;
     font-size: ${theme.fonts.size.P3};
     background-color: ${({ $selected }) => $selected ? "red" : "white"};
-    border-radius: ${theme.borderRadius.extraRound};  
+    border-radius: ${theme.borderRadius.extraRound};
 
     .picture {
         display: flex;
@@ -111,6 +111,8 @@ const CardStyled = styled.div`
     }
 
     ${({ $isHoverable }) => $isHoverable && hoverableStyle}
+    ${({ $isSelected }) => $isSelected && selectedStyle}
+
 `;
 
 const hoverableStyle = css`
@@ -120,4 +122,8 @@ const hoverableStyle = css`
         cursor: pointer;
         box-shadow: 0px 0px 8px 0px #FF9A23;
     }
+`
+
+const selectedStyle = css`
+    background-color: ${theme.colors.primary};
 `

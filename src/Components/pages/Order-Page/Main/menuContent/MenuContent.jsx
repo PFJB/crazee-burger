@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Card from '../../../../reusable-ui/card/Card';
 import { useContext } from 'react';
 import OrderContext from '../../../../../context/OrderContext';
+import { checkIfSelected } from './helpers.jsx'
 
 export default function MenuContent() {
   const { menuData, handleCardDelete, setProductSelected, productSelected, IsAdminOn } = useContext(OrderContext)
@@ -24,6 +25,7 @@ export default function MenuContent() {
           handleDelete={() => handleCardDelete(id)}
           handleClick={() => handleClick(id)}
           isHoverable={IsAdminOn}
+          isSelected={checkIfSelected(id, productSelected.id)}
         />
       })}
     </MenuContentStyled>
