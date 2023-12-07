@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import ButtonPanelAdmin from "../../../reusable-ui/button/ButtonPanelAdmin";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
-import { theme } from "../../../../theme/theme";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import { tabConfigs } from "./tabsConfigs";
