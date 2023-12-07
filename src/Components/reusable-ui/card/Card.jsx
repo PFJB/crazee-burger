@@ -15,7 +15,7 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
         <CardStyled onClick={handleClick}>
             {IsAdminOn && <button onClick={handleDelete} className="delete"><TiDelete size={40} /></button>}
             <div className="picture">{<img src={imgSource ? imgSource : IMAGE_by_default} alt={title} />}</div>
-            <div className="title"><p>{title}</p></div>
+            <div className="title">{title}</div>
             <div className="priceAdd">
                 <p className="price">{formatPrice(price)}</p>
                 <ButtonIcone
@@ -66,7 +66,6 @@ const CardStyled = styled.div`
         font-family: 'Amatic SC', sans-serif;
         font-weight: ${theme.fonts.weights.bold};
         font-size: ${theme.fonts.size.P4};
-        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }
