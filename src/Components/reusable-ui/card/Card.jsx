@@ -14,7 +14,7 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
     const AddToCart = (event) => { event.stopPropagation() }
 
     return (
-        <CardStyled onClick={IsAdminOn && handleClick} $isHoverable={isHoverable} $isSelected={isSelected}>
+        <CardStyled onClick={handleClick} $isHoverable={isHoverable} $isSelected={isSelected}>
             <div className="card" >
                 {IsAdminOn && <button onClick={handleDelete} className="delete"><TiDelete size={40} /></button>}
                 <div className="picture">{<img src={imgSource ? imgSource : IMAGE_by_default} alt={title} />}</div>

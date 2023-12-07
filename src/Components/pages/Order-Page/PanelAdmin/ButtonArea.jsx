@@ -21,7 +21,7 @@ export default function ButtonArea() {
         <ButtonAreaStyled>
             <ButtonPanelAdmin
                 label=""
-                className={!isCollapse ? "is-active" : ""}
+                selected={!isCollapse}
                 icone={isCollapse ? <GoChevronDown /> : <GoChevronUp />}
                 handleClick={() => SetIsCollapse(!isCollapse)}
             />
@@ -30,7 +30,7 @@ export default function ButtonArea() {
                     key={tab.index}
                     label={tab.label}
                     icone={tab.icone}
-                    className={tabSelected === tab.index ? "is-active" : ""}
+                    selected={tab.index === tabSelected}
                     handleClick={() => selectedTab(tab.index, tab.content)}
                 />
             )
@@ -47,10 +47,4 @@ const ButtonAreaStyled = styled.div`
         width: fit-content;
         max-width: 100%;
         gap: 1px;
-
-        .is-active {
-            background-color: ${theme.colors.background_dark};
-            color: ${theme.colors.white};
-            border-color: ${theme.colors.background_dark};
-        }
 `;

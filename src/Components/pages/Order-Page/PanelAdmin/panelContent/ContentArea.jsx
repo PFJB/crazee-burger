@@ -2,13 +2,20 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme/theme";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
+import { tabConfigs } from "../tabsConfigs";
 
 export default function ContentArea() {
 
-    const { contentPanel } = useContext(OrderContext)
+  const { tabSelected } = useContext(OrderContext)
+
+  const test = () => {
+    const tabs = tabConfigs()
+    const contentToAdd = tabs.find((tab) => tab.index === tabSelected)
+    return contentToAdd.content
+  }
 
   return (
-    <ContentAreaStyled>{ contentPanel }</ContentAreaStyled>
+    <ContentAreaStyled>{test()}</ContentAreaStyled>
   )
 }
 

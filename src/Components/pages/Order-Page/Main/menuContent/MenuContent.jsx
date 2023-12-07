@@ -5,7 +5,7 @@ import OrderContext from '../../../../../context/OrderContext';
 import { checkIfSelected } from './helpers.jsx'
 
 export default function MenuContent() {
-  const { menuData, handleCardDelete, setProductSelected, productSelected, IsAdminOn } = useContext(OrderContext)
+  const { menuData, handleCardDelete, setProductSelected, productSelected, IsAdminOn, setTabSelected, SetIsCollapse } = useContext(OrderContext)
 
   const handleClick = (id) => {
     let selected = menuData.find((product) => product.id === id)
@@ -28,7 +28,7 @@ export default function MenuContent() {
           price={price}
           imgSource={imageSource}
           handleDelete={(event) => { handleDelete(event, id) }}
-          handleClick={() => handleClick(id)}
+          handleClick={() => IsAdminOn && handleClick(id)}
           isHoverable={IsAdminOn}
           isSelected={checkIfSelected(id, productSelected.id)}
         />
