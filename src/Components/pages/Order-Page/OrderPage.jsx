@@ -7,16 +7,7 @@ import OrderContext from "../../../context/OrderContext";
 import { fakeMenu1, fakeMenu2 } from "../../../assets/fakeData/fakeMenu";
 import AddContent from "./PanelAdmin/panelContent/AddContent";
 import PanelAdmin from "./PanelAdmin/PanelAdmin";
-
-const EMPTY_PRODUCT = {
-  id: new Date().getTime(),
-  title: "",
-  imageSource: "",
-  price: 0,
-  quantity: 0,
-  isAvailable: true,
-  isAdvertised: false,
-}
+import { EMPTY_PRODUCT } from "../../../enums/product";
 
 export default function OrderPage() {
   const [menuData, setMenuData] = useState(fakeMenu2)
@@ -26,6 +17,9 @@ export default function OrderPage() {
   const [isCollapse, SetIsCollapse] = useState(false)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [popup, setPopup] = useState(false)
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+
+
 
   const handleAdd = () => {
     const copyMenu = [...menuData]
@@ -48,7 +42,8 @@ export default function OrderPage() {
     setTabSelected, isCollapse, SetIsCollapse,
     contentPanel, SetcontentPanel, menuData,
     setMenuData, handleAdd, newProduct,
-    setNewProduct, popup, setPopup, handleCardDelete
+    setNewProduct, popup, setPopup, handleCardDelete,
+    productSelected, setProductSelected
   }
 
   return (
