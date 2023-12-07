@@ -4,11 +4,13 @@ import { useContext } from 'react';
 import OrderContext from '../../../../../context/OrderContext';
 
 export default function MenuContent() {
-  const { menuData, handleCardDelete, setProductSelected } = useContext(OrderContext)
+  const { menuData, handleCardDelete, setProductSelected, productSelected, IsAdminOn } = useContext(OrderContext)
 
   const handleClick = (id) => {
-    const productSelected = menuData.find((product) => product.id === id)
-    setProductSelected(productSelected)
+    let selected = menuData.find((product) => product.id === id)
+    selected = selected === productSelected ? {} : selected;
+
+    setProductSelected(selected)
   }
 
   return (
@@ -21,7 +23,7 @@ export default function MenuContent() {
           imgSource={imageSource}
           handleDelete={() => handleCardDelete(id)}
           handleClick={() => handleClick(id)}
-
+          isHoverable={IsAdminOn}
         />
       })}
     </MenuContentStyled>

@@ -8,6 +8,7 @@ import { fakeMenu1, fakeMenu2 } from "../../../assets/fakeData/fakeMenu";
 import AddContent from "./PanelAdmin/panelContent/AddContent";
 import PanelAdmin from "./PanelAdmin/PanelAdmin";
 import { EMPTY_PRODUCT } from "../../../enums/product";
+import { deepCopyArray } from "../../../utils/arrays";
 
 export default function OrderPage() {
   const [menuData, setMenuData] = useState(fakeMenu2)
@@ -22,7 +23,7 @@ export default function OrderPage() {
 
 
   const handleAdd = () => {
-    const copyMenu = JSON.parse(JSON.stringify(menuData))
+    const copyMenu = deepCopyArray(menuData)
     const newMenu = [{ ...newProduct }, ...copyMenu]
 
     setMenuData(newMenu)
@@ -32,13 +33,13 @@ export default function OrderPage() {
   }
 
   const handleCardDelete = (cardId) => {
-    const newMenu = JSON.parse(JSON.stringify(menuData))
+    const newMenu = deepCopyArray(menuData)
     const menuUpdated = newMenu.filter((product) => product.id !== cardId)
     setMenuData(menuUpdated)
   }
 
   const handleEdit = (productToEdit) => {
-    let menuCopy = JSON.parse(JSON.stringify(menuData))
+    let menuCopy = deepCopyArray(menuData)
     const indexToEdit = menuCopy.findIndex((product) => product.id === productToEdit.id)
     menuCopy[indexToEdit] = productToEdit
     setMenuData(menuCopy)

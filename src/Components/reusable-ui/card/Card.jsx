@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import ButtonIcone from "../button/ButtonIcone";
 import { theme } from "../../../theme/theme";
 import { formatPrice } from "../../../utils/maths";
@@ -7,12 +7,12 @@ import { useContext } from "react";
 import OrderContext from "../../../context/OrderContext";
 const IMAGE_by_default = "/images/coming-soon.png"
 
-export default function Card({ price, imgSource, title, handleDelete, handleClick }) {
+export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable }) {
 
-    const { IsAdminOn } = useContext(OrderContext)
+    const { IsAdminOn, productSelected } = useContext(OrderContext)
 
     return (
-        <CardStyled onClick={handleClick}>
+        <CardStyled onClick={handleClick} $isHoverable={isHoverable}>
             {IsAdminOn && <button onClick={handleDelete} className="delete"><TiDelete size={40} /></button>}
             <div className="picture">{<img src={imgSource ? imgSource : IMAGE_by_default} alt={title} />}</div>
             <div className="title">{title}</div>
@@ -40,8 +40,8 @@ const CardStyled = styled.div`
     padding: 50px 25px 30px 25px;
     font-family: 'Amatic SC', sans-serif;
     font-size: ${theme.fonts.size.P3};
-
-    border-radius: ${theme.borderRadius.extraRound};
+    background-color: ${({ $selected }) => $selected ? "red" : "white"};
+    border-radius: ${theme.borderRadius.extraRound};  
 
     .picture {
         display: flex;
@@ -109,4 +109,15 @@ const CardStyled = styled.div`
             color: ${theme.colors.red};
         }
     }
+
+    ${({ $isHoverable }) => $isHoverable && hoverableStyle}
 `;
+
+const hoverableStyle = css`
+    &:hover{
+        transform: scale(1.05);
+        transition: ease-out 0.2s;
+        cursor: pointer;
+        box-shadow: 0px 0px 8px 0px #FF9A23;
+    }
+`
