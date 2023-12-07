@@ -11,25 +11,30 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
 
     const { IsAdminOn } = useContext(OrderContext)
 
+    const AddToCart = (event) => { event.stopPropagation() }
+
     return (
-        <CardStyled onClick={IsAdminOn && handleClick} $isHoverable={isHoverable} $isSelected={IsAdminOn && isSelected}>
-            {IsAdminOn && <button onClick={handleDelete} className="delete"><TiDelete size={40} /></button>}
-            <div className="picture">{<img src={imgSource ? imgSource : IMAGE_by_default} alt={title} />}</div>
-            <div className="title">{title}</div>
-            <div className="priceAdd">
-                <p className="price">{formatPrice(price)}</p>
-                <ButtonIcone
-                    className="versionNormalSmaller"
-                    label={"Ajouter"}
-                    version="normal"
-                />
+        <CardStyled onClick={IsAdminOn && handleClick} $isHoverable={isHoverable} $isSelected={isSelected}>
+            <div className="card" >
+                {IsAdminOn && <button onClick={handleDelete} className="delete"><TiDelete size={40} /></button>}
+                <div className="picture">{<img src={imgSource ? imgSource : IMAGE_by_default} alt={title} />}</div>
+                <div className="title">{title}</div>
+                <div className="priceAdd">
+                    <p className="price">{formatPrice(price)}</p>
+                    <ButtonIcone
+                        className="versionNormalSmaller"
+                        label={"Ajouter"}
+                        version="normal"
+                        onClick={AddToCart}
+                    />
+                </div>
             </div>
         </CardStyled>
     )
 }
 
 const CardStyled = styled.div`
-    display: flex;
+    .card {display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -111,7 +116,11 @@ const CardStyled = styled.div`
     }
 
     ${({ $isHoverable }) => $isHoverable && hoverableStyle}
-    ${({ $isSelected }) => $isSelected && selectedStyle}
+    ${({ $isSelected, $isHoverable }) => $isHoverable && $isSelected && selectedStyle}
+
+}
+
+    
 
 `;
 
@@ -126,4 +135,34 @@ const hoverableStyle = css`
 
 const selectedStyle = css`
     background-color: ${theme.colors.primary};
+
+    .priceAdd {
+        .price {
+            color: ${theme.colors.white};
+        }
+    }
+
+    .delete {
+        color: ${theme.colors.white};
+
+        :active {
+            color: ${theme.colors.white};
+        }
+    }
+
+    .versionNormalSmaller{
+        background-color: ${theme.colors.white};
+        color: ${theme.colors.primary};
+
+        &:hover {
+            color: ${theme.colors.white};
+            background-color: ${theme.colors.primary};
+            border: 1px solid ${theme.colors.white};
+        }
+
+        &:active{
+            background-color: ${theme.colors.white};
+            color: ${theme.colors.primary};
+        }
+    }
 `

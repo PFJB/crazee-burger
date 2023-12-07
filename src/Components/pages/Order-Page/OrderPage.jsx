@@ -36,6 +36,8 @@ export default function OrderPage() {
     const newMenu = deepCopyArray(menuData)
     const menuUpdated = newMenu.filter((product) => product.id !== cardId)
     setMenuData(menuUpdated)
+    cardId === productSelected.id ? setProductSelected(EMPTY_PRODUCT) : ""
+
   }
 
   const handleEdit = (productToEdit) => {

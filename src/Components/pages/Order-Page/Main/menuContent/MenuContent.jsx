@@ -14,6 +14,11 @@ export default function MenuContent() {
     setProductSelected(selected)
   }
 
+  const handleDelete = (event, id) => {
+    event.stopPropagation()
+    handleCardDelete(id)
+  }
+
   return (
     <MenuContentStyled>
       {menuData.map(({ id, title, price, imageSource }) => {
@@ -22,7 +27,7 @@ export default function MenuContent() {
           title={title}
           price={price}
           imgSource={imageSource}
-          handleDelete={() => handleCardDelete(id)}
+          handleDelete={(event) => { handleDelete(event, id) }}
           handleClick={() => handleClick(id)}
           isHoverable={IsAdminOn}
           isSelected={checkIfSelected(id, productSelected.id)}
