@@ -8,7 +8,7 @@ import { tabConfigs } from "./tabsConfigs";
 
 export default function ButtonArea() {
 
-    const {tabSelected, isCollapse, SetIsCollapse , setTabSelected, SetcontentPanel} = useContext(OrderContext)
+    const { tabSelected, isCollapse, SetIsCollapse, setTabSelected, SetcontentPanel } = useContext(OrderContext)
     const tabs = tabConfigs(tabSelected)
 
     const selectedTab = (tab, content) => {
@@ -17,26 +17,26 @@ export default function ButtonArea() {
         SetcontentPanel(content)
     }
 
-  return (
-    <ButtonAreaStyled>
-        <ButtonPanelAdmin 
-            label=""
-            className={!isCollapse ? "is-active" : ""}
-            icone={isCollapse ? <GoChevronDown /> : <GoChevronUp />}
-            handleClick={ () => SetIsCollapse(!isCollapse)}
-        />
-        {tabs.map((tab) => (
+    return (
+        <ButtonAreaStyled>
             <ButtonPanelAdmin
-                key={tab.index}
-                label={tab.label}
-                icone={tab.icone}
-                className={tabSelected === tab.index ? "is-active" : ""}
-                handleClick={() => selectedTab(tab.index, tab.content)}
+                label=""
+                className={!isCollapse ? "is-active" : ""}
+                icone={isCollapse ? <GoChevronDown /> : <GoChevronUp />}
+                handleClick={() => SetIsCollapse(!isCollapse)}
             />
-        )
-        )}
-    </ButtonAreaStyled>
-  )
+            {tabs.map((tab) => (
+                <ButtonPanelAdmin
+                    key={tab.index}
+                    label={tab.label}
+                    icone={tab.icone}
+                    className={tabSelected === tab.index ? "is-active" : ""}
+                    handleClick={() => selectedTab(tab.index, tab.content)}
+                />
+            )
+            )}
+        </ButtonAreaStyled>
+    )
 }
 
 const ButtonAreaStyled = styled.div`

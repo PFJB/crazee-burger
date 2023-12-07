@@ -11,18 +11,18 @@ import { EMPTY_PRODUCT } from "../../../enums/product";
 
 export default function OrderPage() {
   const [menuData, setMenuData] = useState(fakeMenu2)
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+
   const [tabSelected, setTabSelected] = useState("add");
   const [contentPanel, SetcontentPanel] = useState(<AddContent />);
   const [IsAdminOn, setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [popup, setPopup] = useState(false)
-  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
-
 
 
   const handleAdd = () => {
-    const copyMenu = [...menuData]
+    const copyMenu = JSON.parse(JSON.stringify(menuData))
     const newMenu = [{ ...newProduct }, ...copyMenu]
 
     setMenuData(newMenu)
@@ -32,9 +32,16 @@ export default function OrderPage() {
   }
 
   const handleCardDelete = (cardId) => {
-    let newMenu = [...menuData];
+    const newMenu = JSON.parse(JSON.stringify(menuData))
     const menuUpdated = newMenu.filter((product) => product.id !== cardId)
     setMenuData(menuUpdated)
+  }
+
+  const handleEdit = (productToEdit) => {
+    let menuCopy = JSON.parse(JSON.stringify(menuData))
+    const indexToEdit = menuCopy.findIndex((product) => product.id === productToEdit.id)
+    menuCopy[indexToEdit] = productToEdit
+    setMenuData(menuCopy)
   }
 
   const orderContext = {
@@ -43,7 +50,7 @@ export default function OrderPage() {
     contentPanel, SetcontentPanel, menuData,
     setMenuData, handleAdd, newProduct,
     setNewProduct, popup, setPopup, handleCardDelete,
-    productSelected, setProductSelected
+    productSelected, setProductSelected, handleEdit
   }
 
   return (

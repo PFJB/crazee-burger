@@ -1,6 +1,6 @@
 
 export const EMPTY_PRODUCT = Object.freeze({
-    id: new Date().getTime(),
+    id: "",
     title: "",
     imageSource: "",
     price: 0,
