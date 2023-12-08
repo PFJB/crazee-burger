@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import TextInput from "../../../../reusable-ui/textInput/TextInput";
 import { theme } from "../../../../../theme/theme";
-import { GrValidate } from "react-icons/gr";
-import ButtonIcone from "../../../../reusable-ui/button/ButtonIcone";
 import ImagePreview from "./ImagePreview";
 import { GetTextInputConfigs } from "./inputTextConfigs";
+import React from "react";
 
-export default function AdminForm({ onSubmit, onChange, product, popup }) {
+const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children }, ref) => {
 
     const textInputs = GetTextInputConfigs(product)
 
@@ -15,22 +14,21 @@ export default function AdminForm({ onSubmit, onChange, product, popup }) {
             <ImagePreview imageSource={product.imageSource} />
             <div className="inputArea">
                 {textInputs.map((input) => (
-                    <TextInput key={input.id}
+                    <TextInput
+                        ref={ref && input.name === "title" ? ref : null}
+                        key={input.id}
                         {...input}
                         onChange={onChange}
                         version="panelAdmin"
                     />))}
-                <div className="buttonArea">
-                    <ButtonIcone
-                        label="Ajouter un nouveau produit au menu"
-                        version='success'>
-                    </ButtonIcone>
-                    {popup ? <span><GrValidate />Ajouté avec succès !</span> : ""}
-                </div>
+                {children}
             </div>
         </AdminFormStyled >
     )
-}
+})
+
+AdminForm.displayName = "AdminForm"
+export default AdminForm
 
 const AdminFormStyled = styled.form`
 
@@ -66,4 +64,3 @@ const AdminFormStyled = styled.form`
     }
   }
 `;
-

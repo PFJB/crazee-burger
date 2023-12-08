@@ -1,25 +1,22 @@
+import { HiCursorClick } from "react-icons/hi";
 import styled from "styled-components";
 import { theme } from "../../../../../theme/theme";
 
 export default function HintMessageEdit() {
     return (
         <HintMessageEditStyled>
-            Cliquer sur un produit du menu pour le modifier <span>en temps réel</span>
+            Cliquer sur un produit pour le modifier
+            <HiCursorClick />
         </HintMessageEditStyled>
     )
 }
 
 const HintMessageEditStyled = styled.div`
-    color: ${theme.colors.primary};
-    font-family: 'Open Sans', sans-serif;
-    font-weight: ${theme.fonts.weights.regular};
-    font-size: ${theme.fonts.size.P0};
-    span {
-      text-decoration: underline;
-    }
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  color: ${theme.colors.greyBlue};
+  font-size: ${theme.fonts.size.P3};
+  font-family: 'Amatic SC', sans-serif;
 `;
-
-
-
-
-

@@ -3,8 +3,6 @@ import ButtonIcone from "../button/ButtonIcone";
 import { theme } from "../../../theme/theme";
 import { formatPrice } from "../../../utils/maths";
 import { TiDelete } from "react-icons/ti";
-import { useContext } from "react";
-import OrderContext from "../../../context/OrderContext";
 const IMAGE_by_default = "/images/coming-soon.png"
 
 export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected }) {
