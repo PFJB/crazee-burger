@@ -30,16 +30,17 @@ export default function ModifyContent() {
             version="panelAdmin"
 
           />))}
+        <div className="hint">Cliquer sur un produit du menu pour le modifier <span>en temps réel</span></div>
       </div>
     </EditContentStyled >
   )
 }
 
 const EditContentStyled = styled.form`
-    display: flex;
+  display: flex;
   position: relative;
   height: 100%;
-  width: 100%;
+  max-width: 80%;
   gap: 20px;
 
   .inputArea {
@@ -49,23 +50,18 @@ const EditContentStyled = styled.form`
     width: 100%;
     gap: 8px;
     color: ${theme.colors.greyMedium};
+  }
 
-    .buttonArea {
-      display: flex;
-      align-items: center;
-      flex-direction: row;
-      gap: 15px;
-
-      span {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Open Sans', sans-serif;
-      font-size: ${theme.fonts.size.P0};
-      color: ${theme.colors.success};
-      gap: 8px;
-    }
+  .hint {
+    color: ${theme.colors.primary};
+    font-family: 'Open Sans', sans-serif;
+    font-weight: ${theme.fonts.weights.regular};
+    font-size: ${theme.fonts.size.P0};
+    span {
+      text-decoration: underline;
     }
   }
+
+  
 `;
 

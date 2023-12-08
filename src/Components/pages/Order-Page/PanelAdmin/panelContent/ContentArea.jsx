@@ -23,10 +23,10 @@ export default function ContentArea() {
 
 const ContentAreaStyled = styled.div`
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-
-    padding:  31px 448px 49px 71px;
+    width: 100%;
+    padding:  31px 0px 49px 71px;
     height: 250px;
     border: solid 1px ${theme.colors.greyLight};
     background-color: ${theme.colors.white};

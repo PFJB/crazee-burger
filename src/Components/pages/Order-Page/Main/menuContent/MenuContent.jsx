@@ -14,7 +14,7 @@ export default function MenuContent() {
     await SetIsCollapse(true)
     await setTabSelected("mod")
     await setProductSelected(selected)
-    titleEditRef.current.focus()
+    await titleEditRef.current.focus()
   }
 
   const handleDelete = (event, id) => {
