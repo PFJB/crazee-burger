@@ -25,7 +25,10 @@ export default function AddContent() {
       <ImagePreview imageSource={newProduct.imageSource} />
       <div className="inputArea">
         {textInputs.map((input) => (
-          <TextInput key={input.id} {...input} onChange={handleChange} version="panelAdmin"
+          <TextInput key={input.id}
+            {...input}
+            onChange={handleChange}
+            version="panelAdmin"
           />))}
         <div className="buttonArea">
           <ButtonIcone
@@ -44,7 +47,7 @@ const AddContentStyled = styled.form`
   display: flex;
   position: relative;
   height: 100%;
-  width: 100%;
+  width: 80%;
   gap: 20px;
 
   .inputArea {

@@ -14,13 +14,13 @@ export default function MenuContent() {
     await SetIsCollapse(true)
     await setTabSelected("mod")
     await setProductSelected(selected)
-    await titleEditRef.current.focus()
+    if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
   }
 
   const handleDelete = (event, id) => {
     event.stopPropagation()
     handleCardDelete(id)
-    titleEditRef.current.focus()
+    if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
   }
 
   return (

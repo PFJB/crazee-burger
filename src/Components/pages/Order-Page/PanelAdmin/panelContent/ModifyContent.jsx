@@ -5,6 +5,7 @@ import TextInput from "../../../../reusable-ui/textInput/TextInput"
 import { GetTextInputConfigs } from "./inputTextConfigs"
 import styled from "styled-components"
 import { theme } from "../../../../../theme/theme"
+import HintMessageEdit from "./HintMessageEdit"
 
 export default function ModifyContent() {
   const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext)
@@ -28,10 +29,10 @@ export default function ModifyContent() {
             {...input}
             onChange={handleChange}
             version="panelAdmin"
-
           />))}
-        <div className="hint">Cliquer sur un produit du menu pour le modifier <span>en temps réel</span></div>
+        <HintMessageEdit />
       </div>
+
     </EditContentStyled >
   )
 }
@@ -51,17 +52,5 @@ const EditContentStyled = styled.form`
     gap: 8px;
     color: ${theme.colors.greyMedium};
   }
-
-  .hint {
-    color: ${theme.colors.primary};
-    font-family: 'Open Sans', sans-serif;
-    font-weight: ${theme.fonts.weights.regular};
-    font-size: ${theme.fonts.size.P0};
-    span {
-      text-decoration: underline;
-    }
-  }
-
-  
 `;
 
