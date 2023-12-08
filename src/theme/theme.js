@@ -1,3 +1,4 @@
+
 const colors = {
   dark: "#17161a",
   incognito: "#333",
@@ -32,28 +33,28 @@ const spacing = {
 
 const fonts = {
   size:
-    {
-      XXXS: "8px",
-      XXS: "10px",
-      XS: "12px",
-      P0: "15px",
-      P1: "18px",
-      P2: "20px",
-      P3: "24px",
-      P4: "36px",
-      P5: "48px",
-      P6: "60px",
-      P7: "110px",
-    },
-    weights:
-    {
-      light: 300,
-      regular: 400,
-      medium: 500,
-      semiBold: 600,
-      bold: 700,
-      heavy: 800,
-    },
+  {
+    XXXS: "8px",
+    XXS: "10px",
+    XS: "12px",
+    P0: "15px",
+    P1: "18px",
+    P2: "20px",
+    P3: "24px",
+    P4: "36px",
+    P5: "48px",
+    P6: "60px",
+    P7: "110px",
+  },
+  weights:
+  {
+    light: 300,
+    regular: 400,
+    medium: 500,
+    semiBold: 600,
+    bold: 700,
+    heavy: 800,
+  },
 }
 const gridUnit = 8
 const borderRadius = {
@@ -63,7 +64,7 @@ const borderRadius = {
   circle: "50%",
 }
 const shadows = {}
-const sizeLogo ={
+const sizeLogo = {
   normal: 1,
   petit: 0.5,
 }

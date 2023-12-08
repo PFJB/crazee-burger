@@ -3,13 +3,15 @@ import { theme } from "../../../../../theme/theme";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { tabConfigs } from "../tabsConfigs";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 export default function ContentArea() {
 
-  const { tabSelected } = useContext(OrderContext)
+  const { tabSelected, productSelected } = useContext(OrderContext)
 
   const test = () => {
-    const tabs = tabConfigs()
+    const isCardSelected = productSelected !== EMPTY_PRODUCT;
+    const tabs = tabConfigs(isCardSelected)
     const contentToAdd = tabs.find((tab) => tab.index === tabSelected)
     return contentToAdd.content
   }

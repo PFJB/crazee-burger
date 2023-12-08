@@ -3,13 +3,14 @@ import Card from '../../../../reusable-ui/card/Card';
 import { useContext } from 'react';
 import OrderContext from '../../../../../context/OrderContext';
 import { checkIfSelected } from './helpers.jsx'
+import { EMPTY_PRODUCT } from '../../../../../enums/product.jsx';
 
 export default function MenuContent() {
   const { menuData, handleCardDelete, setProductSelected, productSelected, IsAdminOn, SetIsCollapse, setTabSelected, titleEditRef } = useContext(OrderContext)
 
   const handleClick = async (id) => {
     let selected = menuData.find((product) => product.id === id)
-    selected = selected === productSelected ? {} : selected;
+    selected = selected === productSelected ? EMPTY_PRODUCT : selected;
     await SetIsCollapse(true)
     await setTabSelected("mod")
     await setProductSelected(selected)
@@ -19,6 +20,7 @@ export default function MenuContent() {
   const handleDelete = (event, id) => {
     event.stopPropagation()
     handleCardDelete(id)
+    titleEditRef.current.focus()
   }
 
   return (
