@@ -14,11 +14,7 @@ export default function ModifyContent() {
   }
 
   return (
-    <AdminForm
-      onChange={handleChange}
-      product={productSelected}
-      ref={titleEditRef}
-    >
+    <AdminForm onChange={handleChange} product={productSelected} ref={titleEditRef}>
       <HintMessageEditForm />
     </AdminForm>
   )
