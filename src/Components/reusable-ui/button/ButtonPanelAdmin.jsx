@@ -51,4 +51,9 @@ const tabSelectedStyle = css`
     background-color: ${theme.colors.background_dark};
     color: ${theme.colors.white};
     border-color: ${theme.colors.background_dark};
+
+    &:hover{
+        border-bottom: 2px solid ${theme.colors.dark};
+        text-decoration-line: underline;
+    }
 `
