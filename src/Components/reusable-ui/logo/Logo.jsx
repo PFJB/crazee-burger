@@ -3,13 +3,13 @@ import LogoImg from "./logo.png"
 import { theme } from "../../../theme/theme";
 
 
-export default function Logo({className, onClick}) {
+export default function Logo({ className, onClick }) {
 
   return (
-    <LogoStyled className= {className} onClick={onClick}>
-        <p>crazee</p>
-        <img src={LogoImg} alt="Logo burger" />
-        <p>burger</p>
+    <LogoStyled className={className} onClick={onClick}>
+      <p>crazee</p>
+      <img src={LogoImg} alt="Logo burger" />
+      <p>burger</p>
     </LogoStyled>
   )
 }

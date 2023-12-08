@@ -5,11 +5,13 @@ import OrderContext from '../../../../../context/OrderContext';
 import { checkIfSelected } from './helpers.jsx'
 
 export default function MenuContent() {
-  const { menuData, handleCardDelete, setProductSelected, productSelected, IsAdminOn } = useContext(OrderContext)
+  const { menuData, handleCardDelete, setProductSelected, productSelected, IsAdminOn, SetIsCollapse, setTabSelected } = useContext(OrderContext)
 
   const handleClick = (id) => {
     let selected = menuData.find((product) => product.id === id)
     selected = selected === productSelected ? {} : selected;
+    SetIsCollapse(true)
+    setTabSelected("mod")
 
     setProductSelected(selected)
   }
