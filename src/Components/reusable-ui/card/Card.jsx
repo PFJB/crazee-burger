@@ -1,35 +1,36 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import ButtonIcone from "../button/ButtonIcone";
 import { theme } from "../../../theme/theme";
 import { formatPrice } from "../../../utils/maths";
 import { TiDelete } from "react-icons/ti";
-import { useContext } from "react";
-import OrderContext from "../../../context/OrderContext";
 const IMAGE_by_default = "/images/coming-soon.png"
 
-export default function Card({ price, imgSource, title, onClick }) {
+export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected }) {
 
-    const { IsAdminOn } = useContext(OrderContext)
+    const AddToCart = (event) => { event.stopPropagation() }
 
     return (
-        <CardStyled>
-            {IsAdminOn && <button onClick={onClick} className="delete"><TiDelete size={40} /></button>}
-            <div className="picture">{<img src={imgSource ? imgSource : IMAGE_by_default} alt={title} />}</div>
-            <div className="title"><p>{title}</p></div>
-            <div className="priceAdd">
-                <p className="price">{formatPrice(price)}</p>
-                <ButtonIcone
-                    className="versionNormalSmaller"
-                    label={"Ajouter"}
-                    version="normal"
-                />
+        <CardStyled onClick={handleClick} $isHoverable={isHoverable} $isSelected={isSelected}>
+            <div className="card" >
+                {isHoverable && <button onClick={handleDelete} className="delete"><TiDelete size={40} /></button>}
+                <div className="picture">{<img src={imgSource ? imgSource : IMAGE_by_default} alt={title} />}</div>
+                <div className="title">{title}</div>
+                <div className="priceAdd">
+                    <p className="price">{formatPrice(price)}</p>
+                    <ButtonIcone
+                        className="versionNormalSmaller"
+                        label={"Ajouter"}
+                        version="normal"
+                        onClick={AddToCart}
+                    />
+                </div>
             </div>
         </CardStyled>
     )
 }
 
 const CardStyled = styled.div`
-    display: flex;
+    .card {display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -40,7 +41,7 @@ const CardStyled = styled.div`
     padding: 50px 25px 30px 25px;
     font-family: 'Amatic SC', sans-serif;
     font-size: ${theme.fonts.size.P3};
-
+    background-color: ${({ $selected }) => $selected ? "red" : "white"};
     border-radius: ${theme.borderRadius.extraRound};
 
     .picture {
@@ -66,8 +67,8 @@ const CardStyled = styled.div`
         font-family: 'Amatic SC', sans-serif;
         font-weight: ${theme.fonts.weights.bold};
         font-size: ${theme.fonts.size.P4};
-        white-space: nowrap;
         overflow: hidden;
+        white-space: nowrap;
         text-overflow: ellipsis;
     }
 
@@ -110,4 +111,55 @@ const CardStyled = styled.div`
             color: ${theme.colors.red};
         }
     }
+
+    ${({ $isHoverable }) => $isHoverable && hoverableStyle}
+    ${({ $isSelected, $isHoverable }) => $isHoverable && $isSelected && selectedStyle}
+
+}
+
+    
+
 `;
+
+const hoverableStyle = css`
+    &:hover{
+        transform: scale(1.05);
+        transition: ease-out 0.2s;
+        cursor: pointer;
+        box-shadow: 0px 0px 8px 0px #FF9A23;
+    }
+`
+
+const selectedStyle = css`
+    background-color: ${theme.colors.primary};
+
+    .priceAdd {
+        .price {
+            color: ${theme.colors.white};
+        }
+    }
+
+    .delete {
+        color: ${theme.colors.white};
+
+        :active {
+            color: ${theme.colors.white};
+        }
+    }
+
+    .versionNormalSmaller{
+        background-color: ${theme.colors.white};
+        color: ${theme.colors.primary};
+
+        &:hover {
+            color: ${theme.colors.white};
+            background-color: ${theme.colors.primary};
+            border: 1px solid ${theme.colors.white};
+        }
+
+        &:active{
+            background-color: ${theme.colors.white};
+            color: ${theme.colors.primary};
+        }
+    }
+`

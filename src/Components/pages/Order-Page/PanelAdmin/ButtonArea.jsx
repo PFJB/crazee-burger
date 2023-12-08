@@ -1,14 +1,13 @@
 import styled from "styled-components";
 import ButtonPanelAdmin from "../../../reusable-ui/button/ButtonPanelAdmin";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
-import { theme } from "../../../../theme/theme";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import { tabConfigs } from "./tabsConfigs";
 
 export default function ButtonArea() {
 
-    const {tabSelected, isCollapse, SetIsCollapse , setTabSelected, SetcontentPanel} = useContext(OrderContext)
+    const { tabSelected, isCollapse, SetIsCollapse, setTabSelected, SetcontentPanel } = useContext(OrderContext)
     const tabs = tabConfigs(tabSelected)
 
     const selectedTab = (tab, content) => {
@@ -17,26 +16,26 @@ export default function ButtonArea() {
         SetcontentPanel(content)
     }
 
-  return (
-    <ButtonAreaStyled>
-        <ButtonPanelAdmin 
-            label=""
-            className={!isCollapse ? "is-active" : ""}
-            icone={isCollapse ? <GoChevronDown /> : <GoChevronUp />}
-            handleClick={ () => SetIsCollapse(!isCollapse)}
-        />
-        {tabs.map((tab) => (
+    return (
+        <ButtonAreaStyled>
             <ButtonPanelAdmin
-                key={tab.index}
-                label={tab.label}
-                icone={tab.icone}
-                className={tabSelected === tab.index ? "is-active" : ""}
-                handleClick={() => selectedTab(tab.index, tab.content)}
+                label=""
+                selected={!isCollapse}
+                icone={isCollapse ? <GoChevronDown /> : <GoChevronUp />}
+                handleClick={() => SetIsCollapse(!isCollapse)}
             />
-        )
-        )}
-    </ButtonAreaStyled>
-  )
+            {tabs.map((tab) => (
+                <ButtonPanelAdmin
+                    key={tab.index}
+                    label={tab.label}
+                    icone={tab.icone}
+                    selected={tab.index === tabSelected}
+                    handleClick={() => selectedTab(tab.index, tab.content)}
+                />
+            )
+            )}
+        </ButtonAreaStyled>
+    )
 }
 
 const ButtonAreaStyled = styled.div`
@@ -47,10 +46,4 @@ const ButtonAreaStyled = styled.div`
         width: fit-content;
         max-width: 100%;
         gap: 1px;
-
-        .is-active {
-            background-color: ${theme.colors.background_dark};
-            color: ${theme.colors.white};
-            border-color: ${theme.colors.background_dark};
-        }
 `;

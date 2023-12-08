@@ -10,12 +10,19 @@ const OrderContext = createContext({
     menuData: [],
     setMenuData: () => { },
     handleAdd: () => { },
-    newProduct: [],
+    newProduct: {},
     setnewProduct: () => { },
 
     popup: "",
     setPopup: () => { },
     handleCardDelete: () => { },
+
+    productSelected: {},
+    setProductSelected: () => { },
+
+    handleEdit: () => { },
+
+    titleEditRef: {},
 });
 
 export default OrderContext

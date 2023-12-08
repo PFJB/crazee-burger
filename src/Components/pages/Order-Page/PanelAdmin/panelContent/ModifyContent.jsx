@@ -1,6 +1,21 @@
+import { useContext } from "react"
+import OrderContext from "../../../../../context/OrderContext"
+import AdminForm from "./AdminForm"
+import HintMessageEditForm from "./HintMessageEditForm"
+
 export default function ModifyContent() {
+  const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext)
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    const productOnChange = { ...productSelected, [name]: value }
+    setProductSelected(productOnChange)
+    handleEdit(productOnChange)
+  }
+
   return (
-    <div>ModifyProduct</div>
+    <AdminForm onChange={handleChange} product={productSelected} ref={titleEditRef}>
+      <HintMessageEditForm />
+    </AdminForm>
   )
 }
-

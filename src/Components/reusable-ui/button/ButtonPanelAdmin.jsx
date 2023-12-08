@@ -1,13 +1,13 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../../theme/theme";
 
-export default function ButtonPanelAdmin({icone, label, handleClick, className}){
+export default function ButtonPanelAdmin({ icone, label, handleClick, className, selected }) {
     return (
-    <ButtonPanelAdminStyled  className={className} onClick={handleClick}>
-        <div className="icone">{icone && icone}</div>
-        {label}
-    </ButtonPanelAdminStyled>
-  )
+        <ButtonPanelAdminStyled className={className} onClick={handleClick} $selected={selected}>
+            <div className="icone">{icone && icone}</div>
+            {label}
+        </ButtonPanelAdminStyled>
+    )
 }
 
 const ButtonPanelAdminStyled = styled.button`
@@ -43,4 +43,17 @@ const ButtonPanelAdminStyled = styled.button`
     .icone {
         display: flex;
     }
+
+    ${({ $selected }) => $selected && tabSelectedStyle}
 `;
+
+const tabSelectedStyle = css`
+    background-color: ${theme.colors.background_dark};
+    color: ${theme.colors.white};
+    border-color: ${theme.colors.background_dark};
+
+    &:hover{
+        border-bottom: 2px solid ${theme.colors.dark};
+        text-decoration-line: underline;
+    }
+`
