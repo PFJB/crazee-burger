@@ -12,7 +12,7 @@ import { deepCopyArray } from "../../../utils/arrays";
 
 export default function OrderPage() {
   const [menuData, setMenuData] = useState(fakeMenu2)
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const [newProduct, setNewProduct] = useState({ ...EMPTY_PRODUCT, id: new Date().getTime() })
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 
   const [tabSelected, setTabSelected] = useState("add");
@@ -27,7 +27,7 @@ export default function OrderPage() {
 
   const handleAdd = () => {
     const copyMenu = deepCopyArray(menuData)
-    const newMenu = [{ ...newProduct }, ...copyMenu]
+    const newMenu = [deepCopyArray(newProduct), ...copyMenu]
 
     setMenuData(newMenu)
     setNewProduct({ ...EMPTY_PRODUCT, id: new Date().getTime() })
