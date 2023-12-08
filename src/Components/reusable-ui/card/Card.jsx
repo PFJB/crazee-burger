@@ -72,6 +72,7 @@ const CardStyled = styled.div`
         font-weight: ${theme.fonts.weights.bold};
         font-size: ${theme.fonts.size.P4};
         overflow: hidden;
+        white-space: nowrap;
         text-overflow: ellipsis;
     }
 

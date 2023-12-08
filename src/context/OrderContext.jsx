@@ -21,6 +21,8 @@ const OrderContext = createContext({
     setProductSelected: () => { },
 
     handleEdit: () => { },
+
+    titleEditRef: {},
 });
 
 export default OrderContext

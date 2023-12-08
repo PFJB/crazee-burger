@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import { theme } from "../../../theme/theme";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu1, fakeMenu2 } from "../../../assets/fakeData/fakeMenu";
 import AddContent from "./PanelAdmin/panelContent/AddContent";
@@ -20,6 +20,9 @@ export default function OrderPage() {
   const [IsAdminOn, setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
   const [popup, setPopup] = useState(false)
+
+  const titleEditRef = useRef()
+
 
 
   const handleAdd = () => {
@@ -53,7 +56,7 @@ export default function OrderPage() {
     contentPanel, SetcontentPanel, menuData,
     setMenuData, handleAdd, newProduct,
     setNewProduct, popup, setPopup, handleCardDelete,
-    productSelected, setProductSelected, handleEdit
+    productSelected, setProductSelected, handleEdit, titleEditRef
   }
 
   return (

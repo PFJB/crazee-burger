@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../../theme/theme";
+import React from "react";
 
-export default function TextInput({ value, onChange, IconeBeforeInput, version, name, placeholder }) {
-
-  return (
+const TextInput = React.forwardRef(
+  ({ value, onChange, IconeBeforeInput, version, name, placeholder }, ref) => (
     <InputStyled version={version}>
       {IconeBeforeInput && IconeBeforeInput}
       <input
@@ -12,10 +12,13 @@ export default function TextInput({ value, onChange, IconeBeforeInput, version, 
         onChange={onChange}
         placeholder={placeholder}
         type="text"
+        ref={ref}
       />
     </InputStyled>
   )
-}
+)
+TextInput.displayName = "TextInput";
+export default TextInput
 
 const InputStyled = styled.div`
 

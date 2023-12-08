@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useRef } from "react"
 import OrderContext from "../../../../../context/OrderContext"
 import ImagePreview from "./ImagePreview"
 import TextInput from "../../../../reusable-ui/textInput/TextInput"
@@ -7,7 +7,7 @@ import styled from "styled-components"
 import { theme } from "../../../../../theme/theme"
 
 export default function ModifyContent() {
-  const { productSelected, setProductSelected, handleEdit } = useContext(OrderContext)
+  const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext)
   const textInputs = GetTextInputConfigs(productSelected)
 
   const handleChange = (event) => {
@@ -22,7 +22,13 @@ export default function ModifyContent() {
       <ImagePreview imageSource={productSelected.imageSource} />
       <div className="inputArea">
         {textInputs.map((input) => (
-          <TextInput key={input.id} {...input} onChange={handleChange} version="panelAdmin"
+          <TextInput
+            ref={input.name === "title" ? titleEditRef : null}
+            key={input.id}
+            {...input}
+            onChange={handleChange}
+            version="panelAdmin"
+
           />))}
       </div>
     </EditContentStyled >
