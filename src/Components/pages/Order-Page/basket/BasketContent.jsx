@@ -10,11 +10,11 @@ export default function BasketContent() {
 
     return (
         <BasketContentStyled>
-            {basketData.length !== 0 ? <BasketProduct /> : <BasketContentEmpty />}
+            <BasketProduct />
         </BasketContentStyled>
     )
 }
-
+//{basketData.length !== 0 ? <BasketProduct /> : <BasketContentEmpty />}
 const BasketContentStyled = styled.div`
 flex: 1;
 
