@@ -7,14 +7,14 @@ import { fakeMenu1 } from "../../../../../assets/fakeData/fakeMenu";
 
 export default function EmptyMenu() {
 
-    const { setMenuData } = useContext(OrderContext);
+    const { resetMenu } = useContext(OrderContext);
 
     return (
         <EmptyMenuStyled>
             <h1>Le menu est vide ?</h1>
             <h2>Cliquez ci-dessous pour le réinitialiser</h2>
             <ButtonIcone
-                onClick={() => setMenuData(fakeMenu1)}
+                onClick={() => { resetMenu(fakeMenu1) }}
                 label={"Générer de nouveaux produits"}
                 version={"normal"}
             />
@@ -28,8 +28,6 @@ const EmptyMenuStyled = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
     color: ${theme.colors.greyBlue};
     font-family: 'Amatic SC', sans-serif;
 

@@ -26,5 +26,10 @@ export const useMenu = () => {
         setMenuData(menuCopy)
     }
 
-    return { handleAdd, handleCardDelete, handleEdit, menuData, setMenuData }
+    const resetMenu = (menuToReset) => {
+        setMenuData(menuToReset)
+    }
+
+
+    return { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu }
 }

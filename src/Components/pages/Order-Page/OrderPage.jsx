@@ -17,12 +17,12 @@ export default function OrderPage() {
   const [IsAdminOn, setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
   const titleEditRef = useRef()
-  const { handleAdd, handleCardDelete, handleEdit, menuData } = useMenu()
+  const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu } = useMenu()
 
   const orderContext = {
     IsAdminOn, setIsAdminOn, tabSelected,
     setTabSelected, isCollapse, SetIsCollapse,
-    contentPanel, SetcontentPanel, menuData,
+    contentPanel, SetcontentPanel, menuData, resetMenu,
     handleAdd, newProduct,
     setNewProduct, handleCardDelete,
     productSelected, setProductSelected, handleEdit, titleEditRef
