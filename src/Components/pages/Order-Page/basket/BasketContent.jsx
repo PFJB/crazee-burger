@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import BasketContentEmpty from "./BasketContentEmpty";
+import BasketContentEmpty from "./basketContent/BasketContentEmpty";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
+import BasketProduct from "./basketContent/BasketProducts";
 
 export default function BasketContent() {
 

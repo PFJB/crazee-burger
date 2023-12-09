@@ -20,7 +20,7 @@ const OrderContext = createContext({
     handleEdit: () => { },
 
     titleEditRef: {},
-    basketData: {}
+    basketData: []
 });
 
 export default OrderContext
