@@ -3,14 +3,14 @@ import ButtonIcone from "../../../../reusable-ui/button/ButtonIcone";
 import styled from "styled-components";
 import { theme } from "../../../../../theme/theme";
 
-export default function SubmitButton({ popup }) {
+export default function SubmitButton({ isSubmitted }) {
     return (
         <SubmitButtonStyled>
             <ButtonIcone
                 label="Ajouter un nouveau produit au menu"
                 version='success'>
             </ButtonIcone>
-            {popup ? <div className="popup"><span><GrValidate /></span>Ajouté avec succès !</div> : ""}
+            {isSubmitted ? <div className="popup"><span><GrValidate /></span>Ajouté avec succès !</div> : ""}
         </SubmitButtonStyled>
     )
 }
