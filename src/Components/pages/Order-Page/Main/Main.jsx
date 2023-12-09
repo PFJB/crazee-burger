@@ -14,8 +14,9 @@ export default function Main() {
 
 const MainStyled = styled.div`
   display: grid;
+  width: 100%;
 
-  grid-template-columns: 350px 1fr;
+  grid-template-columns: 25% 1fr;
   height: calc(95vh - 13vh);
 
   background: ${theme.colors.background_white};

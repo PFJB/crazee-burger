@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { theme } from "../../../../theme/theme";
 import BasketContentEmpty from "./BasketContentEmpty";
 
 export default function BasketContent() {

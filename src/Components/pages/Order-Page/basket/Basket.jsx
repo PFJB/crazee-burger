@@ -3,11 +3,12 @@ import { theme } from '../../../../theme/theme';
 import HeaderBasket from './HeaderBasket';
 import FooterBasket from './FooterBasket';
 import BasketContent from './BasketContent';
+import { formatPrice } from '../../../../utils/maths';
 
 export default function Basket() {
     return (
         <BasketStyled>
-            <HeaderBasket />
+            <HeaderBasket amountToPay={formatPrice(55)} />
             <BasketContent />
             <FooterBasket />
         </BasketStyled>
@@ -19,7 +20,7 @@ const BasketStyled = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 350px;
+    width: 100%;
     height: 100%;
     height: calc(95vh - 13vh);
     overflow: hidden;

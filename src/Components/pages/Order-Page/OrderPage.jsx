@@ -18,11 +18,8 @@ export default function OrderPage() {
   const [contentPanel, SetcontentPanel] = useState(<AddContent />);
   const [IsAdminOn, setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
-  const [popup, setPopup] = useState(false)
 
   const titleEditRef = useRef()
-
-
 
   const handleAdd = () => {
     const copyMenu = deepCopyArray(menuData)
@@ -30,8 +27,6 @@ export default function OrderPage() {
 
     setMenuData(newMenu)
     setNewProduct({ ...EMPTY_PRODUCT, id: new Date().getTime() })
-    setPopup(true)
-    setTimeout(() => { setPopup(false) }, 3000)
   }
 
   const handleCardDelete = (cardId) => {
@@ -54,7 +49,7 @@ export default function OrderPage() {
     setTabSelected, isCollapse, SetIsCollapse,
     contentPanel, SetcontentPanel, menuData,
     setMenuData, handleAdd, newProduct,
-    setNewProduct, popup, setPopup, handleCardDelete,
+    setNewProduct, handleCardDelete,
     productSelected, setProductSelected, handleEdit, titleEditRef
   }
 

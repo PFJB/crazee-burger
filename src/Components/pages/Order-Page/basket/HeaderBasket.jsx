@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme/theme";
 
-export default function HeaderBasket() {
+export default function HeaderBasket({ amountToPay }) {
     return (
-        <HeaderBasketStyled className='headerPrice'>
+        <HeaderBasketStyled>
             <p className="total">Total</p>
-            <p>0,00 €</p>
+            <p>{amountToPay}</p>
         </HeaderBasketStyled>
     )
 }
@@ -18,7 +18,7 @@ const HeaderBasketStyled = styled.div`
     height: 70px;
     width: 100%;
     padding: 0px 16px 0px 16px;
-    background-color: ${theme.colors.dark};
+    background-color: ${theme.colors.background_dark};
     color: ${theme.colors.primary};
     font-family: ${theme.fonts.family.amatic};
     font-size: ${theme.fonts.size.P4};

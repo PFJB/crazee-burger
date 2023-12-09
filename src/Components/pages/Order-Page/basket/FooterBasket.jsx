@@ -22,5 +22,5 @@ const FooterBasketStyled = styled.div`
     font-family: ${theme.fonts.family.amatic};
     font-weight: ${theme.fonts.weights.bold};
     font-size: ${theme.fonts.size.P2};
-    background-color: black;
+    background-color: ${theme.colors.background_dark};
 `;

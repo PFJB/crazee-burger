@@ -13,8 +13,6 @@ const OrderContext = createContext({
     newProduct: {},
     setnewProduct: () => { },
 
-    popup: "",
-    setPopup: () => { },
     handleCardDelete: () => { },
 
     productSelected: {},
