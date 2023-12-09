@@ -1,24 +1,24 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme/theme";
 import MainRightSide from "./MainRightSide";
+import Basket from "../basket/Basket.jsx";
 
 export default function Main() {
   return (
     <MainStyled>
-      {/* <Basket /> */}
+      <Basket />
       <MainRightSide />
     </MainStyled>
   )
 }
 
 const MainStyled = styled.div`
-  background: ${theme.colors.background_white};
+  display: grid;
+
+  grid-template-columns: 350px 1fr;
   height: calc(95vh - 13vh);
 
+  background: ${theme.colors.background_white};
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
-  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-
-  display: grid;
-  grid-template-columns: 1fr;
 `
