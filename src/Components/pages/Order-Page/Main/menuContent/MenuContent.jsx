@@ -44,10 +44,10 @@ export default function MenuContent() {
 const MenuContentStyled = styled.div`
     display: grid;
     justify-items: center;
-    align-items: center;
     grid-template-columns: repeat(4, 1fr) ;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr )) ;
     grid-template-rows: max-content;
     grid-row-gap: 60px;
-    padding: 50px 92.5px;
+    padding: 50px 50px 150px;
+    overflow-y: scroll;
 `;

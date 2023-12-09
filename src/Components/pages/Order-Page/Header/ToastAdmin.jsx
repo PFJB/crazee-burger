@@ -8,10 +8,10 @@ import OrderContext from "../../../../context/OrderContext";
 
 export default function ToastAdmin() {
 
-  const {IsAdminOn, setIsAdminOn} = useContext(OrderContext)
+  const { IsAdminOn, setIsAdminOn } = useContext(OrderContext)
 
-    const notify = () => {
-    if (!IsAdminOn){
+  const notify = () => {
+    if (!IsAdminOn) {
       toast.info("Mode admin activé", {
         icon: <FaUserSecret size={30} />,
         theme: "dark",
@@ -24,16 +24,16 @@ export default function ToastAdmin() {
         progress: undefined,
       })
     }
-    setIsAdminOn(IsAdminOn === false ? true : false)
+    setIsAdminOn(!IsAdminOn ? true : false)
   }
 
   return (
     <ToastAdminStyled className="admin-button">
-        <ToastContainer className="toaster" bodyClassName="body-toast" />
-        <ToggleButton onToggle={notify}
-                      isChecked={IsAdminOn}
-                      labelIfChecked="DÉSACTIVER LE MODE ADMIN"
-                      labelIfUnchecked="ACTIVER LE MODE ADMIN" />
+      <ToastContainer className="toaster" bodyClassName="body-toast" />
+      <ToggleButton onToggle={notify}
+        isChecked={IsAdminOn}
+        labelIfChecked="DÉSACTIVER LE MODE ADMIN"
+        labelIfUnchecked="ACTIVER LE MODE ADMIN" />
     </ToastAdminStyled>
   )
 }

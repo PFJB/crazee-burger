@@ -6,7 +6,6 @@ import { useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu1, fakeMenu2 } from "../../../assets/fakeData/fakeMenu";
 import AddContent from "./PanelAdmin/panelContent/AddContent";
-import PanelAdmin from "./PanelAdmin/PanelAdmin";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { deepCopyArray } from "../../../utils/arrays";
 
@@ -65,7 +64,6 @@ export default function OrderPage() {
         <div className="container">
           <Header />
           <Main />
-          {IsAdminOn && <PanelAdmin />}
         </div>
       </OrderPagestyled>
     </OrderContext.Provider>
