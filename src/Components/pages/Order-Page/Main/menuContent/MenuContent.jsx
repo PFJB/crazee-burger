@@ -20,6 +20,7 @@ export default function MenuContent() {
   const handleDelete = (event, id) => {
     event.stopPropagation()
     handleCardDelete(id)
+    id === productSelected.id ? setProductSelected(EMPTY_PRODUCT) : ""
     if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
   }
 

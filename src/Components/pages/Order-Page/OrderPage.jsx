@@ -4,51 +4,26 @@ import Main from "./Main/Main";
 import { theme } from "../../../theme/theme";
 import { useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext";
-import { fakeMenu1, fakeMenu2 } from "../../../assets/fakeData/fakeMenu";
 import AddContent from "./PanelAdmin/panelContent/AddContent";
+import { useMenu } from "../../../hooks/useMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
-import { deepCopyArray } from "../../../utils/arrays";
 
 export default function OrderPage() {
-  const [menuData, setMenuData] = useState(fakeMenu2)
+
   const [newProduct, setNewProduct] = useState({ ...EMPTY_PRODUCT, id: new Date().getTime() })
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
-
   const [tabSelected, setTabSelected] = useState("add");
   const [contentPanel, SetcontentPanel] = useState(<AddContent />);
   const [IsAdminOn, setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
-
   const titleEditRef = useRef()
-
-  const handleAdd = () => {
-    const copyMenu = deepCopyArray(menuData)
-    const newMenu = [deepCopyArray(newProduct), ...copyMenu]
-
-    setMenuData(newMenu)
-    setNewProduct({ ...EMPTY_PRODUCT, id: new Date().getTime() })
-  }
-
-  const handleCardDelete = (cardId) => {
-    const newMenu = deepCopyArray(menuData)
-    const menuUpdated = newMenu.filter((product) => product.id !== cardId)
-    setMenuData(menuUpdated)
-    cardId === productSelected.id ? setProductSelected(EMPTY_PRODUCT) : ""
-
-  }
-
-  const handleEdit = (productToEdit) => {
-    let menuCopy = deepCopyArray(menuData)
-    const indexToEdit = menuCopy.findIndex((product) => product.id === productToEdit.id)
-    menuCopy[indexToEdit] = productToEdit
-    setMenuData(menuCopy)
-  }
+  const { handleAdd, handleCardDelete, handleEdit, menuData } = useMenu()
 
   const orderContext = {
     IsAdminOn, setIsAdminOn, tabSelected,
     setTabSelected, isCollapse, SetIsCollapse,
     contentPanel, SetcontentPanel, menuData,
-    setMenuData, handleAdd, newProduct,
+    handleAdd, newProduct,
     setNewProduct, handleCardDelete,
     productSelected, setProductSelected, handleEdit, titleEditRef
   }
