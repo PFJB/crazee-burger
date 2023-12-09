@@ -20,7 +20,7 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu } = useMenu()
 
-  const { basketData } = useBasket()
+  const { basketData, addToBasket } = useBasket()
 
   const orderContext = {
     IsAdminOn, setIsAdminOn, tabSelected,
@@ -28,7 +28,7 @@ export default function OrderPage() {
     contentPanel, SetcontentPanel, menuData, resetMenu,
     handleAdd, newProduct,
     setNewProduct, handleCardDelete, basketData,
-    productSelected, setProductSelected, handleEdit, titleEditRef
+    productSelected, setProductSelected, handleEdit, titleEditRef, addToBasket
   }
 
   return (

@@ -5,9 +5,7 @@ import { formatPrice } from "../../../utils/maths";
 import { TiDelete } from "react-icons/ti";
 const IMAGE_by_default = "/images/coming-soon.png"
 
-export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected }) {
-
-    const AddToCart = (event) => { event.stopPropagation() }
+export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard }) {
 
     return (
         <CardStyled onClick={handleClick} $isHoverable={isHoverable} $isSelected={isSelected}>
@@ -21,7 +19,7 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
                         className="versionNormalSmaller"
                         label={"Ajouter"}
                         version="normal"
-                        onClick={AddToCart}
+                        onClick={handleAddToCard}
                     />
                 </div>
             </div>

@@ -6,7 +6,10 @@ import { checkIfSelected } from './helpers.jsx'
 import { EMPTY_PRODUCT } from '../../../../../enums/product.jsx';
 
 export default function MenuContent() {
-  const { menuData, handleCardDelete, setProductSelected, productSelected, IsAdminOn, SetIsCollapse, setTabSelected, titleEditRef } = useContext(OrderContext)
+  const { menuData, handleCardDelete,
+    setProductSelected, productSelected,
+    IsAdminOn, SetIsCollapse, setTabSelected,
+    titleEditRef, AddToBasket } = useContext(OrderContext)
 
   const handleClick = async (id) => {
     let selected = menuData.find((product) => product.id === id)
@@ -24,6 +27,13 @@ export default function MenuContent() {
     if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
   }
 
+  const handleAddToCard = (event, idCardToAdd) => {
+    event.stopPropagation()
+    const selected = menuData.find((product) => product.id === idCardToAdd)
+
+    AddToBasket(selected)
+  }
+
   return (
     <MenuContentStyled>
       {menuData.map(({ id, title, price, imageSource }) => {
@@ -36,6 +46,7 @@ export default function MenuContent() {
           handleClick={() => IsAdminOn && handleClick(id)}
           isHoverable={IsAdminOn}
           isSelected={checkIfSelected(id, productSelected.id)}
+          handleAddToCard={(event) => handleAddToCard(event, id)}
         />
       })}
     </MenuContentStyled>
