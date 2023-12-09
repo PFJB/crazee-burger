@@ -1,17 +1,15 @@
 import styled from 'styled-components';
 import { theme } from '../../../../theme/theme';
 import HeaderBasket from './HeaderBasket';
+import FooterBasket from './FooterBasket';
 
 export default function Basket() {
     return (
-
         <BasketStyled>
             <HeaderBasket />
             <div className='content'><p>Votre commande est vide.</p></div>
-            <div className='footer'></div>
+            <FooterBasket />
         </BasketStyled>
-
-
     )
 }
 
@@ -22,7 +20,6 @@ position: relative;
 width: 350px;
 height: 100%;
 overflow: hidden;
-
 
 height: calc(95vh - 13vh);
 border-bottom-left-radius: ${theme.borderRadius.extraRound};
@@ -36,15 +33,5 @@ box-shadow: 0px 0px 20px 0px #00000033 inset;
     align-items: center;
     justify-content: center;
     flex: 1;
-
-
   }
-
-  .footer{
-    position: relative;
-    bottom: 0;
-    height: 70px;
-    width: 100%;
-    background-color: black;
-    }
 `;
