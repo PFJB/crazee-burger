@@ -55,6 +55,11 @@ const fonts = {
     bold: 700,
     heavy: 800,
   },
+  family:
+  {
+    amatic: "'Amatic SC', sans-serif",
+    openSans: "'Open Sans', sans-serif",
+  },
 }
 const gridUnit = 8
 const borderRadius = {

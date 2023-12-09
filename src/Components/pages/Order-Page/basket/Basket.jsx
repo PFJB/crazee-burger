@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { theme } from '../../../../theme/theme';
+import HeaderBasket from './HeaderBasket';
 
 export default function Basket() {
     return (
 
         <BasketStyled>
-            <div className='headerPrice'></div>
+            <HeaderBasket />
             <div className='content'><p>Votre commande est vide.</p></div>
             <div className='footer'></div>
         </BasketStyled>
@@ -29,20 +30,16 @@ border-bottom-left-radius: ${theme.borderRadius.extraRound};
 background-color: ${theme.colors.background_white};
 box-shadow: 0px 0px 20px 0px #00000033 inset;
 
-  .headerPrice{
-    height: 70px;
-    width: 100%;
-    background-color: black;
-  }
-  
+
   .content {
     display: flex;
     align-items: center;
     justify-content: center;
     flex: 1;
-    
+
 
   }
+
   .footer{
     position: relative;
     bottom: 0;
