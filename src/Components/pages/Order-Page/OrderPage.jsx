@@ -7,6 +7,7 @@ import OrderContext from "../../../context/OrderContext";
 import AddContent from "./PanelAdmin/panelContent/AddContent";
 import { useMenu } from "../../../hooks/useMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
+import { useBasket } from "../../../hooks/useBasket";
 
 export default function OrderPage() {
 
@@ -19,12 +20,14 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu } = useMenu()
 
+  const { basketData } = useBasket()
+
   const orderContext = {
     IsAdminOn, setIsAdminOn, tabSelected,
     setTabSelected, isCollapse, SetIsCollapse,
     contentPanel, SetcontentPanel, menuData, resetMenu,
     handleAdd, newProduct,
-    setNewProduct, handleCardDelete,
+    setNewProduct, handleCardDelete, basketData,
     productSelected, setProductSelected, handleEdit, titleEditRef
   }
 
