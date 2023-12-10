@@ -20,8 +20,7 @@ export const useBasket = () => {
     }
 
     const deleteToBasket = (productId) => {
-        const copyBasketContent = deepCopyArray(basketData)
-        const copyUpdated = copyBasketContent.filter((product) => product.id !== productId)
+        const copyUpdated = basketData.filter((product) => product.id !== productId)
         setBasketData(copyUpdated)
     }
 

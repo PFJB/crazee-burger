@@ -8,11 +8,19 @@ const IMAGE_by_default = "/images/coming-soon.png"
 
 export default function BasketProducts() {
 
-    const { deleteToBasket, basketData, IsAdminOn } = useContext(OrderContext)
+    const { deleteToBasket, basketData, IsAdminOn, setProductSelected, titleEditRef, productSelected } = useContext(OrderContext)
 
     const handleDeleteBasket = (event, idToDelete) => {
         event.stopPropagation()
         deleteToBasket(idToDelete)
+        if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
+
+    }
+
+    const onClick = (idBasketCardClicked) => {
+        const copyProductClickedBasket = basketData.find((product) => product.id === idBasketCardClicked)
+        setProductSelected(copyProductClickedBasket)
+        if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
     }
 
     return (
@@ -26,7 +34,9 @@ export default function BasketProducts() {
                         imageSource={imageSource ? imageSource : IMAGE_by_default}
                         handleDelete={(event) => handleDeleteBasket(event, id)}
                         quantity={quantity}
+                        onClick={IsAdminOn ? () => onClick(id) : null}
                         isAdminOn={IsAdminOn}
+                        isSelected={productSelected.id === id}
                     />
                 )
             })}

@@ -2,10 +2,9 @@ import styled, { css } from "styled-components";
 import { theme } from "../../../../../theme/theme";
 import { MdDeleteForever } from "react-icons/md";
 
-
-export default function BasketCard({ title, price, imageSource, quantity, handleDelete, isAdminOn }) {
+export default function BasketCard({ title, price, imageSource, quantity, handleDelete, isAdminOn, onClick, isSelected }) {
     return (
-        <BasketCardStyled $isAdminOn={isAdminOn}>
+        <BasketCardStyled $isAdminOn={isAdminOn} onClick={onClick} $isSelected={isSelected}>
             <div className="pic"><img src={imageSource} alt={title} /></div>
             <div className="info">
                 <div className="description">
@@ -13,7 +12,6 @@ export default function BasketCard({ title, price, imageSource, quantity, handle
                     <p className="price">{price}</p>
                 </div>
                 <p className="qte">x {quantity}</p>
-
             </div>
             <button className="buttonDelete" onClick={handleDelete} ><MdDeleteForever size={'27px'} /></button>
         </BasketCardStyled >
@@ -104,14 +102,20 @@ overflow: hidden;
 }
 
 ${({ $isAdminOn }) => $isAdminOn && getHoverable}
+${({ $isSelected, $isAdminOn }) => $isSelected && $isAdminOn && selectedStyle}
 
 `;
 
 const getHoverable = css`
 
-&:hover {
-    button{
-        display: flex;
+    &:hover button{ display: flex; }
+
+`
+const selectedStyle = css`
+
+    background-color: ${theme.colors.primary};
+    .description .price, .qte {
+        color: ${theme.colors.white}
     }
-}
+
 `
