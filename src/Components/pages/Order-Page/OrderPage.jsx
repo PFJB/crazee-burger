@@ -20,7 +20,7 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu } = useMenu()
 
-  const { basketData, addToBasket, totalPrice, setTotalPrice } = useBasket()
+  const { basketData, addToBasket, totalPrice, setTotalPrice, handleEditBasket, calculateTotalPrice } = useBasket()
 
   const orderContext = {
     IsAdminOn, setIsAdminOn, tabSelected,
@@ -29,7 +29,7 @@ export default function OrderPage() {
     handleAdd, newProduct,
     setNewProduct, handleCardDelete, basketData,
     productSelected, setProductSelected, handleEdit, titleEditRef,
-    addToBasket, totalPrice, setTotalPrice
+    addToBasket, totalPrice, setTotalPrice, handleEditBasket, calculateTotalPrice
   }
 
   return (

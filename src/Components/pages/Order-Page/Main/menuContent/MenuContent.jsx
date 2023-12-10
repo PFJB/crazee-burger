@@ -9,7 +9,7 @@ export default function MenuContent() {
   const { menuData, handleCardDelete,
     setProductSelected, productSelected,
     IsAdminOn, SetIsCollapse, setTabSelected,
-    titleEditRef, addToBasket } = useContext(OrderContext)
+    titleEditRef, addToBasket, calculateTotalPrice } = useContext(OrderContext)
 
   const handleClick = async (id) => {
     let selected = menuData.find((product) => product.id === id)

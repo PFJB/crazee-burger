@@ -4,13 +4,14 @@ import AdminForm from "./AdminForm"
 import HintMessageEditForm from "./HintMessageEditForm"
 
 export default function ModifyContent() {
-  const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext)
+  const { productSelected, setProductSelected, handleEdit, titleEditRef, handleEditBasket, calculateTotalPrice } = useContext(OrderContext)
 
   const handleChange = (event) => {
     const { name, value } = event.target
     const productOnChange = { ...productSelected, [name]: value }
     setProductSelected(productOnChange)
     handleEdit(productOnChange)
+    handleEditBasket(productOnChange)
   }
 
   return (
