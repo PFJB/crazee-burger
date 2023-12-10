@@ -10,6 +10,11 @@ export default function BasketProducts() {
 
     const { deleteToBasket, basketData, IsAdminOn } = useContext(OrderContext)
 
+    const handleDeleteBasket = (event, idToDelete) => {
+        event.stopPropagation()
+        deleteToBasket(idToDelete)
+    }
+
     return (
         <BasketProductsStylend>
             {basketData.map(({ id, title, price, imageSource, quantity }) => {
@@ -19,7 +24,7 @@ export default function BasketProducts() {
                         title={title}
                         price={formatPrice(price)}
                         imageSource={imageSource ? imageSource : IMAGE_by_default}
-                        handleDelete={() => deleteToBasket(id)}
+                        handleDelete={(event) => handleDeleteBasket(event, id)}
                         quantity={quantity}
                         isAdminOn={IsAdminOn}
                     />
