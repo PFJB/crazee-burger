@@ -4,47 +4,35 @@ import { deepCopyArray } from "../utils/arrays"
 export const useBasket = () => {
 
     const [basketData, setBasketData] = useState([])
-    const [totalPrice, setTotalPrice] = useState(0)
 
+    const addToBasket = (productToAdd) => {
 
-    const calculateTotalPrice = () => {
-        let total = 0;
-        basketData.map((product) => {
-            total = total + (product.price * product.quantity)
-        })
-        setTotalPrice(total)
-    }
-
-    const addToBasket = async (productToAdd) => {
         const copyBasketContent = deepCopyArray(basketData)
         const isalreadyhere = copyBasketContent.find((product) => productToAdd.id === product.id)
-        if (isalreadyhere === undefined) {
-            var copyUpdated = [deepCopyArray(productToAdd), ...copyBasketContent]
-            await setBasketData(copyUpdated)
-        }
-        else {
 
-            isalreadyhere.quantity += 1;
-            await setBasketData(copyBasketContent)
+        if (!isalreadyhere) {
+            var copyUpdated = [deepCopyArray(productToAdd), ...copyBasketContent]
+            setBasketData(copyUpdated)
+            return
         }
-        calculateTotalPrice()
+        isalreadyhere.quantity += 1;
+        setBasketData(copyBasketContent)
     }
 
     const deleteToBasket = (productId) => {
         const copyBasketContent = deepCopyArray(basketData)
         const copyUpdated = copyBasketContent.filter((product) => product.id !== productId)
         setBasketData(copyUpdated)
-        calculateTotalPrice()
     }
 
     const handleEditBasket = (productToEdit) => {
         let copyBasketContent = deepCopyArray(basketData)
         const indexToEdit = copyBasketContent.findIndex((product) => product.id === productToEdit.id)
-        copyBasketContent[indexToEdit] = productToEdit
+        copyBasketContent[indexToEdit].title = productToEdit.title
+        copyBasketContent[indexToEdit].imageSource = productToEdit.imageSource
+        copyBasketContent[indexToEdit].price = productToEdit.price
         setBasketData(copyBasketContent)
-        calculateTotalPrice()
     }
 
-
-    return { basketData, setBasketData, addToBasket, deleteToBasket, totalPrice, setTotalPrice, handleEditBasket, calculateTotalPrice }
+    return { basketData, setBasketData, addToBasket, deleteToBasket, handleEditBasket }
 }

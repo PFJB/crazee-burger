@@ -25,11 +25,7 @@ const OrderContext = createContext({
     addToBasket: () => { },
     deleteToBasket: () => { },
 
-    totalPrice: 0,
-    setTotalPrice: () => { },
-
     handleEditBasket: () => { },
-    calculateTotalPrice: () => { },
 });
 
 export default OrderContext

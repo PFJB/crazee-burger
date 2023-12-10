@@ -3,6 +3,7 @@ export function formatPrice(priceToFormat) {
 
   // @TODO: perhaps change this to if(!price) return 0
   if (!price) return "0,00 €"
+  if (isNaN(price)) return "NaN €"
   price = replaceFrenchCommaWithDot(price)
 
   const formattedPrice = new Intl.NumberFormat("fr-FR", {
