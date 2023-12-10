@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../../../../theme/theme";
 import { MdDeleteForever } from "react-icons/md";
 
 
-export default function BasketCard({ title, price, imageSource, quantity, handleDelete }) {
+export default function BasketCard({ title, price, imageSource, quantity, handleDelete, isAdminOn }) {
     return (
-        <BasketCardStyled>
+        <BasketCardStyled $isAdminOn={isAdminOn}>
             <div className="pic"><img src={imageSource} alt={title} /></div>
             <div className="info">
                 <div className="description">
@@ -15,7 +15,7 @@ export default function BasketCard({ title, price, imageSource, quantity, handle
                 <p className="qte">x {quantity}</p>
 
             </div>
-            <button onClick={handleDelete} ><MdDeleteForever size={'27px'} /></button>
+            <button className="buttonDelete" onClick={handleDelete} ><MdDeleteForever size={'27px'} /></button>
         </BasketCardStyled >
     )
 }
@@ -80,7 +80,7 @@ overflow: hidden;
     }
 }
 
-button {
+.buttonDelete {
     display: none;
     align-items: center;
     justify-content: center;
@@ -103,10 +103,15 @@ button {
     }
 }
 
+${({ $isAdminOn }) => $isAdminOn && getHoverable}
+
+`;
+
+const getHoverable = css`
+
 &:hover {
     button{
         display: flex;
     }
 }
-
-`;
+`

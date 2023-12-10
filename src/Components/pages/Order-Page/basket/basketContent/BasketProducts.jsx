@@ -8,7 +8,7 @@ const IMAGE_by_default = "/images/coming-soon.png"
 
 export default function BasketProducts() {
 
-    const { deleteToBasket, basketData } = useContext(OrderContext)
+    const { deleteToBasket, basketData, IsAdminOn } = useContext(OrderContext)
 
     return (
         <BasketProductsStylend>
@@ -21,6 +21,7 @@ export default function BasketProducts() {
                         imageSource={imageSource ? imageSource : IMAGE_by_default}
                         handleDelete={() => deleteToBasket(id)}
                         quantity={quantity}
+                        isAdminOn={IsAdminOn}
                     />
                 )
             })}
