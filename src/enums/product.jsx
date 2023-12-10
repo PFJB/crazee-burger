@@ -4,7 +4,7 @@ export const EMPTY_PRODUCT = Object.freeze({
     title: "",
     imageSource: "",
     price: 0,
-    quantity: 0,
+    quantity: 1,
     isAvailable: true,
     isAdvertised: false,
 })

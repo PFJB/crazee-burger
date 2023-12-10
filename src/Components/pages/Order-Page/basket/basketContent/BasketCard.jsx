@@ -1,17 +1,16 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme/theme";
 
-export default function BasketCard() {
+export default function BasketCard({ title, price, imageSource, quantity }) {
     return (
         <BasketCardStyled>
-
-            <div className="pic"><img src="http://localhost:5173/images/burger-bacon-egg.png" alt="" /></div>
+            <div className="pic"><img src={imageSource} alt={title} /></div>
             <div className="info">
                 <div className="description">
-                    <p className="title">burger</p>
-                    <p className="price">00.00 $</p>
+                    <p className="title">{title}</p>
+                    <p className="price">{price}</p>
                 </div>
-                <p className="qte">x 5</p>
+                <p className="qte">x {quantity}</p>
             </div>
         </BasketCardStyled>
     )
@@ -21,7 +20,8 @@ const BasketCardStyled = styled.div`
 
 display: grid;
 grid-template-columns: 1fr 2.5fr;
-height: 86px;
+grid-template-rows: 86px;
+height: 100%;
 width: 100%;
 padding:8px 16px ;
 box-shadow: -4px 4px 15px 0px #00000033;
@@ -29,10 +29,6 @@ border-radius: ${theme.borderRadius.round};
 background-color: #FFFFFF;
 
 .pic {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     img {
         width: 100%;
         height: 100%;  
@@ -62,14 +58,20 @@ background-color: #FFFFFF;
             font-size: ${theme.fonts.size.P3};
             overflow-x: hidden;
             text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .price {
+            overflow-x: hidden;
+            text-overflow: ellipsis;
         }
     }
+
+
 
     .qte{
         display: flex;
         align-items: center;
         justify-content: center;
-
     }
 }
 

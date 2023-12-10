@@ -10,12 +10,13 @@ export default function BasketContent() {
 
     return (
         <BasketContentStyled>
-            <BasketProduct />
+            {basketData.length !== 0 ? <BasketProduct /> : <BasketContentEmpty />}
+
         </BasketContentStyled>
     )
 }
-//{basketData.length !== 0 ? <BasketProduct /> : <BasketContentEmpty />}
 const BasketContentStyled = styled.div`
-flex: 1;
+height: 100%;
+overflow-y: scroll;
 
 `;
