@@ -6,11 +6,11 @@ import BasketProduct from "./basketContent/BasketProducts";
 
 export default function BasketContent() {
 
-    const { basketData } = useContext(OrderContext)
+    const { basketData, menuData } = useContext(OrderContext)
 
     return (
         <BasketContentStyled>
-            {basketData.length !== 0 ? <BasketProduct /> : <BasketContentEmpty />}
+            {menuData.length !== 0 ? <BasketProduct /> : <BasketContentEmpty />}
 
         </BasketContentStyled>
     )

@@ -4,16 +4,19 @@ import { useContext } from 'react';
 import OrderContext from '../../../../../context/OrderContext';
 import { checkIfSelected } from './helpers.jsx'
 import { EMPTY_PRODUCT } from '../../../../../enums/product.jsx';
+import { deepCopyArray } from '../../../../../utils/arrays.js';
 
 export default function MenuContent() {
   const { menuData, handleCardDelete,
     setProductSelected, productSelected,
     IsAdminOn, SetIsCollapse, setTabSelected,
-    titleEditRef, addToBasket, deleteToBasket } = useContext(OrderContext)
+    titleEditRef, addToBasket, deleteToBasket, addMenudd } = useContext(OrderContext)
 
   const handleClick = async (id) => {
-    let selected = menuData.find((product) => product.id === id)
-    selected = selected === productSelected ? EMPTY_PRODUCT : selected;
+    let index = menuData.findIndex((product) => product.id === id)
+    let selected = menuData[index]
+
+    const test = deepCopyArray(selected)
     await SetIsCollapse(true)
     await setTabSelected("mod")
     await setProductSelected(selected)
@@ -44,9 +47,13 @@ export default function MenuContent() {
           imgSource={imageSource}
           handleDelete={(event) => { handleDelete(event, id) }}
           handleClick={() => IsAdminOn && handleClick(id)}
+
           isHoverable={IsAdminOn}
           isSelected={checkIfSelected(id, productSelected.id)}
-          handleAddToCard={(event) => handleAddToBasket(event, id)}
+          handleAddToCard={(event) => {
+            event.stopPropagation()
+            addMenudd(id)
+          }}
         />
       })}
     </MenuContentStyled>

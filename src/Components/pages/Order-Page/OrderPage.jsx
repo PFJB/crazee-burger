@@ -18,7 +18,7 @@ export default function OrderPage() {
   const [IsAdminOn, setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
   const titleEditRef = useRef()
-  const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu } = useMenu()
+  const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, addMenudd } = useMenu()
 
   const { basketData, addToBasket, handleEditBasket, deleteToBasket } = useBasket()
 
@@ -29,7 +29,7 @@ export default function OrderPage() {
     handleAdd, newProduct,
     setNewProduct, handleCardDelete, basketData,
     productSelected, setProductSelected, handleEdit, titleEditRef,
-    addToBasket, handleEditBasket, deleteToBasket
+    addToBasket, handleEditBasket, deleteToBasket, addMenudd
   }
 
   return (

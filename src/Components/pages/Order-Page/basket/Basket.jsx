@@ -9,12 +9,12 @@ import OrderContext from '../../../../context/OrderContext';
 
 export default function Basket() {
 
-    const { basketData } = useContext(OrderContext)
+    const { basketData, menuData } = useContext(OrderContext)
 
 
     const calculateTotalPrice = () => {
         let total = 0;
-        basketData.map((product) => {
+        menuData.map((product) => {
             if (!isNaN(product.price)) {
                 total = total + (product.price * product.quantity)
             }

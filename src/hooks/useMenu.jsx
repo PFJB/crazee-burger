@@ -31,5 +31,12 @@ export const useMenu = () => {
     }
 
 
-    return { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu }
+    const addMenudd = (id) => {
+        const test = deepCopyArray(menuData)
+        const index = test.findIndex((product) => product.id === id)
+        test[index].quantity += 1;
+        setMenuData(test)
+    }
+
+    return { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, addMenudd }
 }

@@ -21,11 +21,13 @@ const OrderContext = createContext({
 
     titleEditRef: {},
     basketData: [],
+    menuData: [],
 
     addToBasket: () => { },
     deleteToBasket: () => { },
 
     handleEditBasket: () => { },
+    addMenudd: () => { },
 });
 
 export default OrderContext
