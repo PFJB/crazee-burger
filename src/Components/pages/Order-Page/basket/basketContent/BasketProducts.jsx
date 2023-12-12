@@ -14,7 +14,6 @@ export default function BasketProducts() {
         event.stopPropagation()
         deleteToBasket(idToDelete)
         if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
-
     }
 
     const onClick = (idBasketCardClicked) => {
