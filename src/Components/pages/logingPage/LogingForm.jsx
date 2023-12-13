@@ -6,6 +6,7 @@ import { theme } from "../../../theme/theme";
 import { FaChevronRight } from "react-icons/fa";
 import TextInput from "../../reusable-ui/textInput/TextInput";
 import ButtonIcone from "../../reusable-ui/button/ButtonIcone";
+import { addUser, getUsers } from "../../../api/user";
 
 export default function LogingForm() {
 
@@ -14,12 +15,19 @@ export default function LogingForm() {
     const navigate = useNavigate();
 
     // comportements
-    const handleClick = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+        // const test = getUsers(input).then((x) => { return (x) })
+        // const isUsers = async () => {
+        //     const i = await test;
+        //     if (i === -1) {
+        //         addUser(input)
+        //     }
+        // }
+        // await isUsers()
         navigate(`order/${input}`);
         setInput("");
     }
-
     const handleChange = (event) => { setInput(event.target.value); }
 
     const onBlur = (e) => { e.target.placeholder = "Entrez votre prénom" };
@@ -27,7 +35,7 @@ export default function LogingForm() {
 
     // affichage
     return (
-        <LogingFormStyled action="submit" onSubmit={handleClick}>
+        <LogingFormStyled action="submit" onSubmit={handleSubmit}>
             <h1>Bienvenue chez nous !</h1>
             <hr />
             <h2>Connectez-vous</h2>

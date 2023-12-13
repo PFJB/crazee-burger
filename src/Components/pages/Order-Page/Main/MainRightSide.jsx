@@ -6,11 +6,19 @@ import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext.jsx";
 import EmptyMenu from "./emptyContent/EmptyMenu.jsx";
 import EmptyMenuUsers from "./emptyContent/EmptyMenuUsers.jsx";
+import PendingMessage from "./emptyContent/PendingMessage.jsx";
 
 
 export default function MainRightSide() {
 
-    const { IsAdminOn, menuData } = useContext(OrderContext)
+    const { IsAdminOn, menuData, pending } = useContext(OrderContext)
+
+    // if (pending) {
+    //     return (<MainRightSideStyled>
+    //         <PendingMessage />
+    //     </MainRightSideStyled>)
+    // }
+
 
     return (
         <MainRightSideStyled>

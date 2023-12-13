@@ -26,6 +26,7 @@ const OrderContext = createContext({
     deleteToBasket: () => { },
 
     handleEditBasket: () => { },
+    pending: false
 });
 
 export default OrderContext

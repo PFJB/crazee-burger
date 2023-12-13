@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { deepCopyArray } from "../utils/arrays"
 
-export const useBasket = () => {
+export const useBasket = (userName) => {
 
     const [basketData, setBasketData] = useState([])
 

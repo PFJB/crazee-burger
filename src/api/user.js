@@ -5,10 +5,11 @@ import { fakeMenu2 } from "../assets/fakeData/fakeMenu"
 export const getUsers = async (idUser) => {
     const docRef = doc(db, "users", idUser)
     const docSnapshot = await getDoc(docRef)
-    if (docSnapshot.exist()) {
+    if (docSnapshot.exists()) {
         const userReceived = docSnapshot.data()
         return userReceived
     }
+    return -1;
 }
 
 export const addUser = (userName) => {
@@ -16,6 +17,15 @@ export const addUser = (userName) => {
     const newDoc = {
         username: userName,
         menu: fakeMenu2,
+    }
+    setDoc(docRef, newDoc)
+}
+
+export const editUserData = (userName, newMenu) => {
+    const docRef = doc(db, "users", userName)
+    const newDoc = {
+        username: userName,
+        menu: newMenu,
     }
     setDoc(docRef, newDoc)
 }

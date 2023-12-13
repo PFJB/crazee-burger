@@ -8,6 +8,8 @@ import AddContent from "./PanelAdmin/panelContent/AddContent";
 import { useMenu } from "../../../hooks/useMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useBasket } from "../../../hooks/useBasket";
+import { json, useParams } from "react-router-dom";
+import { getUsers } from "../../../api/user";
 
 export default function OrderPage() {
 
@@ -18,10 +20,14 @@ export default function OrderPage() {
   const [IsAdminOn, setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
   const titleEditRef = useRef()
-  const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu } = useMenu()
 
-  const { basketData, addToBasket, handleEditBasket, deleteToBasket } = useBasket()
+  const { basketData, addToBasket, handleEditBasket, deleteToBasket, setBasketData } = useBasket()
 
+  const [pending, SetPending] = useState(true)
+
+
+  const { userName } = useParams();
+  const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, setMenuData } = useMenu(userName)
   const orderContext = {
     IsAdminOn, setIsAdminOn, tabSelected,
     setTabSelected, isCollapse, SetIsCollapse,
@@ -29,9 +35,30 @@ export default function OrderPage() {
     handleAdd, newProduct,
     setNewProduct, handleCardDelete, basketData,
     productSelected, setProductSelected, handleEdit, titleEditRef,
-    addToBasket, handleEditBasket, deleteToBasket
+    addToBasket, handleEditBasket, deleteToBasket, pending,
   }
+  ////////////////////////////////////////
 
+  // const test = async (menu) => {
+  //   if (menu.length === 0) {
+  //     await getUsers(userName)
+  //       .then(async (e) => {
+  //         SetPending(false)
+  //         setMenuData(e.menu)
+
+  //       })
+
+  //   // }
+  // }
+
+  // test(menuData)
+
+
+  //const userBasketLocalStorage = window.localStorage.getItem(userName)
+
+
+
+  ////////////////////////////////////
   return (
     <OrderContext.Provider value={orderContext}>
       <OrderPagestyled>
