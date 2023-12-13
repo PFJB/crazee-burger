@@ -25,7 +25,6 @@ export default function OrderPage() {
 
   const [pending, SetPending] = useState(true)
 
-
   const { userName } = useParams();
   const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, setMenuData } = useMenu(userName)
   const orderContext = {
@@ -37,28 +36,15 @@ export default function OrderPage() {
     productSelected, setProductSelected, handleEdit, titleEditRef,
     addToBasket, handleEditBasket, deleteToBasket, pending,
   }
-  ////////////////////////////////////////
-
-  // const test = async (menu) => {
-  //   if (menu.length === 0) {
-  //     await getUsers(userName)
-  //       .then(async (e) => {
-  //         SetPending(false)
-  //         setMenuData(e.menu)
-
-  //       })
-
-  //   // }
-  // }
-
-  // test(menuData)
 
 
-  //const userBasketLocalStorage = window.localStorage.getItem(userName)
+  getUsers(userName)
+    .then((e) => {
+      SetPending(false)
+      setMenuData(e.menu)
+    })
 
 
-
-  ////////////////////////////////////
   return (
     <OrderContext.Provider value={orderContext}>
       <OrderPagestyled>

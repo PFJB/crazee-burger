@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { deepCopyArray } from "../utils/arrays"
 
-export const useBasket = (userName) => {
+export const useBasket = () => {
 
     const [basketData, setBasketData] = useState([])
 
@@ -27,10 +27,12 @@ export const useBasket = (userName) => {
     const handleEditBasket = (productToEdit) => {
         let copyBasketContent = deepCopyArray(basketData)
         const indexToEdit = copyBasketContent.findIndex((product) => product.id === productToEdit.id)
-        copyBasketContent[indexToEdit].title = productToEdit.title
-        copyBasketContent[indexToEdit].imageSource = productToEdit.imageSource
-        copyBasketContent[indexToEdit].price = productToEdit.price
-        setBasketData(copyBasketContent)
+        if (indexToEdit !== -1) {
+            copyBasketContent[indexToEdit].title = productToEdit.title
+            copyBasketContent[indexToEdit].imageSource = productToEdit.imageSource
+            copyBasketContent[indexToEdit].price = productToEdit.price
+            setBasketData(copyBasketContent)
+        }
     }
 
     return { basketData, setBasketData, addToBasket, deleteToBasket, handleEditBasket }

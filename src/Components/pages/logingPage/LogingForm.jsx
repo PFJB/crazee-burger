@@ -17,14 +17,14 @@ export default function LogingForm() {
     // comportements
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // const test = getUsers(input).then((x) => { return (x) })
-        // const isUsers = async () => {
-        //     const i = await test;
-        //     if (i === -1) {
-        //         addUser(input)
-        //     }
-        // }
-        // await isUsers()
+        const test = getUsers(input).then((x) => { return (x) })
+        const isUsers = async () => {
+            const i = await test;
+            if (i === -1) {
+                addUser(input)
+            }
+        }
+        await isUsers()
         navigate(`order/${input}`);
         setInput("");
     }

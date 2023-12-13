@@ -13,16 +13,16 @@ export default function MainRightSide() {
 
     const { IsAdminOn, menuData, pending } = useContext(OrderContext)
 
-    // if (pending) {
-    //     return (<MainRightSideStyled>
-    //         <PendingMessage />
-    //     </MainRightSideStyled>)
-    // }
+    if (pending) {
+        return (<MainRightSideStyled>
+            <PendingMessage />
+        </MainRightSideStyled>)
+    }
 
 
     return (
         <MainRightSideStyled>
-            {menuData.length !== 0 ? <MenuContent /> : IsAdminOn ? <EmptyMenu /> : <EmptyMenuUsers />}
+            {menuData.length !== 0 && !pending ? <MenuContent /> : IsAdminOn ? <EmptyMenu /> : <EmptyMenuUsers />}
             {IsAdminOn && <PanelAdmin />}
         </MainRightSideStyled>
     )
