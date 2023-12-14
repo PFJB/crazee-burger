@@ -9,7 +9,6 @@ import { useMenu } from "../../../hooks/useMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router-dom";
-import { getUsers } from "../../../api/user";
 import { getMenu } from "../../../api/product";
 
 export default function OrderPage() {
@@ -20,7 +19,6 @@ export default function OrderPage() {
   const [IsAdminOn, setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
   const titleEditRef = useRef()
-  const [pending, SetPending] = useState(true)
   const { userName } = useParams();
 
   console.log(userName)
@@ -35,13 +33,12 @@ export default function OrderPage() {
     handleAdd, newProduct,
     setNewProduct, handleCardDelete, basketData,
     productSelected, setProductSelected, handleEdit, titleEditRef,
-    addToBasket, handleEditBasket, deleteToBasket, pending,
+    addToBasket, handleEditBasket, deleteToBasket,
   }
 
   const initializeMenu = async () => {
     const menuReceived = await getMenu(userName)
     setMenuData(menuReceived)
-    SetPending(false)
   }
 
   useEffect(() => {

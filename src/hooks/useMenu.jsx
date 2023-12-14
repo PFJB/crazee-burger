@@ -1,11 +1,10 @@
 import { useState } from "react"
-import { fakeMenu2 } from "../assets/fakeData/fakeMenu"
 import { deepCopyArray } from "../utils/arrays"
-import { editUserData, getUsers } from "../api/user"
+import { editUserData } from "../api/user"
 
 export const useMenu = (userName) => {
 
-    const [menuData, setMenuData] = useState([])
+    const [menuData, setMenuData] = useState(undefined)
 
     const handleAdd = (newProduct) => {
         const copyMenu = deepCopyArray(menuData)

@@ -11,9 +11,9 @@ import PendingMessage from "./emptyContent/PendingMessage.jsx";
 
 export default function MainRightSide() {
 
-    const { IsAdminOn, menuData, pending } = useContext(OrderContext)
+    const { IsAdminOn, menuData } = useContext(OrderContext)
 
-    if (pending) {
+    if (!menuData) {
         return (<MainRightSideStyled>
             <PendingMessage />
         </MainRightSideStyled>)
@@ -22,7 +22,7 @@ export default function MainRightSide() {
 
     return (
         <MainRightSideStyled>
-            {menuData.length !== 0 && !pending ? <MenuContent /> : IsAdminOn ? <EmptyMenu /> : <EmptyMenuUsers />}
+            {menuData.length !== 0 ? <MenuContent /> : IsAdminOn ? <EmptyMenu /> : <EmptyMenuUsers />}
             {IsAdminOn && <PanelAdmin />}
         </MainRightSideStyled>
     )
