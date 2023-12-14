@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import { theme } from "../../../theme/theme";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import AddContent from "./PanelAdmin/panelContent/AddContent";
 import { useMenu } from "../../../hooks/useMenu";
@@ -10,9 +10,9 @@ import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router-dom";
 import { getUsers } from "../../../api/user";
+import { getMenu } from "../../../api/product";
 
 export default function OrderPage() {
-  const { userName } = useParams();
   const [newProduct, setNewProduct] = useState({ ...EMPTY_PRODUCT, id: new Date().getTime() })
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const [tabSelected, setTabSelected] = useState("add");
@@ -20,11 +20,14 @@ export default function OrderPage() {
   const [IsAdminOn, setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
   const titleEditRef = useRef()
+  const [pending, SetPending] = useState(true)
+  const { userName } = useParams();
 
+  console.log(userName)
   const { basketData, addToBasket, handleEditBasket, deleteToBasket } = useBasket(userName)
 
 
-  const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, pending } = useMenu(userName)
+  const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, setMenuData } = useMenu(userName)
   const orderContext = {
     IsAdminOn, setIsAdminOn, tabSelected,
     setTabSelected, isCollapse, SetIsCollapse,
@@ -35,6 +38,15 @@ export default function OrderPage() {
     addToBasket, handleEditBasket, deleteToBasket, pending,
   }
 
+  const initializeMenu = async () => {
+    const menuReceived = await getMenu(userName)
+    setMenuData(menuReceived)
+    SetPending(false)
+  }
+
+  useEffect(() => {
+    initializeMenu()
+  }, [])
 
 
   return (

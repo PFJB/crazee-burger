@@ -12,29 +12,29 @@ export const getUsers = async (idUser) => {
 
 }
 
-export const addUser = (idUser) => {
-    const docRef = doc(db, "users", idUser)
+export const addUser = (userName) => {
+    const docRef = doc(db, "users", userName)
     const newDoc = {
-        username: idUser,
+        username: userName,
         menu: fakeMenu2,
     }
     setDoc(docRef, newDoc)
 }
 
-export const editUserData = (idUser, newMenu) => {
-    const docRef = doc(db, "users", idUser)
+export const editUserData = (userName, newMenu) => {
+    const docRef = doc(db, "users", userName)
     const newDoc = {
-        username: idUser,
+        username: userName,
         menu: newMenu,
     }
     setDoc(docRef, newDoc)
 }
 
-export const authenticateUsers = async (idUser) => {
-    const existingUser = await getUsers(idUser)
+export const authenticateUsers = async (username) => {
+    const existingUser = await getUsers(username)
 
     if (!existingUser) {
-        addUser(idUser)
+        addUser(username)
     }
 }
 
