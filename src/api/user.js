@@ -9,23 +9,32 @@ export const getUsers = async (idUser) => {
         const userReceived = docSnapshot.data()
         return userReceived
     }
-    return -1;
+
 }
 
-export const addUser = (userName) => {
-    const docRef = doc(db, "users", userName)
+export const addUser = (idUser) => {
+    const docRef = doc(db, "users", idUser)
     const newDoc = {
-        username: userName,
+        username: idUser,
         menu: fakeMenu2,
     }
     setDoc(docRef, newDoc)
 }
 
-export const editUserData = (userName, newMenu) => {
-    const docRef = doc(db, "users", userName)
+export const editUserData = (idUser, newMenu) => {
+    const docRef = doc(db, "users", idUser)
     const newDoc = {
-        username: userName,
+        username: idUser,
         menu: newMenu,
     }
     setDoc(docRef, newDoc)
 }
+
+export const authenticateUsers = async (idUser) => {
+    const existingUser = await getUsers(idUser)
+
+    if (!existingUser) {
+        addUser(idUser)
+    }
+}
+

@@ -5,7 +5,18 @@ import { editUserData, getUsers } from "../api/user"
 
 export const useMenu = (userName) => {
 
-    const [menuData, setMenuData] = useState({})
+    const [menuData, setMenuData] = useState([])
+    const [pending, SetPending] = useState(true)
+
+
+
+
+    getUsers(userName)
+        .then((e) => {
+            SetPending(false)
+            setMenuData(e.menu)
+        })
+
 
     const handleAdd = (newProduct) => {
         const copyMenu = deepCopyArray(menuData)
@@ -36,5 +47,5 @@ export const useMenu = (userName) => {
     }
 
 
-    return { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, setMenuData }
+    return { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, setMenuData, pending }
 }

@@ -8,11 +8,11 @@ import AddContent from "./PanelAdmin/panelContent/AddContent";
 import { useMenu } from "../../../hooks/useMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useBasket } from "../../../hooks/useBasket";
-import { json, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getUsers } from "../../../api/user";
 
 export default function OrderPage() {
-
+  const { userName } = useParams();
   const [newProduct, setNewProduct] = useState({ ...EMPTY_PRODUCT, id: new Date().getTime() })
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const [tabSelected, setTabSelected] = useState("add");
@@ -21,12 +21,10 @@ export default function OrderPage() {
   const [isCollapse, SetIsCollapse] = useState(false)
   const titleEditRef = useRef()
 
-  const { basketData, addToBasket, handleEditBasket, deleteToBasket, setBasketData } = useBasket()
+  const { basketData, addToBasket, handleEditBasket, deleteToBasket } = useBasket(userName)
 
-  const [pending, SetPending] = useState(true)
 
-  const { userName } = useParams();
-  const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, setMenuData } = useMenu(userName)
+  const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, pending } = useMenu(userName)
   const orderContext = {
     IsAdminOn, setIsAdminOn, tabSelected,
     setTabSelected, isCollapse, SetIsCollapse,
@@ -37,12 +35,6 @@ export default function OrderPage() {
     addToBasket, handleEditBasket, deleteToBasket, pending,
   }
 
-
-  getUsers(userName)
-    .then((e) => {
-      SetPending(false)
-      setMenuData(e.menu)
-    })
 
 
   return (

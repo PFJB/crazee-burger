@@ -6,29 +6,22 @@ import { theme } from "../../../theme/theme";
 import { FaChevronRight } from "react-icons/fa";
 import TextInput from "../../reusable-ui/textInput/TextInput";
 import ButtonIcone from "../../reusable-ui/button/ButtonIcone";
-import { addUser, getUsers } from "../../../api/user";
+import { authenticateUsers } from "../../../api/user";
 
 export default function LogingForm() {
 
     // state
-    const [input, setInput] = useState("");
+    const [username, setUsername] = useState("");
     const navigate = useNavigate();
 
     // comportements
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const test = getUsers(input).then((x) => { return (x) })
-        const isUsers = async () => {
-            const i = await test;
-            if (i === -1) {
-                addUser(input)
-            }
-        }
-        await isUsers()
-        navigate(`order/${input}`);
-        setInput("");
+        await authenticateUsers(username)
+        navigate(`order/${username}`);
+        setUsername("");
     }
-    const handleChange = (event) => { setInput(event.target.value); }
+    const handleChange = (event) => { setUsername(event.target.value); }
 
     const onBlur = (e) => { e.target.placeholder = "Entrez votre prénom" };
     const onFocus = (e) => { e.target.placeholder = '' };
@@ -40,7 +33,7 @@ export default function LogingForm() {
             <hr />
             <h2>Connectez-vous</h2>
             <TextInput
-                value={input}
+                value={username}
                 IconeBeforeInput={<FaCircleUser />}
                 onChange={handleChange}
                 placeholder="Entrez votre prénom"
