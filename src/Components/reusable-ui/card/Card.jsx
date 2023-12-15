@@ -3,17 +3,15 @@ import ButtonIcone from "../button/ButtonIcone";
 import { theme } from "../../../theme/theme";
 import { formatPrice } from "../../../utils/maths";
 import { TiDelete } from "react-icons/ti";
-const IMAGE_by_default = "/images/coming-soon.png"
+import { IMAGE_COMING_SOON } from "../../../enums/product";
 
-export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected }) {
-
-    const AddToCart = (event) => { event.stopPropagation() }
+export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard }) {
 
     return (
         <CardStyled onClick={handleClick} $isHoverable={isHoverable} $isSelected={isSelected}>
             <div className="card" >
                 {isHoverable && <button onClick={handleDelete} className="delete"><TiDelete size={40} /></button>}
-                <div className="picture">{<img src={imgSource ? imgSource : IMAGE_by_default} alt={title} />}</div>
+                <div className="picture">{<img src={imgSource ? imgSource : IMAGE_COMING_SOON} alt={title} />}</div>
                 <div className="title">{title}</div>
                 <div className="priceAdd">
                     <p className="price">{formatPrice(price)}</p>
@@ -21,7 +19,7 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
                         className="versionNormalSmaller"
                         label={"Ajouter"}
                         version="normal"
-                        onClick={AddToCart}
+                        onClick={handleAddToCard}
                     />
                 </div>
             </div>

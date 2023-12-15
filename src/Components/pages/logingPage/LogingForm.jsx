@@ -6,33 +6,34 @@ import { theme } from "../../../theme/theme";
 import { FaChevronRight } from "react-icons/fa";
 import TextInput from "../../reusable-ui/textInput/TextInput";
 import ButtonIcone from "../../reusable-ui/button/ButtonIcone";
+import { authenticateUsers } from "../../../api/user";
 
 export default function LogingForm() {
 
     // state
-    const [input, setInput] = useState("");
+    const [username, setUsername] = useState("");
     const navigate = useNavigate();
 
     // comportements
-    const handleClick = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        navigate(`order/${input}`);
-        setInput("");
+        await authenticateUsers(username)
+        navigate(`order/${username}`);
+        setUsername("");
     }
-
-    const handleChange = (event) => { setInput(event.target.value); }
+    const handleChange = (event) => { setUsername(event.target.value); }
 
     const onBlur = (e) => { e.target.placeholder = "Entrez votre prénom" };
     const onFocus = (e) => { e.target.placeholder = '' };
 
     // affichage
     return (
-        <LogingFormStyled action="submit" onSubmit={handleClick}>
+        <LogingFormStyled action="submit" onSubmit={handleSubmit}>
             <h1>Bienvenue chez nous !</h1>
             <hr />
             <h2>Connectez-vous</h2>
             <TextInput
-                value={input}
+                value={username}
                 IconeBeforeInput={<FaCircleUser />}
                 onChange={handleChange}
                 placeholder="Entrez votre prénom"

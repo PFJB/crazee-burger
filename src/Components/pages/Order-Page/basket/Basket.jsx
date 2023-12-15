@@ -4,11 +4,17 @@ import HeaderBasket from './HeaderBasket';
 import FooterBasket from './FooterBasket';
 import BasketContent from './BasketContent';
 import { formatPrice } from '../../../../utils/maths';
+import { useContext } from 'react';
+import OrderContext from '../../../../context/OrderContext';
+import { calculateTotalPrice } from './basketContent/helpers';
 
 export default function Basket() {
+
+    const { basketData, menuData } = useContext(OrderContext)
+
     return (
         <BasketStyled>
-            <HeaderBasket amountToPay={formatPrice(55)} />
+            <HeaderBasket amountToPay={menuData ? formatPrice(calculateTotalPrice(basketData, menuData)) : formatPrice(0)} />
             <BasketContent />
             <FooterBasket />
         </BasketStyled>

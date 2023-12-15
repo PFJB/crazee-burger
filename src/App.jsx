@@ -3,13 +3,13 @@ import HomePage from "./Components/pages/logingPage/HomePage";
 import ErrorPage from "./Components/pages/ErrorPage/ErrorPage";
 import OrderPage from "./Components/pages/Order-Page/OrderPage";
 
-function App(){
+function App() {
   return (
-  <Routes>
-    <Route path="/" element={<HomePage />} />
-    <Route path="/order/:userName" element={<OrderPage />} />
-    <Route path="*" element={<ErrorPage />} />
-  </ Routes>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/order/:userName" element={<OrderPage />} />
+      <Route path="*" element={<ErrorPage />} />
+    </ Routes>
   )
 }
 

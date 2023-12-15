@@ -2,14 +2,16 @@ import styled from "styled-components";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import { theme } from "../../../theme/theme";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext";
 import AddContent from "./PanelAdmin/panelContent/AddContent";
 import { useMenu } from "../../../hooks/useMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
+import { useBasket } from "../../../hooks/useBasket";
+import { useParams } from "react-router-dom";
+import { initializeUserSession } from "./helpers";
 
 export default function OrderPage() {
-
   const [newProduct, setNewProduct] = useState({ ...EMPTY_PRODUCT, id: new Date().getTime() })
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const [tabSelected, setTabSelected] = useState("add");
@@ -17,16 +19,24 @@ export default function OrderPage() {
   const [IsAdminOn, setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(false)
   const titleEditRef = useRef()
-  const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu } = useMenu()
+  const { userName } = useParams();
+
+  const { basketData, addToBasket, deleteToBasket, setBasketData } = useBasket(userName)
+  const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, setMenuData } = useMenu(userName)
 
   const orderContext = {
     IsAdminOn, setIsAdminOn, tabSelected,
     setTabSelected, isCollapse, SetIsCollapse,
     contentPanel, SetcontentPanel, menuData, resetMenu,
     handleAdd, newProduct,
-    setNewProduct, handleCardDelete,
-    productSelected, setProductSelected, handleEdit, titleEditRef
+    setNewProduct, handleCardDelete, basketData,
+    productSelected, setProductSelected, handleEdit, titleEditRef,
+    addToBasket, deleteToBasket, userName
   }
+
+  useEffect(() => {
+    initializeUserSession(userName, setMenuData, setBasketData)
+  }, [])
 
   return (
     <OrderContext.Provider value={orderContext}>
