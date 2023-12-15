@@ -3,8 +3,7 @@ import BasketCard from "./BasketCard";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { formatPrice } from "../../../../../utils/maths";
-const IMAGE_by_default = "/images/coming-soon.png"
-
+import { IMAGE_COMING_SOON } from "../../../../../enums/product";
 
 export default function BasketProducts() {
 
@@ -13,13 +12,13 @@ export default function BasketProducts() {
     const handleDeleteBasket = (event, idToDelete) => {
         event.stopPropagation()
         deleteToBasket(idToDelete, userName)
-        if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
+        if (titleEditRef.current) { titleEditRef.current.focus() }
     }
 
     const onClick = (idBasketCardClicked) => {
         const copyProductClickedBasket = basketData.find((product) => product.id === idBasketCardClicked)
         setProductSelected(copyProductClickedBasket)
-        if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
+        if (titleEditRef.current) { titleEditRef.current.focus() }
     }
 
     return (
@@ -30,7 +29,7 @@ export default function BasketProducts() {
                         key={id}
                         title={title}
                         price={formatPrice(price)}
-                        imageSource={imageSource ? imageSource : IMAGE_by_default}
+                        imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
                         handleDelete={(event) => handleDeleteBasket(event, id)}
                         quantity={quantity}
                         onClick={IsAdminOn ? () => onClick(id) : null}

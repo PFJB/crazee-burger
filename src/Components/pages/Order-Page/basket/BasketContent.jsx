@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import BasketContentEmpty from "./basketContent/BasketContentEmpty";
+import BasketEmptyMessage from "./basketContent/BasketEmptyMessage";
 import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext";
 import BasketProduct from "./basketContent/BasketProducts";
+import { isEmpty } from "../../../../utils/arrays";
 
 export default function BasketContent() {
 
@@ -10,12 +11,11 @@ export default function BasketContent() {
 
     return (
         <BasketContentStyled>
-            {basketData.length !== 0 ? <BasketProduct /> : <BasketContentEmpty isLoading={!menuData} />}
+            {isEmpty(basketData) ? <BasketEmptyMessage isLoading={!menuData} /> : <BasketProduct />}
         </BasketContentStyled>
     )
 }
 const BasketContentStyled = styled.div`
-height: 100%;
-overflow-y: scroll;
-
+    height: 100%;
+    overflow-y: scroll;
 `;

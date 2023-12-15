@@ -6,27 +6,15 @@ import BasketContent from './BasketContent';
 import { formatPrice } from '../../../../utils/maths';
 import { useContext } from 'react';
 import OrderContext from '../../../../context/OrderContext';
+import { calculateTotalPrice } from './basketContent/helpers';
 
 export default function Basket() {
 
     const { basketData, menuData } = useContext(OrderContext)
 
-
-    const calculateTotalPrice = () => {
-        let total = 0;
-        basketData.map((product) => {
-            if (!isNaN(product.price)) {
-                total = total + (product.price * product.quantity)
-            }
-        })
-        return (total)
-    }
-
-
-
     return (
         <BasketStyled>
-            <HeaderBasket amountToPay={menuData ? formatPrice(calculateTotalPrice()) : formatPrice(0)} />
+            <HeaderBasket amountToPay={menuData ? calculateTotalPrice(basketData) : formatPrice(0)} />
             <BasketContent />
             <FooterBasket />
         </BasketStyled>

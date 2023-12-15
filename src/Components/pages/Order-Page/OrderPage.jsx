@@ -9,8 +9,6 @@ import { useMenu } from "../../../hooks/useMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router-dom";
-import { getMenu } from "../../../api/product";
-import { getLocalStorage } from "../../../utils/window";
 import { initializeUserSession } from "./helpers";
 
 export default function OrderPage() {

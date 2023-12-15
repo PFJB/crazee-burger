@@ -7,6 +7,7 @@ import OrderContext from "../../../../context/OrderContext.jsx";
 import EmptyMenu from "./emptyContent/EmptyMenu.jsx";
 import EmptyMenuUsers from "./emptyContent/EmptyMenuUsers.jsx";
 import PendingMessage from "./emptyContent/PendingMessage.jsx";
+import { isEmpty } from "../../../../utils/arrays.js";
 
 
 export default function MainRightSide() {
@@ -14,15 +15,16 @@ export default function MainRightSide() {
     const { IsAdminOn, menuData } = useContext(OrderContext)
 
     if (!menuData) {
-        return (<MainRightSideStyled>
-            <PendingMessage />
-        </MainRightSideStyled>)
+        return (
+            <MainRightSideStyled>
+                <PendingMessage />
+            </MainRightSideStyled>
+        )
     }
-
 
     return (
         <MainRightSideStyled>
-            {menuData.length !== 0 ? <MenuContent /> : IsAdminOn ? <EmptyMenu /> : <EmptyMenuUsers />}
+            {!isEmpty(menuData) ? <MenuContent /> : IsAdminOn ? <EmptyMenu /> : <EmptyMenuUsers />}
             {IsAdminOn && <PanelAdmin />}
         </MainRightSideStyled>
     )

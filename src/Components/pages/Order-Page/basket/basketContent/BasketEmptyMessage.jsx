@@ -2,16 +2,16 @@ import styled from "styled-components";
 import { theme } from "../../../../../theme/theme";
 import { BASKET_MESSAGE } from "../../../../../enums/product";
 
-export default function BasketContentEmpty({ isLoading }) {
+export default function BasketEmptyMessage({ isLoading }) {
 
     return (
-        <BasketContentEmptyStyled>
+        <BasketEmptyMessageStyled>
             {isLoading ? BASKET_MESSAGE.LOADING : BASKET_MESSAGE.EMPTY}
-        </BasketContentEmptyStyled>
+        </BasketEmptyMessageStyled>
     )
 }
 
-const BasketContentEmptyStyled = styled.p`
+const BasketEmptyMessageStyled = styled.p`
     display: flex;
     align-items: center;
     justify-content: center;

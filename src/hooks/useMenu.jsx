@@ -31,9 +31,7 @@ export const useMenu = (userName) => {
     const resetMenu = (menuToReset) => {
         setMenuData(menuToReset)
         editUserData(userName, menuToReset)
-
     }
-
 
     return { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, setMenuData }
 }
