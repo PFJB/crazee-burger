@@ -14,7 +14,7 @@ export default function Basket() {
 
     return (
         <BasketStyled>
-            <HeaderBasket amountToPay={menuData ? calculateTotalPrice(basketData) : formatPrice(0)} />
+            <HeaderBasket amountToPay={menuData ? formatPrice(calculateTotalPrice(basketData, menuData)) : formatPrice(0)} />
             <BasketContent />
             <FooterBasket />
         </BasketStyled>

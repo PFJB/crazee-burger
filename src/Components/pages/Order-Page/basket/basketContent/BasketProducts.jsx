@@ -4,10 +4,11 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { formatPrice } from "../../../../../utils/maths";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
+import { findObjectById } from "../../../../../utils/arrays";
 
 export default function BasketProducts() {
 
-    const { deleteToBasket, basketData, IsAdminOn, setProductSelected, titleEditRef, productSelected, userName } = useContext(OrderContext)
+    const { menuData, deleteToBasket, basketData, IsAdminOn, setProductSelected, titleEditRef, productSelected, userName } = useContext(OrderContext)
 
     const handleDeleteBasket = (event, idToDelete) => {
         event.stopPropagation()
@@ -16,25 +17,26 @@ export default function BasketProducts() {
     }
 
     const onClick = (idBasketCardClicked) => {
-        const copyProductClickedBasket = basketData.find((product) => product.id === idBasketCardClicked)
+        const copyProductClickedBasket = findObjectById(idBasketCardClicked, basketData)
         setProductSelected(copyProductClickedBasket)
         if (titleEditRef.current) { titleEditRef.current.focus() }
     }
 
     return (
         <BasketProductsStylend>
-            {basketData.map(({ id, title, price, imageSource, quantity }) => {
+            {basketData.map((product) => {
+                const cardData = findObjectById(product.id, menuData)
                 return (
                     <BasketCard
-                        key={id}
-                        title={title}
-                        price={formatPrice(price)}
-                        imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
-                        handleDelete={(event) => handleDeleteBasket(event, id)}
-                        quantity={quantity}
-                        onClick={IsAdminOn ? () => onClick(id) : null}
+                        key={cardData.id}
+                        title={cardData.title}
+                        price={formatPrice(cardData.price)}
+                        imageSource={cardData.imageSource ? cardData.imageSource : IMAGE_COMING_SOON}
+                        handleDelete={(event) => handleDeleteBasket(event, cardData.id)}
+                        quantity={product.quantity}
+                        onClick={IsAdminOn ? () => onClick(cardData.id) : null}
                         isAdminOn={IsAdminOn}
-                        isSelected={productSelected.id === id}
+                        isSelected={productSelected.id === cardData.id}
                     />
                 )
             })}

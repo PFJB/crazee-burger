@@ -31,7 +31,7 @@ export default function MenuContent() {
   async function handleAddToBasket(event, idCardToAdd) {
     event.stopPropagation()
     const selected = menuData.find((product) => product.id === idCardToAdd)
-    addToBasket(selected, userName)
+    addToBasket(selected.id, userName)
   }
 
   return (

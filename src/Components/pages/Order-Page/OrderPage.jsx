@@ -21,7 +21,7 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const { userName } = useParams();
 
-  const { basketData, addToBasket, handleEditBasket, deleteToBasket, setBasketData } = useBasket(userName)
+  const { basketData, addToBasket, deleteToBasket, setBasketData } = useBasket(userName)
   const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, setMenuData } = useMenu(userName)
 
   const orderContext = {
@@ -31,7 +31,7 @@ export default function OrderPage() {
     handleAdd, newProduct,
     setNewProduct, handleCardDelete, basketData,
     productSelected, setProductSelected, handleEdit, titleEditRef,
-    addToBasket, handleEditBasket, deleteToBasket, userName
+    addToBasket, deleteToBasket, userName
   }
 
   useEffect(() => {

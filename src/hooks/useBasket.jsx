@@ -1,46 +1,42 @@
 import { useState } from "react"
-import { deepCopyArray } from "../utils/arrays"
+import { deepCopyArray, findIndexById, findObjectById } from "../utils/arrays"
 import { setLocalStorage } from "../utils/window"
 
 export const useBasket = () => {
 
     const [basketData, setBasketData] = useState([])
 
-    const addToBasket = (productToAdd, username) => {
+    const addToBasket = (idProductToAdd, username) => {
+        const basketCopy = deepCopyArray(basketData)
+        const productAlreadyInBasket = findObjectById(idProductToAdd, basketCopy)
 
-        const copyBasketContent = deepCopyArray(basketData)
-        const isalreadyhere = copyBasketContent.find((product) => productToAdd.id === product.id)
-
-        if (!isalreadyhere) {
-            var copyUpdated = [deepCopyArray(productToAdd), ...copyBasketContent]
-            setBasketData(copyUpdated)
-            setLocalStorage(username, copyUpdated)
+        if (productAlreadyInBasket) {
+            incrementProductAlreadyInBasket(idProductToAdd, basketCopy, username)
             return
         }
-        isalreadyhere.quantity += 1;
-        setBasketData(copyBasketContent)
-        setLocalStorage(username, copyBasketContent)
 
+        createNewBasketProduct(idProductToAdd, basketCopy, setBasketData, username)
+    }
+
+    const incrementProductAlreadyInBasket = (idProductToAdd, basketCopy, username) => {
+        const indexOfBasketProductToIncrement = findIndexById(idProductToAdd, basketCopy)
+        basketCopy[indexOfBasketProductToIncrement].quantity += 1
+        setBasketData(basketCopy)
+        setLocalStorage(username, basketCopy)
+    }
+
+    const createNewBasketProduct = (idProductToAdd, basketCopy, setBasketData, username) => {
+        const newBasketProduct = { id: idProductToAdd, quantity: 1 }
+        const newBasket = [newBasketProduct, ...basketCopy]
+        setBasketData(newBasket)
+        setLocalStorage(username, newBasket)
     }
 
     const deleteToBasket = (productId, username) => {
         const copyUpdated = basketData.filter((product) => product.id !== productId)
         setBasketData(copyUpdated)
         setLocalStorage(username, copyUpdated)
-
     }
 
-    const handleEditBasket = (productToEdit, username) => {
-        let copyBasketContent = deepCopyArray(basketData)
-        const indexToEdit = copyBasketContent.findIndex((product) => product.id === productToEdit.id)
-        if (indexToEdit !== -1) {
-            copyBasketContent[indexToEdit].title = productToEdit.title
-            copyBasketContent[indexToEdit].imageSource = productToEdit.imageSource
-            copyBasketContent[indexToEdit].price = productToEdit.price
-            setBasketData(copyBasketContent)
-            setLocalStorage(username, copyBasketContent)
-        }
-    }
-
-    return { basketData, setBasketData, addToBasket, deleteToBasket, handleEditBasket }
+    return { basketData, setBasketData, addToBasket, deleteToBasket }
 }

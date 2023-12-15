@@ -32,12 +32,10 @@ border-radius: ${theme.borderRadius.round};
 background-color: #FFFFFF;
 overflow: hidden;
 
-.pic {
-    img {
-        width: 100%;
-        height: 100%;  
-        object-fit: contain;
-    }
+.pic > img {
+    width: 100%;
+    height: 100%;  
+    object-fit: contain;
 }
 
 .info{
@@ -107,9 +105,8 @@ ${({ $isSelected, $isAdminOn }) => $isSelected && $isAdminOn && selectedStyle}
 `;
 
 const getHoverable = css`
-
+    cursor: pointer;
     &:hover button{ display: flex; }
-
 `
 const selectedStyle = css`
 
@@ -117,5 +114,4 @@ const selectedStyle = css`
     .description .price, .qte {
         color: ${theme.colors.white}
     }
-
 `

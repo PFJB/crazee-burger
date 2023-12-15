@@ -6,15 +6,15 @@ import SavingMessage from "./SavingMessage"
 import { useDisplaySuccessMessage } from "../../../../../hooks/useDisplaySuccessMessage"
 
 export default function ModifyContent() {
-  const { productSelected, setProductSelected, handleEdit, titleEditRef, handleEditBasket, userName } = useContext(OrderContext)
+  const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext)
   const [valueOnFocus, setValueOnFocus] = useState()
   const { displaySuccessMessage, isSubmitted: isSaved } = useDisplaySuccessMessage()
+
   const handleChange = (event) => {
     const { name, value } = event.target
     const productOnChange = { ...productSelected, [name]: value }
     setProductSelected(productOnChange)
     handleEdit(productOnChange)
-    handleEditBasket(productOnChange, userName)
   }
 
   const handleOnFocus = (event) => {

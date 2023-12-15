@@ -25,7 +25,6 @@ const OrderContext = createContext({
     addToBasket: () => { },
     deleteToBasket: () => { },
 
-    handleEditBasket: () => { },
     userName: ""
 });
 
