@@ -10,6 +10,8 @@ import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router-dom";
 import { getMenu } from "../../../api/product";
+import { getLocalStorage } from "../../../utils/window";
+import { initializeUserSession } from "./helpers";
 
 export default function OrderPage() {
   const [newProduct, setNewProduct] = useState({ ...EMPTY_PRODUCT, id: new Date().getTime() })
@@ -21,11 +23,9 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const { userName } = useParams();
 
-  console.log(userName)
-  const { basketData, addToBasket, handleEditBasket, deleteToBasket } = useBasket(userName)
-
-
+  const { basketData, addToBasket, handleEditBasket, deleteToBasket, setBasketData } = useBasket(userName)
   const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, setMenuData } = useMenu(userName)
+
   const orderContext = {
     IsAdminOn, setIsAdminOn, tabSelected,
     setTabSelected, isCollapse, SetIsCollapse,
@@ -33,18 +33,12 @@ export default function OrderPage() {
     handleAdd, newProduct,
     setNewProduct, handleCardDelete, basketData,
     productSelected, setProductSelected, handleEdit, titleEditRef,
-    addToBasket, handleEditBasket, deleteToBasket,
-  }
-
-  const initializeMenu = async () => {
-    const menuReceived = await getMenu(userName)
-    setMenuData(menuReceived)
+    addToBasket, handleEditBasket, deleteToBasket, userName
   }
 
   useEffect(() => {
-    initializeMenu()
+    initializeUserSession(userName, setMenuData, setBasketData)
   }, [])
-
 
   return (
     <OrderContext.Provider value={orderContext}>

@@ -8,11 +8,11 @@ const IMAGE_by_default = "/images/coming-soon.png"
 
 export default function BasketProducts() {
 
-    const { deleteToBasket, basketData, IsAdminOn, setProductSelected, titleEditRef, productSelected } = useContext(OrderContext)
+    const { deleteToBasket, basketData, IsAdminOn, setProductSelected, titleEditRef, productSelected, userName } = useContext(OrderContext)
 
     const handleDeleteBasket = (event, idToDelete) => {
         event.stopPropagation()
-        deleteToBasket(idToDelete)
+        deleteToBasket(idToDelete, userName)
         if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
     }
 

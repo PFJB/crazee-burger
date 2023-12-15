@@ -9,7 +9,7 @@ export default function MenuContent() {
   const { menuData, handleCardDelete,
     setProductSelected, productSelected,
     IsAdminOn, SetIsCollapse, setTabSelected,
-    titleEditRef, addToBasket, deleteToBasket } = useContext(OrderContext)
+    titleEditRef, addToBasket, deleteToBasket, userName } = useContext(OrderContext)
 
   const handleClick = async (id) => {
     let selected = menuData.find((product) => product.id === id)
@@ -23,7 +23,7 @@ export default function MenuContent() {
   const handleDelete = (event, id) => {
     event.stopPropagation()
     handleCardDelete(id)
-    deleteToBasket(id)
+    deleteToBasket(id, userName)
     id === productSelected.id ? setProductSelected(EMPTY_PRODUCT) : ""
     if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
   }
@@ -31,7 +31,7 @@ export default function MenuContent() {
   async function handleAddToBasket(event, idCardToAdd) {
     event.stopPropagation()
     const selected = menuData.find((product) => product.id === idCardToAdd)
-    addToBasket(selected)
+    addToBasket(selected, userName)
   }
 
   return (

@@ -9,7 +9,7 @@ import OrderContext from '../../../../context/OrderContext';
 
 export default function Basket() {
 
-    const { basketData } = useContext(OrderContext)
+    const { basketData, menuData } = useContext(OrderContext)
 
 
     const calculateTotalPrice = () => {
@@ -22,9 +22,11 @@ export default function Basket() {
         return (total)
     }
 
+
+
     return (
         <BasketStyled>
-            <HeaderBasket amountToPay={formatPrice(calculateTotalPrice())} />
+            <HeaderBasket amountToPay={menuData ? formatPrice(calculateTotalPrice()) : formatPrice(0)} />
             <BasketContent />
             <FooterBasket />
         </BasketStyled>

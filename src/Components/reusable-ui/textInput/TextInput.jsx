@@ -3,7 +3,7 @@ import { theme } from "../../../theme/theme";
 import React from "react";
 
 const TextInput = React.forwardRef(
-  ({ value, onChange, IconeBeforeInput, version, name, placeholder }, ref) => (
+  ({ value, onChange, IconeBeforeInput, version, name, placeholder, ...extraProps }, ref) => (
     <InputStyled version={version}>
       {IconeBeforeInput && IconeBeforeInput}
       <input
@@ -11,6 +11,7 @@ const TextInput = React.forwardRef(
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        {...extraProps}
         type="text"
         ref={ref}
       />
