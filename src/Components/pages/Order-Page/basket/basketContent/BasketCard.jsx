@@ -2,9 +2,9 @@ import styled, { css } from "styled-components";
 import { theme } from "../../../../../theme/theme";
 import { MdDeleteForever } from "react-icons/md";
 
-export default function BasketCard({ title, price, imageSource, quantity, handleDelete, isAdminOn, onClick, isSelected }) {
+export default function BasketCard({ title, price, imageSource, quantity, handleDelete, isAdminOn, onClick, isSelected, className }) {
     return (
-        <BasketCardStyled $isAdminOn={isAdminOn} onClick={onClick} $isSelected={isSelected}>
+        <BasketCardStyled $isAdminOn={isAdminOn} onClick={onClick} $isSelected={isSelected} className={className}>
             <div className="pic"><img src={imageSource} alt={title} /></div>
             <div className="info">
                 <div className="description">
@@ -24,7 +24,6 @@ display: grid;
 position: relative;
 grid-template-columns: 1fr 2.5fr;
 grid-template-rows: 86px;
-height: 100%;
 width: 100%;
 padding:8px 16px ;
 box-shadow: -4px 4px 15px 0px #00000033;

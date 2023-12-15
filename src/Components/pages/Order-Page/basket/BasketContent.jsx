@@ -18,4 +18,5 @@ export default function BasketContent() {
 const BasketContentStyled = styled.div`
     height: 100%;
     overflow-y: scroll;
+    overflow-x: visible;
 `;
