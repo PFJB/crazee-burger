@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme/theme";
+import CasinoEffect from "../../../reusable-ui/casinoEffect.jsx/CasinoEffect";
 
 export default function HeaderBasket({ amountToPay }) {
     return (
         <HeaderBasketStyled>
             <p className="total">Total</p>
-            <p>{amountToPay}</p>
+            <CasinoEffect count={amountToPay} />
         </HeaderBasketStyled>
     )
 }

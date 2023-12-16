@@ -55,6 +55,7 @@ align-items: center;
 flex: 1;
 padding: 20px 16px;
 gap: 10px;
+overflow: hidden;
 
 .test-appear {
     transform: translateX(100%);
