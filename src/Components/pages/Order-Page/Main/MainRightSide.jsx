@@ -8,6 +8,7 @@ import EmptyMenu from "./emptyContent/EmptyMenu.jsx";
 import EmptyMenuUsers from "./emptyContent/EmptyMenuUsers.jsx";
 import PendingMessage from "./emptyContent/PendingMessage.jsx";
 import { isEmpty } from "../../../../utils/arrays.js";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 
 export default function MainRightSide() {
@@ -23,10 +24,13 @@ export default function MainRightSide() {
     }
 
     return (
-        <MainRightSideStyled>
+        <TransitionGroup component={MainRightSideStyled}>
             {!isEmpty(menuData) ? <MenuContent /> : IsAdminOn ? <EmptyMenu /> : <EmptyMenuUsers />}
-            {IsAdminOn && <PanelAdmin />}
-        </MainRightSideStyled>
+            {IsAdminOn &&
+                <CSSTransition classNames={"panel-transition"} timeout={{ enter: 500, exit: 0 }}>
+                    <PanelAdmin />
+                </CSSTransition>}
+        </TransitionGroup>
     )
 }
 
@@ -36,4 +40,14 @@ const MainRightSideStyled = styled.div`
   display: grid;
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+
+  .panel-transition-enter{
+    transform: translateY(100%);
+    opacity: 0%;
+  }
+  .panel-transition-enter-active{
+    transform: translateY(0%);
+    opacity: 100%;
+    transition: all 0.5s;
+  }
 `

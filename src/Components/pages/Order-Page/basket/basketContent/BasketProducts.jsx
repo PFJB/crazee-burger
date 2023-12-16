@@ -4,9 +4,8 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { formatPrice } from "../../../../../utils/maths";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
-import { findObjectById, isEmpty } from "../../../../../utils/arrays";
+import { findObjectById } from "../../../../../utils/arrays";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import BasketEmptyMessage from "./BasketEmptyMessage";
 
 export default function BasketProducts() {
 

@@ -17,7 +17,7 @@ export default function OrderPage() {
   const [tabSelected, setTabSelected] = useState("add");
   const [contentPanel, SetcontentPanel] = useState(<AddContent />);
   const [IsAdminOn, setIsAdminOn] = useState(false);
-  const [isCollapse, SetIsCollapse] = useState(false)
+  const [isCollapse, SetIsCollapse] = useState(true)
   const titleEditRef = useRef()
   const { userName } = useParams();
 
