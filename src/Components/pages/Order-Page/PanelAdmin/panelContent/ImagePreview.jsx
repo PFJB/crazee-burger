@@ -1,11 +1,17 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme/theme";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { panelImagePreviewAnimation } from "../../../../../theme/animation";
 
 export default function ImagePreview({ imageSource }) {
     return (
-        <ImagePreviewStyled className="image">
-            {imageSource ? <img src={imageSource} alt="Added picture" /> : "Aucune image"}
-        </ImagePreviewStyled>
+        <TransitionGroup component={ImagePreviewStyled}>
+            {imageSource ?
+                <CSSTransition classNames={"image"} key={imageSource} appear timeout={500}>
+                    <img src={imageSource} alt="Added picture" />
+                </CSSTransition>
+                : "Aucune image"}
+        </TransitionGroup>
     )
 }
 
@@ -29,4 +35,5 @@ const ImagePreviewStyled = styled.div`
       object-fit: contain;
     }
   
+    ${panelImagePreviewAnimation}
 `;

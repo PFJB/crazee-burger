@@ -24,6 +24,13 @@ const ButtonDeleteCardStyled = styled.button`
   animation: ${fadeInFromRigth} 500ms ;
   cursor: pointer;
 
+  :hover{
+    color: ${theme.colors.red};
+  }
+  :active {
+      color: ${theme.colors.primary};
+  }
+
   ${({ isSelected }) => isSelected && selectedStyle}
 
 `;

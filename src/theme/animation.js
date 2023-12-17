@@ -11,16 +11,22 @@ export const fadeInFromRigth = keyframes`
         opacity: 1;
     } 
 `
-
-export const panelAnimation = css`
-  .panel-transition-appear{
+export const fadeInFromBottom = keyframes`
+  0%{
     transform: translateY(100%);
-    opacity: 0%;
-    &.panel-transition-appear-active{
-        transform: translateY(0%);
-        opacity: 100%;
-        transition: all 0.5s;
-    }
+    opacity: 0;
+  }
+  100%{
+    transform: translateY(0%);
+    opacity: 1;
+  }
+`
+export const fadeIn = keyframes`
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
   }
 `
 export const BasketProductsAnimation = css`
@@ -55,7 +61,6 @@ export const BasketProductsAnimation = css`
     }
 }
 `
-
 export const cardAnimation = css`
    .cardAnimation-appear{
         opacity: 0%;
@@ -80,4 +85,25 @@ export const cardAnimation = css`
             transition: all 0.5s;
         }
     } 
+`
+export const panelImagePreviewAnimation = css`
+    .image-appear{
+        opacity: 0;
+        &.image-appear-active{
+            opacity: 1;
+            transition: all 0.5s;
+        }
+    }
+  
+    .image-enter{
+        opacity: 0;
+        &.image-enter-active{
+            opacity: 1;
+            transition: all 0.5s;
+        }
+    }
+  
+    .image-exit{
+        display: none;
+    }
 `

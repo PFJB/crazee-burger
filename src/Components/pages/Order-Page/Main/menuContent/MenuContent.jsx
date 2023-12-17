@@ -5,9 +5,7 @@ import OrderContext from '../../../../../context/OrderContext';
 import { checkIfSelected } from './helpers.jsx'
 import { EMPTY_PRODUCT } from '../../../../../enums/product.jsx';
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { theme } from '../../../../../theme/theme.js';
 import { cardAnimation } from '../../../../../theme/animation.js';
-
 
 export default function MenuContent() {
   const { menuData, handleCardDelete,
