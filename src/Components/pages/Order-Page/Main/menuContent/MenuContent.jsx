@@ -5,6 +5,8 @@ import OrderContext from '../../../../../context/OrderContext';
 import { checkIfSelected } from './helpers.jsx'
 import { EMPTY_PRODUCT } from '../../../../../enums/product.jsx';
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { theme } from '../../../../../theme/theme.js';
+import { cardAnimation } from '../../../../../theme/animation.js';
 
 
 export default function MenuContent() {
@@ -38,21 +40,21 @@ export default function MenuContent() {
 
   return (
     <TransitionGroup component={MenuContentStyled}>
-
       {menuData.map(({ id, title, price, imageSource }) => {
-        return <CSSTransition key={id} classNames={"transition"} appear={true} timeout={500}>
-          <Card
-            key={id}
-            title={title}
-            price={price}
-            imgSource={imageSource}
-            handleDelete={(event) => { handleDelete(event, id) }}
-            handleClick={() => IsAdminOn && handleClick(id)}
-            isHoverable={IsAdminOn}
-            isSelected={checkIfSelected(id, productSelected.id)}
-            handleAddToCard={(event) => handleAddToBasket(event, id)}
-          />
-        </CSSTransition>
+        return (
+          <CSSTransition key={id} classNames={"cardAnimation"} appear timeout={500}>
+            <Card
+              key={id}
+              title={title}
+              price={price}
+              imgSource={imageSource}
+              handleDelete={(event) => { handleDelete(event, id) }}
+              handleClick={() => IsAdminOn && handleClick(id)}
+              isHoverable={IsAdminOn}
+              isSelected={checkIfSelected(id, productSelected.id)}
+              handleAddToCard={(event) => handleAddToBasket(event, id)}
+            />
+          </CSSTransition>)
       })}
     </TransitionGroup>
   )
@@ -68,25 +70,5 @@ const MenuContentStyled = styled.div`
     padding: 50px 50px 150px;
     overflow-y: scroll;
 
-   .transition-appear{
-      opacity: 0%;
-    }
-    .transition-appear-active{
-      opacity: 100%;
-      transition: all 1s;
-    }
-    .transition-enter{
-      opacity: 0%;
-    }
-    .transition-enter-active{
-      opacity: 100%;
-      transition: all 1s;
-    }
-    .transition-exit{
-      opacity: 100%;
-    }
-    .transition-exit-active{
-      opacity: 0%;
-      transition: all 0.5s;
-    }
+  ${cardAnimation}
 `;

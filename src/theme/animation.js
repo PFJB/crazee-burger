@@ -1,15 +1,15 @@
 import { css, keyframes } from "styled-components";
 
 export const fadeInFromRigth = keyframes`
-0% {
-transform: translateX(100%);
-opacity: 0;
-}
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
 
-100% {
-transform: translateX(0%);
-opacity: 1;
-} 
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    } 
 `
 
 export const panelAnimation = css`
@@ -54,4 +54,30 @@ export const BasketProductsAnimation = css`
         transition: all 0.5s;
     }
 }
+`
+
+export const cardAnimation = css`
+   .cardAnimation-appear{
+        opacity: 0%;
+        &.cardAnimation-appear-active{
+            opacity: 100%;
+            transition: all 1s;
+        }
+    }
+    
+    .cardAnimation-enter{
+        opacity: 0%;
+        &.cardAnimation-enter-active{
+            opacity: 100%;
+            transition: all 1s;
+        }
+    }
+    
+    .cardAnimation-exit{
+        opacity: 100%;
+        &.cardAnimation-exit-active{
+            opacity: 0%;
+            transition: all 0.5s;
+        }
+    } 
 `
