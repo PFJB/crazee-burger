@@ -1,9 +1,9 @@
 import { useContext, useState } from "react"
-import OrderContext from "../../../../../context/OrderContext"
-import AdminForm from "./AdminForm"
+import OrderContext from "../../../../../../context/OrderContext"
+import AdminForm from "../adminForm/AdminForm"
 import HintMessageEditForm from "./HintMessageEditForm"
 import SavingMessage from "./SavingMessage"
-import { useDisplaySuccessMessage } from "../../../../../hooks/useDisplaySuccessMessage"
+import { useDisplaySuccessMessage } from "../../../../../../hooks/useDisplaySuccessMessage"
 
 export default function ModifyContent() {
   const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext)

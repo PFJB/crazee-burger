@@ -1,7 +1,7 @@
 import { GrValidate } from "react-icons/gr";
-import ButtonIcone from "../../../../reusable-ui/button/ButtonIcone";
+import ButtonIcone from "../../../../../reusable-ui/button/ButtonIcone";
 import styled from "styled-components";
-import { theme } from "../../../../../theme/theme";
+import { theme } from "../../../../../../theme/theme";
 
 export default function SubmitButton({ isSubmitted }) {
     return (

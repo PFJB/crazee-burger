@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import TextInput from "../../../../reusable-ui/textInput/TextInput";
-import { theme } from "../../../../../theme/theme";
+import TextInput from "../../../../../reusable-ui/textInput/TextInput";
+import { theme } from "../../../../../../theme/theme";
 import ImagePreview from "./ImagePreview";
-import { GetTextInputConfigs } from "./inputTextConfigs";
+import { GetTextInputConfigs } from "./inputTextConfigs.jsx";
 import React from "react";
 
 const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onFocus, onBlur }, ref) => {

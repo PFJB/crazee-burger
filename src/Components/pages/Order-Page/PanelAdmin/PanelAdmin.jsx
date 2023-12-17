@@ -3,6 +3,7 @@ import { useContext } from "react";
 import OrderContext from "../../../../context/OrderContext.jsx";
 import ButtonArea from "./ButtonArea.jsx";
 import ContentArea from "./panelContent/ContentArea.jsx";
+import { fadeInFromBottom } from "../../../../theme/animation";
 
 export default function PanelAdmin() {
   const { isCollapse } = useContext(OrderContext)
@@ -23,4 +24,6 @@ const PanelAdminStyled = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
+
+   animation: ${fadeInFromBottom} 500ms; 
 `;

@@ -9,7 +9,6 @@ import EmptyMenuUsers from "./emptyContent/EmptyMenuUsers.jsx";
 import PendingMessage from "./emptyContent/PendingMessage.jsx";
 import { isEmpty } from "../../../../utils/arrays.js";
 
-
 export default function MainRightSide() {
 
     const { IsAdminOn, menuData } = useContext(OrderContext)
@@ -36,4 +35,5 @@ const MainRightSideStyled = styled.div`
   display: grid;
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+
 `

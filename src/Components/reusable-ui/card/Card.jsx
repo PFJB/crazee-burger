@@ -2,33 +2,31 @@ import styled, { css } from "styled-components";
 import ButtonIcone from "../button/ButtonIcone";
 import { theme } from "../../../theme/theme";
 import { formatPrice } from "../../../utils/maths";
-import { TiDelete } from "react-icons/ti";
 import { IMAGE_COMING_SOON } from "../../../enums/product";
+import ButtonDeleteCard from "./ButtonDeleteCard";
 
 export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard }) {
 
     return (
         <CardStyled onClick={handleClick} $isHoverable={isHoverable} $isSelected={isSelected}>
-            <div className="card" >
-                {isHoverable && <button onClick={handleDelete} className="delete"><TiDelete size={40} /></button>}
-                <div className="picture">{<img src={imgSource ? imgSource : IMAGE_COMING_SOON} alt={title} />}</div>
-                <div className="title">{title}</div>
-                <div className="priceAdd">
-                    <p className="price">{formatPrice(price)}</p>
-                    <ButtonIcone
-                        className="versionNormalSmaller"
-                        label={"Ajouter"}
-                        version="normal"
-                        onClick={handleAddToCard}
-                    />
-                </div>
+            {isHoverable && <ButtonDeleteCard handleDelete={handleDelete} isSelected={isSelected} />}
+            <div className="picture">{<img src={imgSource ? imgSource : IMAGE_COMING_SOON} alt={title} />}</div>
+            <div className="title">{title}</div>
+            <div className="priceAdd">
+                <p className="price">{formatPrice(price)}</p>
+                <ButtonIcone
+                    className="versionNormalSmaller"
+                    label={"Ajouter"}
+                    version="normal"
+                    onClick={handleAddToCard}
+                />
             </div>
         </CardStyled>
     )
 }
 
 const CardStyled = styled.div`
-    .card {display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -41,6 +39,7 @@ const CardStyled = styled.div`
     font-size: ${theme.fonts.size.P3};
     background-color: ${({ $selected }) => $selected ? "red" : "white"};
     border-radius: ${theme.borderRadius.extraRound};
+    transition: all 0.3s;
 
     .picture {
         display: flex;
@@ -93,30 +92,8 @@ const CardStyled = styled.div`
         font-weight: 700;
     }
 
-    .delete {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        border: none;
-        background: none;
-        color: ${theme.colors.primary};
-        cursor: pointer;
-
-        :hover {
-            color: ${theme.colors.red};
-        }
-    }
-
     ${({ $isHoverable }) => $isHoverable && hoverableStyle}
     ${({ $isSelected, $isHoverable }) => $isHoverable && $isSelected && selectedStyle}
-
-}
-
-    
-
 `;
 
 const hoverableStyle = css`
@@ -133,14 +110,6 @@ const selectedStyle = css`
 
     .priceAdd {
         .price {
-            color: ${theme.colors.white};
-        }
-    }
-
-    .delete {
-        color: ${theme.colors.white};
-
-        :active {
             color: ${theme.colors.white};
         }
     }

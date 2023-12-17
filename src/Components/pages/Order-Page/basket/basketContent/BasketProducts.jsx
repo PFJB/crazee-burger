@@ -3,14 +3,14 @@ import BasketCard from "./BasketCard";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { formatPrice } from "../../../../../utils/maths";
-import { IMAGE_COMING_SOON } from "../../../../../enums/product";
-import { findObjectById, isEmpty } from "../../../../../utils/arrays";
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../enums/product";
+import { findObjectById } from "../../../../../utils/arrays";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import BasketEmptyMessage from "./BasketEmptyMessage";
+import { BasketProductsAnimation } from "../../../../../theme/animation";
 
 export default function BasketProducts() {
 
-    const { menuData, deleteToBasket, basketData, IsAdminOn, setProductSelected, titleEditRef, productSelected, userName } = useContext(OrderContext)
+    const { menuData, deleteToBasket, basketData, IsAdminOn, setProductSelected, titleEditRef, productSelected, userName, SetIsCollapse, setTabSelected } = useContext(OrderContext)
 
     const handleDeleteBasket = (event, idToDelete) => {
         event.stopPropagation()
@@ -18,10 +18,13 @@ export default function BasketProducts() {
         if (titleEditRef.current) { titleEditRef.current.focus() }
     }
 
-    const onClick = (idBasketCardClicked) => {
-        const copyProductClickedBasket = findObjectById(idBasketCardClicked, basketData)
-        setProductSelected(copyProductClickedBasket)
-        if (titleEditRef.current) { titleEditRef.current.focus() }
+    const onClick = async (id) => {
+        let selected = menuData.find((product) => product.id === id)
+        selected = selected === productSelected ? EMPTY_PRODUCT : selected;
+        await SetIsCollapse(true)
+        await setTabSelected("mod")
+        await setProductSelected(selected)
+        if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
     }
 
 
@@ -30,10 +33,9 @@ export default function BasketProducts() {
             {basketData.map((product) => {
                 const cardData = findObjectById(product.id, menuData)
                 return (
-                    <CSSTransition appear={true} classNames={"test"} key={product.id} timeout={500}>
+                    <CSSTransition appear={true} classNames={"animationBasket"} key={product.id} timeout={500}>
                         <BasketCard
                             title={cardData.title}
-                            className={"animationCard"}
                             price={formatPrice(cardData.price)}
                             imageSource={cardData.imageSource ? cardData.imageSource : IMAGE_COMING_SOON}
                             handleDelete={(event) => handleDeleteBasket(event, cardData.id)}
@@ -57,33 +59,5 @@ padding: 20px 16px;
 gap: 10px;
 overflow: hidden;
 
-.test-appear {
-    transform: translateX(100%);
-    opacity: 0%;
-}
-.test-appear-active {
-    transform: translateX(0%);
-    opacity: 100%;
-    transition: all 0.5s;
-}
-
-.test-enter {
-    transform: translateX(100%);
-    opacity: 0%;
-}
-.test-enter-active {
-    transform: translateX(0%);
-    opacity: 100%;
-    transition: all 0.5s;
-}
-
-.test-exit-enter {
-    transform: translateX(0%);
-    opacity: 100%;
-}
-.test-exit-active {
-    opacity: 0%;
-    transform: translateX(-100%);
-    transition: all 0.5s;
-}
+${BasketProductsAnimation}
 `;

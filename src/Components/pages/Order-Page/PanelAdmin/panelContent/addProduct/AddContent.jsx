@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import OrderContext from "../../../../../context/OrderContext";
-import AdminForm from "./AdminForm";
-import SubmitButton from "./SubmitButton";
-import { useDisplaySuccessMessage } from "../../../../../hooks/useDisplaySuccessMessage";
-import { EMPTY_PRODUCT } from "../../../../../enums/product.jsx"
+import OrderContext from "../../../../../../context/OrderContext.jsx";
+import AdminForm from "../adminForm/AdminForm.jsx";
+import SubmitButton from "../adminForm/SubmitButton.jsx";
+import { useDisplaySuccessMessage } from "../../../../../../hooks/useDisplaySuccessMessage.jsx";
+import { EMPTY_PRODUCT } from "../../../../../../enums/product.jsx"
 
 export default function AddContent() {
 

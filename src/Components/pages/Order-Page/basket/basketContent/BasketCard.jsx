@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import { theme } from "../../../../../theme/theme";
 import { MdDeleteForever } from "react-icons/md";
+import CasinoEffect from "../../../../reusable-ui/casinoEffect.jsx/CasinoEffect";
 
 export default function BasketCard({ title, price, imageSource, quantity, handleDelete, isAdminOn, onClick, isSelected, className }) {
     return (
@@ -11,7 +12,7 @@ export default function BasketCard({ title, price, imageSource, quantity, handle
                     <p className="title">{title}</p>
                     <p className="price">{price}</p>
                 </div>
-                <p className="qte">x {quantity}</p>
+                <p className="qte">x <CasinoEffect count={quantity} /></p>
             </div>
             <button className="buttonDelete" onClick={handleDelete} ><MdDeleteForever size={'27px'} /></button>
         </BasketCardStyled >
@@ -30,6 +31,8 @@ box-shadow: -4px 4px 15px 0px #00000033;
 border-radius: ${theme.borderRadius.round};
 background-color: #FFFFFF;
 overflow: hidden;
+transition: all 0.3s;
+
 
 .pic > img {
     width: 100%;

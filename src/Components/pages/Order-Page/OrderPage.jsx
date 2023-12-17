@@ -4,12 +4,12 @@ import Main from "./Main/Main";
 import { theme } from "../../../theme/theme";
 import { useEffect, useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext";
-import AddContent from "./PanelAdmin/panelContent/AddContent";
 import { useMenu } from "../../../hooks/useMenu";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useBasket } from "../../../hooks/useBasket";
 import { useParams } from "react-router-dom";
 import { initializeUserSession } from "./helpers";
+import AddContent from "./PanelAdmin/panelContent/addProduct/AddContent";
 
 export default function OrderPage() {
   const [newProduct, setNewProduct] = useState({ ...EMPTY_PRODUCT, id: new Date().getTime() })
@@ -17,7 +17,7 @@ export default function OrderPage() {
   const [tabSelected, setTabSelected] = useState("add");
   const [contentPanel, SetcontentPanel] = useState(<AddContent />);
   const [IsAdminOn, setIsAdminOn] = useState(false);
-  const [isCollapse, SetIsCollapse] = useState(false)
+  const [isCollapse, SetIsCollapse] = useState(true)
   const titleEditRef = useRef()
   const { userName } = useParams();
 

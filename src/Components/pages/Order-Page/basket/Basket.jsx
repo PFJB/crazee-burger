@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { theme } from '../../../../theme/theme';
 import HeaderBasket from './HeaderBasket';
 import FooterBasket from './FooterBasket';
-import BasketContent from './BasketContent';
 import { formatPrice } from '../../../../utils/maths';
 import { useContext } from 'react';
 import OrderContext from '../../../../context/OrderContext';
 import { calculateTotalPrice } from './basketContent/helpers';
+import BasketBody from './BasketBody';
 
 export default function Basket() {
 
@@ -15,7 +15,7 @@ export default function Basket() {
     return (
         <BasketStyled>
             <HeaderBasket amountToPay={menuData ? formatPrice(calculateTotalPrice(basketData, menuData)) : formatPrice(0)} />
-            <BasketContent />
+            <BasketBody />
             <FooterBasket />
         </BasketStyled>
     )
