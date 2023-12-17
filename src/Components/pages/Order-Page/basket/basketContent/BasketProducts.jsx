@@ -3,14 +3,14 @@ import BasketCard from "./BasketCard";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { formatPrice } from "../../../../../utils/maths";
-import { IMAGE_COMING_SOON } from "../../../../../enums/product";
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../enums/product";
 import { findObjectById } from "../../../../../utils/arrays";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { BasketProductsAnimation } from "../../../../../theme/animation";
 
 export default function BasketProducts() {
 
-    const { menuData, deleteToBasket, basketData, IsAdminOn, setProductSelected, titleEditRef, productSelected, userName } = useContext(OrderContext)
+    const { menuData, deleteToBasket, basketData, IsAdminOn, setProductSelected, titleEditRef, productSelected, userName, SetIsCollapse, setTabSelected } = useContext(OrderContext)
 
     const handleDeleteBasket = (event, idToDelete) => {
         event.stopPropagation()
@@ -18,10 +18,13 @@ export default function BasketProducts() {
         if (titleEditRef.current) { titleEditRef.current.focus() }
     }
 
-    const onClick = (idBasketCardClicked) => {
-        const copyProductClickedBasket = findObjectById(idBasketCardClicked, basketData)
-        setProductSelected(copyProductClickedBasket)
-        if (titleEditRef.current) { titleEditRef.current.focus() }
+    const onClick = async (id) => {
+        let selected = menuData.find((product) => product.id === id)
+        selected = selected === productSelected ? EMPTY_PRODUCT : selected;
+        await SetIsCollapse(true)
+        await setTabSelected("mod")
+        await setProductSelected(selected)
+        if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
     }
 
 

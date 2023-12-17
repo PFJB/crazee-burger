@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme/theme";
+import { theme } from "../../../../../../theme/theme";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { panelImagePreviewAnimation } from "../../../../../theme/animation";
+import { panelImagePreviewAnimation } from "../../../../../../theme/animation";
 
 export default function ImagePreview({ imageSource }) {
     return (
