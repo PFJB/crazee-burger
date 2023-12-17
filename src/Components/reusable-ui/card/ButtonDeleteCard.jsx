@@ -1,11 +1,11 @@
 import { TiDelete } from "react-icons/ti";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../../theme/theme";
 
-export default function ButtonDeleteCard({ handleDelete }) {
+export default function ButtonDeleteCard({ handleDelete, isSelected }) {
   return (
-    <ButtonDeleteCardStyled onClick={handleDelete}>
+    <ButtonDeleteCardStyled onClick={handleDelete} isSelected={isSelected}>
       <TransitionGroup>
         <CSSTransition classNames={"transtion"} appear={true} timeout={500}>
           <TiDelete size={40} />
@@ -41,4 +41,15 @@ const ButtonDeleteCardStyled = styled.button`
 
   }
 
+${({ isSelected }) => isSelected && selectedStyle}
+
 `;
+
+const selectedStyle = css`
+
+  color: ${theme.colors.white};
+
+  :active {
+      color: ${theme.colors.white};
+  }
+`
