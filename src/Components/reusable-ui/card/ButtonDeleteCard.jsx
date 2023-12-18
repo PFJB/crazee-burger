@@ -5,7 +5,7 @@ import { fadeInFromRigth } from "../../../theme/animation";
 
 export default function ButtonDeleteCard({ handleDelete, isSelected }) {
   return (
-    <ButtonDeleteCardStyled onClick={handleDelete} isSelected={isSelected}>
+    <ButtonDeleteCardStyled onClick={handleDelete} $isSelected={isSelected}>
       <TiDelete size={40} />
     </ButtonDeleteCardStyled>
   )
@@ -31,7 +31,7 @@ const ButtonDeleteCardStyled = styled.button`
       color: ${theme.colors.primary};
   }
 
-  ${({ isSelected }) => isSelected && selectedStyle}
+  ${({ $isSelected }) => $isSelected && selectedStyle}
 
 `;
 

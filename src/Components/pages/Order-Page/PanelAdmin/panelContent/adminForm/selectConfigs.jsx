@@ -4,12 +4,12 @@ import { BsMegaphoneFill } from "react-icons/bs";
 
 export const selectConfigs = [
     {
-        id: "1",
+        id: "stock",
         icone: < FiPackage />,
         option: ["En stock", "Rupture"],
     },
     {
-        id: "2",
+        id: "pub",
         icone: < BsMegaphoneFill />,
         option: ["Sans pub", "Avec pub"],
     }

@@ -12,7 +12,7 @@ export default function BasketCard({ title, price, imageSource, quantity, handle
                     <p className="title">{title}</p>
                     <p className="price">{price}</p>
                 </div>
-                <p className="qte">x <CasinoEffect count={quantity} /></p>
+                <div className="qte">x <CasinoEffect count={quantity} /></div>
             </div>
             <button className="buttonDelete" onClick={handleDelete} ><MdDeleteForever size={'27px'} /></button>
         </BasketCardStyled >

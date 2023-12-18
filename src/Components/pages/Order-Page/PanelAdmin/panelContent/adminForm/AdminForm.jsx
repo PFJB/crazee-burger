@@ -7,7 +7,7 @@ import Select from "./Select.jsx";
 import { selectConfigs } from "./selectConfigs.jsx";
 
 
-const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onFocus, onBlur }, ref) => {
+const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onFocus, onBlur, handleSelectedChoice }, ref) => {
 
   const textInputs = GetTextInputConfigs(product)
   const select = selectConfigs
@@ -28,7 +28,7 @@ const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onF
             version="panelAdmin"
           />))}
         {select.map((input) => {
-          return <Select key={input.id} IconeBeforeInput={input.icone} option={input.option} id={input.id} />
+          return <Select key={input.id} IconeBeforeInput={input.icone} option={input.option} id={input.id} onChange={handleSelectedChoice} />
         })}
       </div>
       <div className="form-footer">{children}</div>

@@ -14,13 +14,19 @@ export default function AddContent() {
     event.preventDefault()
     displaySuccessMessage()
     handleAdd(newProduct)
+    console.log(newProduct)
     setNewProduct({ ...EMPTY_PRODUCT, id: new Date().getTime() })
   }
 
   const handleChange = (event) => { setNewProduct({ ...newProduct, [event.target.name]: event.target.value }) }
 
+  const handleSelectedChoice = (value, id) => {
+    if (id === "stock") { setNewProduct({ ...newProduct, ["isAvailable"]: value === "En stock" }) }
+    if (id === "pub") { setNewProduct({ ...newProduct, ["isAdvertised"]: value === "Avec pub" }) }
+  }
+
   return (
-    <AdminForm product={newProduct} onSubmit={handleSubmit} onChange={handleChange}>
+    <AdminForm product={newProduct} onSubmit={handleSubmit} onChange={handleChange} handleSelectedChoice={handleSelectedChoice} >
       <SubmitButton isSubmitted={isSubmitted} />
     </AdminForm>
   )

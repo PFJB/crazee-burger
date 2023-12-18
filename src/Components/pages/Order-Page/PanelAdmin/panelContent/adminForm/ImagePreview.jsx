@@ -5,7 +5,7 @@ import { panelImagePreviewAnimation } from "../../../../../../theme/animation";
 
 export default function ImagePreview({ imageSource }) {
     return (
-        <TransitionGroup classname={"e"} component={ImagePreviewStyled}>
+        <TransitionGroup component={ImagePreviewStyled}>
             <CSSTransition classNames={"image"} appear={true} key={imageSource} timeout={{ enter: 500 }}>
                 <div className="imageArea">
                     {imageSource ? <img className="img" src={imageSource} alt="Added picture" /> : "Aucune image"}
