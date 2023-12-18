@@ -1,13 +1,14 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../theme/theme";
 
-export default function Select({ className, IconeBeforeInput }) {
+export default function Select({ className, IconeBeforeInput, option, id }) {
     return (
         <SelectStyled className={className}>
             <span className="icone">{IconeBeforeInput && IconeBeforeInput}</span>
             <select className="select">
-                <option value="En stock">En stock</option>
-                <option value="Rupture">Rupture</option>
+                {option.map((option) => {
+                    return <option key={id} value={option}>{option}</option>
+                })}
             </select>
         </SelectStyled>
     )

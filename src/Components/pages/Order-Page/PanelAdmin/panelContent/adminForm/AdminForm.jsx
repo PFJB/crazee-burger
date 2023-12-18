@@ -4,12 +4,13 @@ import ImagePreview from "./ImagePreview";
 import { GetTextInputConfigs } from "./inputTextConfigs.jsx";
 import React from "react";
 import Select from "./Select.jsx";
-import { FiPackage } from "react-icons/fi";
+import { selectConfigs } from "./selectConfigs.jsx";
 
 
 const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onFocus, onBlur }, ref) => {
 
   const textInputs = GetTextInputConfigs(product)
+  const select = selectConfigs
 
   return (
     <AdminFormStyled onSubmit={onSubmit}>
@@ -26,8 +27,9 @@ const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onF
             onBlur={onBlur}
             version="panelAdmin"
           />))}
-        <Select IconeBeforeInput={<FiPackage />
-        } />
+        {select.map((input) => {
+          return <Select key={input.id} IconeBeforeInput={input.icone} option={input.option} id={input.id} />
+        })}
       </div>
       <div className="form-footer">{children}</div>
     </AdminFormStyled >
