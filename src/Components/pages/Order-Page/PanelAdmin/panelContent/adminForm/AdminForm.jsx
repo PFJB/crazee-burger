@@ -11,7 +11,7 @@ const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onF
 
   return (
     <AdminFormStyled onSubmit={onSubmit}>
-      <ImagePreview imageSource={product.imageSource} />
+      <ImagePreview className={"imagePreview"} imageSource={product.imageSource} />
       <div className="inputArea">
         {textInputs.map((input) => (
           <TextInput
@@ -23,8 +23,8 @@ const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onF
             onBlur={onBlur}
             version="panelAdmin"
           />))}
-        {children}
       </div>
+      <div className="form-footer">{children}</div>
     </AdminFormStyled >
   )
 })
@@ -33,36 +33,20 @@ AdminForm.displayName = "AdminForm"
 export default AdminForm
 
 const AdminFormStyled = styled.form`
+width: 70%;
+height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-row-gap: 8px;
+  grid-column-gap: 20px;
 
-  display: flex;
-  position: relative;
-  height: 100%;
-  width: 80%;
-  gap: 20px;
-
-  .inputArea {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    gap: 8px;
-    color: ${theme.colors.greyMedium};
-
-    .buttonArea {
-      display: flex;
-      align-items: center;
-      flex-direction: row;
-      gap: 15px;
-
-      span {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Open Sans', sans-serif;
-      font-size: ${theme.fonts.size.P0};
-      color: ${theme.colors.success};
-      gap: 8px;
-    }
-    }
+  .inputArea{
+    display: grid;
+    grid-area: 1/2/-2/3;
   }
+
+ .form-footer{
+      grid-area: 4 / -2 / -1 / -1;
+ }
 `;

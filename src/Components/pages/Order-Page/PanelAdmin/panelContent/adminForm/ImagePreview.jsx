@@ -5,12 +5,12 @@ import { panelImagePreviewAnimation } from "../../../../../../theme/animation";
 
 export default function ImagePreview({ imageSource }) {
     return (
-        <TransitionGroup component={ImagePreviewStyled}>
-            {imageSource ?
-                <CSSTransition classNames={"image"} key={imageSource} appear timeout={500}>
-                    <img src={imageSource} alt="Added picture" />
-                </CSSTransition>
-                : "Aucune image"}
+        <TransitionGroup classname={"e"} component={ImagePreviewStyled}>
+            <CSSTransition classNames={"image"} appear={true} key={imageSource} timeout={{ enter: 500 }}>
+                <div>
+                    {imageSource ? <img className="img" src={imageSource} alt="Added picture" /> : "Aucune image"}
+                </div>
+            </CSSTransition>
         </TransitionGroup>
     )
 }
@@ -20,9 +20,10 @@ const ImagePreviewStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    grid-area: 1 / 1 / 4 / 2;
     border: solid 1px ${theme.colors.greyLight};
     border-radius: ${theme.borderRadius.round};
-    width: 215px;
+    width: 160px;
     height: 120px;
     font-size: ${theme.fonts.size.P0};
     font-weight: ${theme.fonts.weights.regular};
@@ -32,6 +33,7 @@ const ImagePreviewStyled = styled.div`
     img {
       width: 100%;
       height: 100%;
+      object-position: center;
       object-fit: contain;
     }
   
