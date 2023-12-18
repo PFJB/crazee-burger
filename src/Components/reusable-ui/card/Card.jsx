@@ -5,7 +5,7 @@ import { formatPrice } from "../../../utils/maths";
 import { IMAGE_COMING_SOON } from "../../../enums/product";
 import ButtonDeleteCard from "./ButtonDeleteCard";
 
-export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard }) {
+export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard, isAvailable }) {
 
     return (
         <CardStyled onClick={handleClick} $isHoverable={isHoverable} $isSelected={isSelected}>
@@ -21,6 +21,7 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
                     onClick={handleAddToCard}
                 />
             </div>
+            <div className="rupture" style={{ display: isAvailable ? "none" : "block" }}>test</div>
         </CardStyled>
     )
 }
