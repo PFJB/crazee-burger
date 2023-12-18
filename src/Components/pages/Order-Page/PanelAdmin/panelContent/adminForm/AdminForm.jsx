@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import TextInput from "../../../../../reusable-ui/textInput/TextInput";
-import { theme } from "../../../../../../theme/theme";
 import ImagePreview from "./ImagePreview";
 import { GetTextInputConfigs } from "./inputTextConfigs.jsx";
 import React from "react";
+import Select from "./Select.jsx";
+import { FiPackage } from "react-icons/fi";
+
 
 const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onFocus, onBlur }, ref) => {
 
@@ -15,6 +17,7 @@ const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onF
       <div className="inputArea">
         {textInputs.map((input) => (
           <TextInput
+            className={input.name === "title" || input.name === "imageSource" ? "grand" : ""}
             ref={ref && input.name === "title" ? ref : null}
             key={input.id}
             {...input}
@@ -23,6 +26,8 @@ const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onF
             onBlur={onBlur}
             version="panelAdmin"
           />))}
+        <Select IconeBeforeInput={<FiPackage />
+        } />
       </div>
       <div className="form-footer">{children}</div>
     </AdminFormStyled >
@@ -33,8 +38,8 @@ AdminForm.displayName = "AdminForm"
 export default AdminForm
 
 const AdminFormStyled = styled.form`
-width: 70%;
-height: 100%;
+  width: 70%;
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -43,10 +48,18 @@ height: 100%;
 
   .inputArea{
     display: grid;
+    grid-gap: 8px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-area: 1/2/-2/3;
+
+    .grand{
+      grid-column: 1 / span 3;
+    }
   }
 
- .form-footer{
-      grid-area: 4 / -2 / -1 / -1;
- }
+  .form-footer{
+    grid-area: 4 / -2 / -1 / -1;
+  }
+
 `;

@@ -105,8 +105,5 @@ export const panelImagePreviewAnimation = css`
   
     .image-exit{
         display: none;
-        &.image-exit-done{
-            display: none;
-}
     }
 `

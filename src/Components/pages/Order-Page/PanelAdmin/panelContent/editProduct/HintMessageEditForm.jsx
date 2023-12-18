@@ -11,7 +11,7 @@ export default function HintMessageEditForm({ version }) {
 
 const HintMessageEditFormStyled = styled.div`
 
-    color: ${theme.colors.primary};
+    color: ${theme.colors.primary_burger};
     font-family: 'Open Sans', sans-serif;
     font-weight: ${theme.fonts.weights.regular};
     font-size: ${theme.fonts.size.P0};

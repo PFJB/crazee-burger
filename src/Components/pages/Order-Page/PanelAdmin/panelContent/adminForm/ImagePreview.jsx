@@ -7,7 +7,7 @@ export default function ImagePreview({ imageSource }) {
     return (
         <TransitionGroup classname={"e"} component={ImagePreviewStyled}>
             <CSSTransition classNames={"image"} appear={true} key={imageSource} timeout={{ enter: 500 }}>
-                <div>
+                <div className="imageArea">
                     {imageSource ? <img className="img" src={imageSource} alt="Added picture" /> : "Aucune image"}
                 </div>
             </CSSTransition>
@@ -30,11 +30,15 @@ const ImagePreviewStyled = styled.div`
     font-family: 'Open Sans', sans-serif;
     color: ${theme.colors.greyMedium};
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-position: center;
-      object-fit: contain;
+    .imageArea{
+        height: 100%;
+        width: 100%;
+        
+        .img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
     }
   
     ${panelImagePreviewAnimation}
