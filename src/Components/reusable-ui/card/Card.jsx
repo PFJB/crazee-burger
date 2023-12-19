@@ -4,6 +4,7 @@ import { theme } from "../../../theme/theme";
 import { formatPrice } from "../../../utils/maths";
 import { IMAGE_COMING_SOON } from "../../../enums/product";
 import ButtonDeleteCard from "./ButtonDeleteCard";
+import { fadeIn, fromTop } from "../../../theme/animation";
 const STOCK_EPUISE = "/images/stock-epuise.png"
 
 export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard, isAvailable }) {
@@ -22,9 +23,10 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
                     onClick={handleAddToCard}
                 />
             </div>
-            <div className="rupture" style={{ display: isAvailable ? "none" : "flex" }}>
-                <img className="epuise" src={STOCK_EPUISE} alt="Stock épuisé" />
-            </div>
+            {!isAvailable &&
+                <div className="rupture" >
+                    <img className="epuise" src={STOCK_EPUISE} alt="Stock épuisé" />
+                </div>}
         </CardStyled>
     )
 }
@@ -58,14 +60,13 @@ const CardStyled = styled.div`
     bottom: 0;
     background-color: hsla(0, 0%, 100%, 0.705);
     border-radius: ${theme.borderRadius.extraRound};
+    animation: ${fadeIn} 500ms;
 
     .epuise{
         width: 80%;
         object-fit: contain;
+        animation: ${fromTop} 500ms;
     }
-        
-    
-
 }
 
     .picture {

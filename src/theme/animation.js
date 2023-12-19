@@ -1,5 +1,8 @@
 import { css, keyframes } from "styled-components";
 
+
+//---- Keyframes ----//
+
 export const fadeInFromRigth = keyframes`
     0% {
         transform: translateX(100%);
@@ -29,6 +32,19 @@ export const fadeIn = keyframes`
     opacity: 1;
   }
 `
+export const fromTop = keyframes`
+    0% {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+`
+
+//---- CSSTransition ----//
+
 export const BasketProductsAnimation = css`
 
 .animationBasket-appear {
