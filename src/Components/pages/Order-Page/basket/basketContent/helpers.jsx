@@ -5,7 +5,7 @@ export const calculateTotalPrice = (basketData, menuData) => {
 
     basketData.map((product) => {
         const find = findObjectById(product.id, menuData)
-        if (!isNaN(find.price)) {
+        if (!isNaN(find.price) && find.isAvailable) {
             total = total + (find.price * product.quantity)
         }
     })

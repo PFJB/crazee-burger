@@ -65,7 +65,7 @@ const CardStyled = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: hsla(0, 0%, 100%, 0.705);
+    background-color: hsla(0, 0%, 100%, 0.75);
     border-radius: ${theme.borderRadius.extraRound};
     animation: ${fadeIn} 500ms;
 
@@ -129,7 +129,7 @@ const CardStyled = styled.div`
         font-weight: 700;
 
         cursor: ${({ $isAvailable }) => !$isAvailable && "not-allowed"};
-        opacity: ${({ $isAvailable }) => !$isAvailable && "50%"};
+        opacity: ${({ $isAvailable }) => !$isAvailable && "60%"};
     }
 
     ${({ $isHoverable }) => $isHoverable && hoverableStyle}
