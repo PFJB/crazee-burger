@@ -20,7 +20,7 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
                     className="versionNormalSmaller"
                     label={"Ajouter"}
                     version="normal"
-                    onClick={handleAddToCard}
+                    onClick={isAvailable ? handleAddToCard : (event) => event.stopPropagation()}
                 />
             </div>
             {!isAvailable &&
@@ -115,11 +115,13 @@ const CardStyled = styled.div`
 
     .versionNormalSmaller {
         position: relative;
+        z-index: 2;
         width: 95px;
         height: 38px;
         font-size: 11px;
         font-weight: 700;
-        z-index: 2;
+        
+        cursor: ${({ $isAvailable }) => !$isAvailable && "not-allowed"};
         opacity: ${({ $isAvailable }) => !$isAvailable && "50%"};
     }
 
