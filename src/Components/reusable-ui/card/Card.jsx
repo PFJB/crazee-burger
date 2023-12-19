@@ -4,13 +4,14 @@ import { theme } from "../../../theme/theme";
 import { formatPrice } from "../../../utils/maths";
 import { IMAGE_COMING_SOON } from "../../../enums/product";
 import ButtonDeleteCard from "./ButtonDeleteCard";
+const STOCK_EPUISE = "/images/stock-epuise.png"
 
 export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard, isAvailable }) {
 
     return (
         <CardStyled onClick={handleClick} $isHoverable={isHoverable} $isSelected={isSelected} $isAvailable={isAvailable}>
             {isHoverable && <ButtonDeleteCard handleDelete={handleDelete} isSelected={isSelected} />}
-            <div className="picture">{<img src={imgSource ? imgSource : IMAGE_COMING_SOON} alt={title} />}</div>
+            <div className="picture"><img src={imgSource ? imgSource : IMAGE_COMING_SOON} alt={title} /></div>
             <div className="title">{title}</div>
             <div className="priceAdd">
                 <p className="price">{formatPrice(price)}</p>
@@ -21,7 +22,9 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
                     onClick={handleAddToCard}
                 />
             </div>
-            <div className="rupture" style={{ display: isAvailable ? "none" : "flex" }}>test</div>
+            <div className="rupture" style={{ display: isAvailable ? "none" : "flex" }}>
+                <img className="epuise" src={STOCK_EPUISE} alt="Stock épuisé" />
+            </div>
         </CardStyled>
     )
 }
@@ -45,14 +48,23 @@ const CardStyled = styled.div`
 
 
 .rupture{
+    display: flex;
+    justify-content: center;
     position: absolute;
     z-index: 1;
     top: 0;
-    right: 0;
     left: 0;
+    right: 0;
     bottom: 0;
     background-color: hsla(0, 0%, 100%, 0.705);
     border-radius: ${theme.borderRadius.extraRound};
+
+    .epuise{
+        width: 80%;
+        object-fit: contain;
+    }
+        
+    
 
 }
 
