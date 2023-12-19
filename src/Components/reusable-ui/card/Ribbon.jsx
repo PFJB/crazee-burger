@@ -1,5 +1,6 @@
 import styled from "styled-components"
-import { theme } from "../../theme"
+import { theme } from "../../../theme/theme"
+import { fadeInFromBottomRightScale } from "../../../theme/animation"
 
 export default function Ribbon({ label = "new", className }) {
   return (
@@ -12,29 +13,18 @@ export default function Ribbon({ label = "new", className }) {
 }
 
 const RibbonStyled = styled.div`
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #f0f0f0;
-  }
-  .box {
-    position: relative;
-    max-width: 600px;
-    width: 90%;
-    height: 400px;
-    background: #fff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  }
 
-  /* common */
+
   .ribbon {
     width: 150px;
     height: 150px;
     overflow: hidden;
     position: absolute;
+    z-index: 5;
+    animation: ${fadeInFromBottomRightScale} 0.8s;
   }
+  
+
   .ribbon::before,
   .ribbon::after {
     position: absolute;

@@ -32,13 +32,23 @@ export const fadeIn = keyframes`
     opacity: 1;
   }
 `
-export const fromTop = keyframes`
+export const fadeInFromTop = keyframes`
     0% {
         transform: translateY(-50%);
         opacity: 0;
     }
     100% {
         transform: translateY(0%);
+        opacity: 1;
+    }
+`
+export const fadeInFromBottomRightScale = keyframes`
+    0% {
+        transform: translateY(40%) translateX(40%) scale(160%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0%) translateY(0%) scale(100%);
         opacity: 1;
     }
 `

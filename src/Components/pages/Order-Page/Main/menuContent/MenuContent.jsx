@@ -38,7 +38,7 @@ export default function MenuContent() {
 
   return (
     <TransitionGroup component={MenuContentStyled}>
-      {menuData.map(({ id, title, price, imageSource, isAvailable }) => {
+      {menuData.map(({ id, title, price, imageSource, isAvailable, isAdvertised }) => {
         return (
           <CSSTransition key={id} classNames={"cardAnimation"} appear timeout={500}>
             <Card
@@ -52,6 +52,7 @@ export default function MenuContent() {
               isSelected={checkIfSelected(id, productSelected.id)}
               handleAddToCard={(event) => handleAddToBasket(event, id)}
               isAvailable={isAvailable}
+              isAdvertised={isAdvertised}
             />
           </CSSTransition>)
       })}

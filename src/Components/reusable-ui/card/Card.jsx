@@ -4,29 +4,33 @@ import { theme } from "../../../theme/theme";
 import { formatPrice } from "../../../utils/maths";
 import { IMAGE_COMING_SOON } from "../../../enums/product";
 import ButtonDeleteCard from "./ButtonDeleteCard";
-import { fadeIn, fromTop } from "../../../theme/animation";
+import Ribbon from "./Ribbon.jsx";
+import { fadeIn, fadeInFromTop } from "../../../theme/animation";
 const STOCK_EPUISE = "/images/stock-epuise.png"
 
-export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard, isAvailable }) {
+export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard, isAvailable, isAdvertised = "true" }) {
 
     return (
         <CardStyled onClick={handleClick} $isHoverable={isHoverable} $isSelected={isSelected} $isAvailable={isAvailable}>
-            {isHoverable && <ButtonDeleteCard handleDelete={handleDelete} isSelected={isSelected} />}
-            <div className="picture"><img src={imgSource ? imgSource : IMAGE_COMING_SOON} alt={title} /></div>
-            <div className="title">{title}</div>
-            <div className="priceAdd">
-                <p className="price">{formatPrice(price)}</p>
-                <ButtonIcone
-                    className="versionNormalSmaller"
-                    label={"Ajouter"}
-                    version="normal"
-                    onClick={isAvailable ? handleAddToCard : (event) => event.stopPropagation()}
-                />
+            {isAdvertised && <Ribbon />}
+            <div className="f">
+                {isHoverable && <ButtonDeleteCard handleDelete={handleDelete} isSelected={isSelected} />}
+                <div className="picture"><img src={imgSource ? imgSource : IMAGE_COMING_SOON} alt={title} /></div>
+                <div className="title">{title}</div>
+                <div className="priceAdd">
+                    <p className="price">{formatPrice(price)}</p>
+                    <ButtonIcone
+                        className="versionNormalSmaller"
+                        label={"Ajouter"}
+                        version="normal"
+                        onClick={isAvailable ? handleAddToCard : (event) => event.stopPropagation()}
+                    />
+                </div>
+                {!isAvailable &&
+                    <div className="rupture" >
+                        <img className="epuise" src={STOCK_EPUISE} alt="Stock épuisé" />
+                    </div>}
             </div>
-            {!isAvailable &&
-                <div className="rupture" >
-                    <img className="epuise" src={STOCK_EPUISE} alt="Stock épuisé" />
-                </div>}
         </CardStyled>
     )
 }
@@ -46,7 +50,10 @@ const CardStyled = styled.div`
     border-radius: ${theme.borderRadius.extraRound};
     background-color: hsla(0, 0%, 100%, 1);
 
-    opacity: ${({ $isAvailable }) => !$isAvailable && "70%"};
+    & .f{
+        opacity: ${({ $isAvailable }) => !$isAvailable && "70%"};
+    }
+
 
 
 .rupture{
@@ -65,7 +72,7 @@ const CardStyled = styled.div`
     .epuise{
         width: 80%;
         object-fit: contain;
-        animation: ${fromTop} 500ms;
+        animation: ${fadeInFromTop} 500ms;
     }
 }
 
@@ -120,7 +127,7 @@ const CardStyled = styled.div`
         height: 38px;
         font-size: 11px;
         font-weight: 700;
-        
+
         cursor: ${({ $isAvailable }) => !$isAvailable && "not-allowed"};
         opacity: ${({ $isAvailable }) => !$isAvailable && "50%"};
     }
