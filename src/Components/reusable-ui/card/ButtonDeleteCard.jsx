@@ -16,6 +16,7 @@ const ButtonDeleteCardStyled = styled.button`
   display: grid;
   place-items: center;
   position: absolute;
+  z-index: 2;
   top: 12px;
   right: 12px;
   border: none;
@@ -23,6 +24,7 @@ const ButtonDeleteCardStyled = styled.button`
   color: ${theme.colors.primary};
   animation: ${fadeInFromRigth} 500ms ;
   cursor: pointer;
+
 
   :hover{
     color: ${theme.colors.red};

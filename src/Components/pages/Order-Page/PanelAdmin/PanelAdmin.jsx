@@ -24,6 +24,7 @@ const PanelAdminStyled = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 5;
 
    animation: ${fadeInFromBottom} 500ms; 
 `;

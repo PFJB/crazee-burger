@@ -8,7 +8,7 @@ import ButtonDeleteCard from "./ButtonDeleteCard";
 export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard, isAvailable }) {
 
     return (
-        <CardStyled onClick={handleClick} $isHoverable={isHoverable} $isSelected={isSelected}>
+        <CardStyled onClick={handleClick} $isHoverable={isHoverable} $isSelected={isSelected} $isAvailable={isAvailable}>
             {isHoverable && <ButtonDeleteCard handleDelete={handleDelete} isSelected={isSelected} />}
             <div className="picture">{<img src={imgSource ? imgSource : IMAGE_COMING_SOON} alt={title} />}</div>
             <div className="title">{title}</div>
@@ -21,7 +21,7 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
                     onClick={handleAddToCard}
                 />
             </div>
-            <div className="rupture" style={{ display: isAvailable ? "none" : "block" }}>test</div>
+            <div className="rupture" style={{ display: isAvailable ? "none" : "flex" }}>test</div>
         </CardStyled>
     )
 }
@@ -38,9 +38,23 @@ const CardStyled = styled.div`
     padding: 50px 25px 30px 25px;
     font-family: 'Amatic SC', sans-serif;
     font-size: ${theme.fonts.size.P3};
-    background-color: ${({ $selected }) => $selected ? "red" : "white"};
     border-radius: ${theme.borderRadius.extraRound};
-    transition: all 0.3s;
+    background-color: hsla(0, 0%, 100%, 1);
+
+    opacity: ${({ $isAvailable }) => !$isAvailable && "70%"};
+
+
+.rupture{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: hsla(0, 0%, 100%, 0.705);
+    border-radius: ${theme.borderRadius.extraRound};
+
+}
 
     .picture {
         display: flex;
@@ -87,10 +101,13 @@ const CardStyled = styled.div`
     }
 
     .versionNormalSmaller {
+        position: relative;
         width: 95px;
         height: 38px;
         font-size: 11px;
         font-weight: 700;
+        z-index: 2;
+        opacity: ${({ $isAvailable }) => !$isAvailable && "50%"};
     }
 
     ${({ $isHoverable }) => $isHoverable && hoverableStyle}
@@ -118,6 +135,8 @@ const selectedStyle = css`
     .versionNormalSmaller{
         background-color: ${theme.colors.white};
         color: ${theme.colors.primary};
+        border: none;
+        
 
         &:hover {
             color: ${theme.colors.white};
