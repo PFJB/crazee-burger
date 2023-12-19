@@ -12,8 +12,8 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
 
     return (
         <CardStyled onClick={handleClick} $isHoverable={isHoverable} $isSelected={isSelected} $isAvailable={isAvailable}>
-            {isAdvertised && <Ribbon />}
-            <div className="f">
+            {isAdvertised && <Ribbon label="Nouveau" />}
+            <div className="card">
                 {isHoverable && <ButtonDeleteCard handleDelete={handleDelete} isSelected={isSelected} />}
                 <div className="picture"><img src={imgSource ? imgSource : IMAGE_COMING_SOON} alt={title} /></div>
                 <div className="title">{title}</div>
@@ -50,7 +50,7 @@ const CardStyled = styled.div`
     border-radius: ${theme.borderRadius.extraRound};
     background-color: hsla(0, 0%, 100%, 1);
 
-    & .f{
+    & .card{
         opacity: ${({ $isAvailable }) => !$isAvailable && "70%"};
     }
 

@@ -2,17 +2,21 @@ import styled, { css } from "styled-components";
 import { theme } from "../../../../../theme/theme";
 import { MdDeleteForever } from "react-icons/md";
 import CasinoEffect from "../../../../reusable-ui/casinoEffect.jsx/CasinoEffect";
+import Sticker from "./Sticker";
 
-export default function BasketCard({ title, price, imageSource, quantity, handleDelete, isAdminOn, onClick, isSelected, className }) {
+export default function BasketCard({ title, price, imageSource, quantity, handleDelete, isAdminOn, onClick, isSelected, className, isAvailable, isAdvertised }) {
     return (
         <BasketCardStyled $isAdminOn={isAdminOn} onClick={onClick} $isSelected={isSelected} className={className}>
-            <div className="pic"><img src={imageSource} alt={title} /></div>
+            <div className="pic">
+                <img src={imageSource} alt={title} />
+                {isAdvertised && <Sticker />}
+            </div>
             <div className="info">
                 <div className="description">
                     <p className="title">{title}</p>
-                    <p className="price">{price}</p>
+                    <p className="price">{isAvailable ? price : "Non disponible"}</p>
                 </div>
-                <div className="qte">x <CasinoEffect count={quantity} /></div>
+                {isAvailable && <div className="qte">x <CasinoEffect count={quantity} /></div>}
             </div>
             <button className="buttonDelete" onClick={handleDelete} ><MdDeleteForever size={'27px'} /></button>
         </BasketCardStyled >
@@ -24,16 +28,19 @@ const BasketCardStyled = styled.div`
 display: grid;
 position: relative;
 grid-template-columns: 1fr 2.5fr;
-grid-template-rows: 86px;
+grid-template-rows: 70px;
 width: 100%;
-padding:8px 16px ;
+padding: 8px 16px ;
 box-shadow: -4px 4px 15px 0px #00000033;
 border-radius: ${theme.borderRadius.round};
 background-color: #FFFFFF;
 overflow: hidden;
 transition: all 0.3s;
 
+.pic{
+    position: relative;
 
+}
 .pic > img {
     width: 100%;
     height: 100%;  
@@ -65,8 +72,7 @@ transition: all 0.3s;
             white-space: nowrap;
         }
         .price {
-            overflow-x: hidden;
-            text-overflow: ellipsis;
+            white-space: nowrap;
         }
     }
 

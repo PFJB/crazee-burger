@@ -29,11 +29,14 @@ const InputStyled = styled.div`
     align-items: center;
     border-radius: ${theme.borderRadius.round};
 
+  height: 100%;
     input{
         width: 100%;
         border: none;
         border-radius: ${theme.borderRadius.round};
         outline-style: none;
+  height: 100%;
+
     }
     input::placeholder {
       font-size: ${theme.fonts.P0};
@@ -62,7 +65,6 @@ const extraStyleNormal = css`
   `
 const extraStyledPanel = css`
 
-    height: 38.5px;
     color: ${theme.colors.greyMedium};
     background-color: ${theme.colors.background_white};
     padding: 8px 16px 8px 24px;

@@ -43,6 +43,8 @@ export default function BasketProducts() {
                             onClick={IsAdminOn ? () => onClick(cardData.id) : null}
                             isAdminOn={IsAdminOn}
                             isSelected={productSelected.id === cardData.id}
+                            isAvailable={cardData.isAvailable}
+                            isAdvertised={cardData.isAdvertised}
                         />
                     </CSSTransition>)
             })}

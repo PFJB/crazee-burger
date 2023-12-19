@@ -46,7 +46,7 @@ AdminForm.displayName = "AdminForm"
 export default AdminForm
 
 const AdminFormStyled = styled.form`
-  width: 70%;
+  width: clamp(5%, 100%, 660px);
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -56,9 +56,9 @@ const AdminFormStyled = styled.form`
 
   .inputArea{
     display: grid;
-    grid-gap: 8px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    gap: 8px;
     grid-area: 1/2/-2/3;
 
     .grand{
@@ -67,6 +67,8 @@ const AdminFormStyled = styled.form`
   }
 
   .form-footer{
+    display: grid;
+    align-items: center;
     grid-area: 4 / -2 / -1 / -1;
   }
 

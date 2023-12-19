@@ -6,11 +6,8 @@ export default function Select({ className, IconeBeforeInput, option, id, onChan
     return (
         <SelectStyled className={className}>
             <span className="icone">{IconeBeforeInput && IconeBeforeInput}</span>
-            <select className="select" onChange={(event) => onChange(event.target.value, id)}>
+            <select value={option.selected} className="select" onChange={(event) => onChange(event.target.value, id)}>
                 {option.option.map((value) => {
-                    if (option.selected === value) {
-                        return <option key={`${option.id}-${value}`} value={value} selected>{value}</option>
-                    }
                     return <option key={`${option.id}-${value}`} value={value}>{value}</option>
                 })}
             </select>
@@ -25,7 +22,7 @@ const SelectStyled = styled.div`
     align-items: center;
     width: 100%;
     border-radius: ${theme.borderRadius.round};
-    padding: 9.75px 16px;
+    padding: 0 16px;
     gap: 13px;
 
     & > *, & { background-color: ${theme.colors.background_white}; }
@@ -39,11 +36,9 @@ const SelectStyled = styled.div`
     .select{
         font-size: ${theme.fonts.size.P0};
         border: none;
-        flex: 1;
+        width: 100%;
 
-        option{
-            text-overflow: ellipsis;
-        }
+ 
     }
 
 `;
