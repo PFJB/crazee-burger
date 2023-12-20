@@ -11,8 +11,15 @@ const STOCK_EPUISE = "/images/stock-epuise.png"
 export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard, isAvailable, isAdvertised }) {
 
     return (
-        <CardStyled onClick={handleClick} $isHoverable={isHoverable} $isSelected={isSelected} $isAvailable={isAvailable}>
+        <CardStyled
+            onClick={handleClick}
+            $isHoverable={isHoverable}
+            $isSelected={isSelected}
+            $isAvailable={isAvailable}
+        >
+
             {isAdvertised && <Ribbon label="Nouveau" />}
+
             <div className="card">
                 {isHoverable && <ButtonDeleteCard handleDelete={handleDelete} isSelected={isSelected} />}
                 <div className="picture"><img src={imgSource ? imgSource : IMAGE_COMING_SOON} alt={title} /></div>
@@ -27,10 +34,12 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
                         disabled={!isAvailable}
                     />
                 </div>
+
                 {!isAvailable &&
                     <div className="rupture" >
                         <img className="epuise" src={STOCK_EPUISE} alt="Stock épuisé" />
                     </div>}
+
             </div>
         </CardStyled>
     )
@@ -55,27 +64,25 @@ const CardStyled = styled.div`
         opacity: ${({ $isAvailable }) => !$isAvailable && "70%"};
     }
 
-
-
-.rupture{
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: hsla(0, 0%, 100%, 0.75);
-    border-radius: ${theme.borderRadius.extraRound};
-    animation: ${fadeIn} 500ms;
-
-    .epuise{
-        width: 80%;
-        object-fit: contain;
-        animation: ${fadeInFromTop} 500ms;
+    .rupture{
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: hsla(0, 0%, 100%, 0.75);
+        border-radius: ${theme.borderRadius.extraRound};
+        animation: ${fadeIn} 500ms;
+    
+        .epuise{
+            width: 80%;
+            object-fit: contain;
+            animation: ${fadeInFromTop} 500ms;
+        }
     }
-}
 
     .picture {
         display: flex;

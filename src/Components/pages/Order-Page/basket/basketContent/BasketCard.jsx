@@ -3,6 +3,7 @@ import { theme } from "../../../../../theme/theme";
 import { MdDeleteForever } from "react-icons/md";
 import CasinoEffect from "../../../../reusable-ui/casinoEffect.jsx/CasinoEffect";
 import Sticker from "./Sticker";
+import { BASKET_MESSAGE } from "../../../../../enums/product";
 
 export default function BasketCard({ title, price, imageSource, quantity, handleDelete, isAdminOn, onClick, isSelected, className, isAvailable, isAdvertised }) {
     return (
@@ -14,7 +15,7 @@ export default function BasketCard({ title, price, imageSource, quantity, handle
             <div className="info">
                 <div className="description">
                     <p className="title">{title}</p>
-                    <p className="price">{isAvailable ? price : "Non disponible"}</p>
+                    <p className="price">{isAvailable ? price : BASKET_MESSAGE.NOT_AVAILABLE}</p>
                 </div>
                 {isAvailable && <div className="qte">x <CasinoEffect count={quantity} /></div>}
             </div>
