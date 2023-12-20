@@ -2,6 +2,7 @@ import { FaHamburger } from "react-icons/fa";
 import { MdOutlineEuroSymbol, MdPhotoCamera } from "react-icons/md";
 import { FiPackage } from "react-icons/fi";
 import { BsMegaphoneFill } from "react-icons/bs";
+import { optionIsAdvertised, optionIsAvailable } from "../../../../../../enums/select";
 
 export const GetTextInputConfigs = (newProduct) => [
 
@@ -38,18 +39,12 @@ export const GetSelectConfigs = (product) => [
         id: "stock",
         selected: product.isAvailable,
         icone: < FiPackage />,
-        option: [
-            { value: true, label: "En stock" },
-            { value: false, label: "Rupture" }
-        ],
+        option: optionIsAvailable,
     },
     {
         id: "pub",
         selected: product.isAdvertised,
         icone: < BsMegaphoneFill />,
-        option: [
-            { value: true, label: "Avec pub" },
-            { value: false, label: "Sans pub" }
-        ],
+        option: optionIsAdvertised,
     }
 ]
