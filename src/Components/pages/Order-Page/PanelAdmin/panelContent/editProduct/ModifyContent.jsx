@@ -4,7 +4,6 @@ import AdminForm from "../adminForm/AdminForm"
 import HintMessageEditForm from "./HintMessageEditForm"
 import SavingMessage from "./SavingMessage"
 import { useDisplaySuccessMessage } from "../../../../../../hooks/useDisplaySuccessMessage"
-import { deepCopyArray } from "../../../../../../utils/arrays"
 
 export default function ModifyContent() {
   const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext)
@@ -28,24 +27,6 @@ export default function ModifyContent() {
     valueOnFocus !== valueOnBlur ? displaySuccessMessage() : null
   }
 
-
-  const handleSelectedChoice = (value, id) => {
-    if (id === "stock") {
-      let test = deepCopyArray(productSelected)
-      test = { ...productSelected, isAvailable: value }
-      setProductSelected(test)
-      handleEdit(test)
-      console.log(test)
-    }
-    if (id === "pub") {
-      let test = deepCopyArray(productSelected)
-      test = { ...productSelected, isAdvertised: value }
-      setProductSelected(test)
-      handleEdit(test)
-
-    }
-
-  }
   return (
     <AdminForm
       onChange={handleChange}
@@ -53,7 +34,6 @@ export default function ModifyContent() {
       ref={titleEditRef}
       onFocus={handleOnFocus}
       onBlur={handleOnBlur}
-      handleSelectedChoice={handleSelectedChoice}
     >
       {!isSaved ? <HintMessageEditForm /> : <SavingMessage />}
     </AdminForm>

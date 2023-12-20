@@ -37,12 +37,14 @@ export const GetTextInputConfigs = (newProduct) => [
 export const GetSelectConfigs = (product) => [
     {
         id: "stock",
+        name: "isAvailable",
         selected: product.isAvailable,
         icone: < FiPackage />,
         option: optionIsAvailable,
     },
     {
         id: "pub",
+        name: "isAdvertised",
         selected: product.isAdvertised,
         icone: < BsMegaphoneFill />,
         option: optionIsAdvertised,

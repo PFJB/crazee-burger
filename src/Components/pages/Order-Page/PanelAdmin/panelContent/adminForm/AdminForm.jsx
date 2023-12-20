@@ -6,7 +6,7 @@ import React from "react";
 import Select from "./Select.jsx";
 
 
-const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onFocus, onBlur, handleSelectedChoice }, ref) => {
+const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onFocus, onBlur }, ref) => {
 
   const textInputs = GetTextInputConfigs(product)
   const select = GetSelectConfigs(product)
@@ -32,7 +32,9 @@ const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onF
             IconeBeforeInput={input.icone}
             option={input}
             id={input.id}
-            onChange={handleSelectedChoice}
+            onChange={onChange}
+            onFocus={onFocus}
+            onBlur={onBlur}
           />
         })}
       </div>
