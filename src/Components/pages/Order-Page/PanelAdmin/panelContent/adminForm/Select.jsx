@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import { theme } from "../../../../../../theme/theme";
+import { convertStringToBoolean } from "../../../../../../utils/arrays";
 
 export default function Select({ className, IconeBeforeInput, option, id, onChange }) {
 
     return (
         <SelectStyled className={className}>
             <span className="icone">{IconeBeforeInput && IconeBeforeInput}</span>
-            <select value={option.selected} className="select" onChange={(event) => onChange(event.target.value, id)}>
-                {option.option.map((value) => {
-                    return <option key={`${option.id}-${value}`} value={value}>{value}</option>
+            <select
+                value={option.selected}
+                className="select"
+                onChange={(event) => { onChange(convertStringToBoolean(event.target.value), id) }}
+            >
+                {option.option.map(({ value, label }) => {
+                    return <option key={`${option.id}-${label}`} value={value}>{label}</option>
                 })}
             </select>
         </SelectStyled>

@@ -23,17 +23,19 @@ export default function AddContent() {
   const handleChange = (event) => { setNewProduct({ ...newProduct, [event.target.name]: event.target.value }) }
 
   const handleSelectedChoice = (currentValueSelected, id) => {
+
     if (id === "stock") {
-      let test = deepCopyArray(newProduct)
-      test = { ...newProduct, isAvailable: currentValueSelected === "En stock" }
-      setNewProduct(test)
-      setIsAvailable(currentValueSelected === "En stock")
+      let copyNewProduct = deepCopyArray(newProduct)
+      copyNewProduct = { ...newProduct, isAvailable: currentValueSelected }
+      setNewProduct(copyNewProduct)
+      setIsAvailable(currentValueSelected)
+
     }
     if (id === "pub") {
-      let test = deepCopyArray(newProduct)
-      test = { ...newProduct, isAdvertised: currentValueSelected === "Avec pub" }
-      setNewProduct(test)
-      setIsAdvertised(currentValueSelected === "Avec pub")
+      let copyNewProduct = deepCopyArray(newProduct)
+      copyNewProduct = { ...newProduct, isAdvertised: currentValueSelected }
+      setNewProduct(copyNewProduct)
+      setIsAdvertised(currentValueSelected)
     }
 
   }

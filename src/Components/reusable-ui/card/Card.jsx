@@ -8,7 +8,7 @@ import Ribbon from "./Ribbon.jsx";
 import { fadeIn, fadeInFromTop } from "../../../theme/animation";
 const STOCK_EPUISE = "/images/stock-epuise.png"
 
-export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard, isAvailable, isAdvertised = "true" }) {
+export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard, isAvailable, isAdvertised }) {
 
     return (
         <CardStyled onClick={handleClick} $isHoverable={isHoverable} $isSelected={isSelected} $isAvailable={isAvailable}>

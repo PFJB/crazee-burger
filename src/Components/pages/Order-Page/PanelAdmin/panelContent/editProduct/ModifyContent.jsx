@@ -32,14 +32,14 @@ export default function ModifyContent() {
   const handleSelectedChoice = (value, id) => {
     if (id === "stock") {
       let test = deepCopyArray(productSelected)
-      test = { ...productSelected, isAvailable: value === "En stock" }
+      test = { ...productSelected, isAvailable: value }
       setProductSelected(test)
       handleEdit(test)
-
+      console.log(test)
     }
     if (id === "pub") {
       let test = deepCopyArray(productSelected)
-      test = { ...productSelected, isAdvertised: value === "Avec pub" }
+      test = { ...productSelected, isAdvertised: value }
       setProductSelected(test)
       handleEdit(test)
 

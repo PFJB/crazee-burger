@@ -7,3 +7,8 @@ export const findObjectById = (id, array) => {
 export const findIndexById = (idWithUnknowwIndex, array) => {
     return array.findIndex((itemInArray) => itemInArray.id === idWithUnknowwIndex)
 }
+
+export function convertStringToBoolean(input) {
+    if (typeof input === "boolean") return input
+    return input === "true"
+}
