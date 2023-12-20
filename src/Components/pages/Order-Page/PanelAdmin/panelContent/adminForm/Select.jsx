@@ -31,14 +31,18 @@ const SelectStyled = styled.div`
         display: grid;
         place-items: center;
         font-size: 16px;
+        color: ${theme.colors.greyDark};
     }
 
     .select{
-        font-size: ${theme.fonts.size.P0};
+        font-size: ${theme.fonts.size.XS};
         border: none;
         width: 100%;
+        color: ${theme.colors.greyMedium};
+        option{
+        font-size: ${theme.fonts.size.P0};
 
- 
+        }
     }
 
 `;

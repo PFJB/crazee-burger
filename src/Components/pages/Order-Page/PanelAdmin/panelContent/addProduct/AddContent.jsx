@@ -17,23 +17,23 @@ export default function AddContent() {
     event.preventDefault()
     displaySuccessMessage()
     handleAdd(newProduct)
-    setNewProduct({ ...EMPTY_PRODUCT, id: new Date().getTime(), isAdvertised: isAdvertised, isAvailable: isAvailable })
+    setNewProduct({ ...EMPTY_PRODUCT, id: new Date().getTime(), isAdvertised, isAvailable })
   }
 
   const handleChange = (event) => { setNewProduct({ ...newProduct, [event.target.name]: event.target.value }) }
 
-  const handleSelectedChoice = (value, id) => {
+  const handleSelectedChoice = (currentValueSelected, id) => {
     if (id === "stock") {
       let test = deepCopyArray(newProduct)
-      test = { ...newProduct, isAvailable: value === "En stock" }
+      test = { ...newProduct, isAvailable: currentValueSelected === "En stock" }
       setNewProduct(test)
-      setIsAvailable(value === "En stock")
+      setIsAvailable(currentValueSelected === "En stock")
     }
     if (id === "pub") {
       let test = deepCopyArray(newProduct)
-      test = { ...newProduct, isAdvertised: value === "Avec pub" }
+      test = { ...newProduct, isAdvertised: currentValueSelected === "Avec pub" }
       setNewProduct(test)
-      setIsAdvertised(value === "Avec pub")
+      setIsAdvertised(currentValueSelected === "Avec pub")
     }
 
   }

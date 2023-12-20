@@ -14,7 +14,7 @@ const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onF
 
   return (
     <AdminFormStyled onSubmit={onSubmit}>
-      <ImagePreview className={"imagePreview"} imageSource={product.imageSource} />
+      <ImagePreview className={"imagePreview"} imageSource={product.imageSource} title={product.title} />
       <div className="inputArea">
         {textInputs.map((input) => (
           <TextInput
@@ -62,7 +62,7 @@ const AdminFormStyled = styled.form`
     grid-area: 1/2/-2/3;
 
     .grand{
-      grid-column: 1 / span 3;
+      grid-column:  span 3;
     }
   }
 

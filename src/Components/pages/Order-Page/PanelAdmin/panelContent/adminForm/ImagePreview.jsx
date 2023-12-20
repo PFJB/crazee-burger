@@ -4,8 +4,9 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { panelImagePreviewAnimation } from "../../../../../../theme/animation";
 
 export default function ImagePreview({ imageSource, title = "Added picture" }) {
+
     return (
-        <TransitionGroup component={ImagePreviewStyled}>
+        <TransitionGroup component={ImagePreviewStyled} >
             <CSSTransition classNames={"image"} appear={true} key={imageSource} timeout={{ enter: 500 }}>
                 {imageSource ?
                     <img className="img" src={imageSource} alt={title} />
@@ -38,6 +39,7 @@ const ImagePreviewStyled = styled.div`
 
     .img{
         object-fit: contain; 
+        
     }
   
     ${panelImagePreviewAnimation}

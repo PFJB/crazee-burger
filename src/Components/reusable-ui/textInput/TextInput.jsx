@@ -28,23 +28,27 @@ const InputStyled = styled.div`
     justify-content: space-between;
     align-items: center;
     border-radius: ${theme.borderRadius.round};
+    height: 100%;
+    max-height: 53px;
 
-  height: 100%;
+
     input{
         width: 100%;
         border: none;
         border-radius: ${theme.borderRadius.round};
         outline-style: none;
-  height: 100%;
+        height: 100%;
 
     }
     input::placeholder {
-      font-size: ${theme.fonts.P0};
+      font-size: ${theme.fonts.size.XS};
       color: ${theme.colors.greyMedium};
     }
     .icone{
       display: grid;
       place-content: center;
+      color: ${theme.colors.greyDark};
+
       font-size: 15px;
     }
 

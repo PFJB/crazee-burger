@@ -26,7 +26,7 @@ const ButtonDeleteCardStyled = styled.button`
   cursor: pointer;
 
 
-  :hover{
+  &:hover, &:focus{
     color: ${theme.colors.red};
   }
   :active {
