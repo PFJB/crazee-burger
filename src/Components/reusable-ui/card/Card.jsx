@@ -23,7 +23,8 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
                         className="versionNormalSmaller"
                         label={"Ajouter"}
                         version="normal"
-                        onClick={isAvailable ? handleAddToCard : (event) => event.stopPropagation()}
+                        onClick={handleAddToCard}
+                        disabled={!isAvailable}
                     />
                 </div>
                 {!isAvailable &&
