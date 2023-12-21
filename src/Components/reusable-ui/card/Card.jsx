@@ -2,11 +2,10 @@ import styled, { css } from "styled-components";
 import ButtonIcone from "../button/ButtonIcone";
 import { theme } from "../../../theme/theme";
 import { formatPrice } from "../../../utils/maths";
-import { IMAGE_COMING_SOON } from "../../../enums/product";
+import { IMAGE_COMING_SOON, STOCK_EPUISE } from "../../../enums/product";
 import ButtonDeleteCard from "./ButtonDeleteCard";
 import Ribbon from "./Ribbon.jsx";
 import { fadeIn, fadeInFromTop } from "../../../theme/animation";
-const STOCK_EPUISE = "/images/stock-epuise.png"
 
 export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard, isAvailable, isAdvertised }) {
 
@@ -17,9 +16,7 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
             $isSelected={isSelected}
             $isAvailable={isAvailable}
         >
-
             {isAdvertised && <Ribbon label="Nouveau" />}
-
             <div className="card">
                 {isHoverable && <ButtonDeleteCard handleDelete={handleDelete} isSelected={isSelected} />}
                 <div className="picture"><img src={imgSource ? imgSource : IMAGE_COMING_SOON} alt={title} /></div>
@@ -34,12 +31,10 @@ export default function Card({ price, imgSource, title, handleDelete, handleClic
                         disabled={!isAvailable}
                     />
                 </div>
-
                 {!isAvailable &&
                     <div className="rupture" >
                         <img className="epuise" src={STOCK_EPUISE} alt="Stock épuisé" />
                     </div>}
-
             </div>
         </CardStyled>
     )
