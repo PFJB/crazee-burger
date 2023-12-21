@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../../../../theme/theme";
+import { theme } from "../../../theme/theme";
 
 export default function Select({ className, IconeBeforeInput, option, onChange, onBlur, onFocus }) {
 

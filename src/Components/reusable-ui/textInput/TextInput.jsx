@@ -38,12 +38,13 @@ const InputStyled = styled.div`
         border-radius: ${theme.borderRadius.round};
         outline-style: none;
         height: 100%;
-
     }
+
     input::placeholder {
       font-size: ${theme.fonts.size.XS};
       color: ${theme.colors.greyMedium};
     }
+    
     .icone{
       display: grid;
       place-content: center;
