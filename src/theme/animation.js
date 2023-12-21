@@ -1,5 +1,5 @@
 import { css, keyframes } from "styled-components";
-
+import { theme } from "./theme";
 
 //---- Keyframes ----//
 
@@ -63,7 +63,7 @@ export const BasketProductsAnimation = css`
     &.animationBasket-appear-active {
         transform: translateX(0%);
         opacity: 100%;
-        transition: all 0.5s;
+        transition: all ${theme.animationTime.fast};
     }
 }
 
@@ -73,7 +73,7 @@ export const BasketProductsAnimation = css`
     &.animationBasket-enter-active {
         transform: translateX(0%);
         opacity: 100%;
-        transition: all 0.5s;
+        transition: all ${theme.animationTime.fast};
     }
 }
 
@@ -83,7 +83,7 @@ export const BasketProductsAnimation = css`
     &.animationBasket-exit-active {
         opacity: 0%;
         transform: translateX(-100%);
-        transition: all 0.5s;
+        transition: all ${theme.animationTime.fast};
     }
 }
 `
@@ -92,7 +92,7 @@ export const cardAnimation = css`
         opacity: 0%;
         &.cardAnimation-appear-active{
             opacity: 100%;
-            transition: all 1s;
+            transition: all ${theme.animationTime.fast};
         }
     }
     
@@ -100,7 +100,7 @@ export const cardAnimation = css`
         opacity: 0%;
         &.cardAnimation-enter-active{
             opacity: 100%;
-            transition: all 1s;
+            transition: all ${theme.animationTime.fast};
         }
     }
     
@@ -108,7 +108,7 @@ export const cardAnimation = css`
         opacity: 100%;
         &.cardAnimation-exit-active{
             opacity: 0%;
-            transition: all 0.5s;
+            transition: all ${theme.animationTime.fast};
         }
     } 
 `
@@ -117,7 +117,7 @@ export const panelImagePreviewAnimation = css`
         opacity: 0;
         &.image-appear-active{
             opacity: 1;
-            transition: all 0.5s;
+            transition: all ${theme.animationTime.fast};
         }
     }
   
@@ -125,7 +125,7 @@ export const panelImagePreviewAnimation = css`
         opacity: 0;
         &.image-enter-active{
             opacity: 1;
-            transition: all 0.5s;
+            transition: all ${theme.animationTime.fast};
         }
     }
   

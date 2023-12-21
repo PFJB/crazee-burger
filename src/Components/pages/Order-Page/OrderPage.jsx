@@ -69,6 +69,5 @@ const OrderPagestyled = styled.div`
       position: relative;
       flex-direction: column;
       width: min(100%, 1400px);
-      height: 95%;
     }
 `;

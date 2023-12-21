@@ -27,6 +27,7 @@ const HeaderBasketStyled = styled.div`
     letter-spacing: 2px;
 
     .total{
+        margin-right: 15px;
         font-weight: ${theme.fonts.weights.regular};
     }
 `;

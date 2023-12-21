@@ -48,8 +48,6 @@ const SelectStyled = styled.div`
         color: ${theme.colors.greyMedium};
         option{
         font-size: ${theme.fonts.size.P0};
-
         }
     }
-
 `;

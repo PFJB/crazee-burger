@@ -21,7 +21,7 @@ const ProfileStyled = styled.div`
     font-size: ${theme.fonts.size.P0};
     font-weight: ${theme.fonts.weights.regular};
     font-family: 'Open Sans', sans-serif;
-    gap: ${theme.spacing.xxs};
+    gap: 4px;
 
     .logOut {
       font-family: 'Open Sans', sans-serif;

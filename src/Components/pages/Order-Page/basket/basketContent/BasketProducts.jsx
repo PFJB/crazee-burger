@@ -10,7 +10,10 @@ import { BasketProductsAnimation } from "../../../../../theme/animation";
 
 export default function BasketProducts() {
 
-    const { menuData, deleteToBasket, basketData, IsAdminOn, setProductSelected, titleEditRef, productSelected, userName, SetIsCollapse, setTabSelected } = useContext(OrderContext)
+    const { menuData, deleteToBasket, basketData,
+        IsAdminOn, setProductSelected, titleEditRef,
+        productSelected, userName, SetIsCollapse,
+        setTabSelected } = useContext(OrderContext)
 
     const handleDeleteBasket = (event, idToDelete) => {
         event.stopPropagation()
@@ -22,11 +25,10 @@ export default function BasketProducts() {
         let selected = menuData.find((product) => product.id === id)
         selected = selected === productSelected ? EMPTY_PRODUCT : selected;
         await SetIsCollapse(true)
-        await setTabSelected("mod")
+        await setTabSelected("edit")
         await setProductSelected(selected)
         if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
     }
-
 
     return (
         <TransitionGroup component={BasketProductsStyled}>

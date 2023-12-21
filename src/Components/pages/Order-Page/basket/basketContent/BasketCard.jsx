@@ -32,7 +32,7 @@ grid-template-columns: 1fr 2.5fr;
 grid-template-rows: 70px;
 width: 100%;
 padding: 8px 16px ;
-box-shadow: -4px 4px 15px 0px #00000033;
+box-shadow: ${theme.shadows.cardBasket};
 border-radius: ${theme.borderRadius.round};
 background-color: #FFFFFF;
 overflow: hidden;
@@ -74,6 +74,8 @@ transition: all 0.3s;
         }
         .price {
             white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow-x: hidden;
         }
     }
 

@@ -11,27 +11,15 @@ const OrderContext = createContext({
     handleAdd: () => { },
     newProduct: {},
     setnewProduct: () => { },
-
     handleCardDelete: () => { },
-
     productSelected: {},
     setProductSelected: () => { },
-
     handleEdit: () => { },
-
     titleEditRef: {},
     basketData: [],
-
     addToBasket: () => { },
     deleteToBasket: () => { },
-
     userName: "",
-
-    SetIsAvailable: () => { },
-    SetIsPubOn: () => { },
-    isAvailable: true,
-    isPubOn: false,
-
 });
 
 export default OrderContext

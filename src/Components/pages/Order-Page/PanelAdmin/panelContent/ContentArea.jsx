@@ -9,7 +9,7 @@ export default function ContentArea() {
 
   const { tabSelected, productSelected } = useContext(OrderContext)
 
-  const test = () => {
+  const GetTabContent = () => {
     const isCardSelected = productSelected !== EMPTY_PRODUCT;
     const tabs = tabConfigs(isCardSelected)
     const contentToAdd = tabs.find((tab) => tab.index === tabSelected)
@@ -17,7 +17,7 @@ export default function ContentArea() {
   }
 
   return (
-    <ContentAreaStyled>{test()}</ContentAreaStyled>
+    <ContentAreaStyled>{GetTabContent()}</ContentAreaStyled>
   )
 }
 
@@ -30,6 +30,6 @@ const ContentAreaStyled = styled.div`
     height: 250px;
     border: solid 1px ${theme.colors.greyLight};
     background-color: ${theme.colors.white};
-    box-shadow: 0px -6px 8px -2px #0000001A;
+    box-shadow: ${theme.shadows.subtle};
     transition:all 1s;
 `;

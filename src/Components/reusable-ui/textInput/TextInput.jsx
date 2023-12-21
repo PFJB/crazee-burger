@@ -31,7 +31,6 @@ const InputStyled = styled.div`
     height: 100%;
     max-height: 53px;
 
-
     input{
         width: 100%;
         border: none;
@@ -49,7 +48,6 @@ const InputStyled = styled.div`
       display: grid;
       place-content: center;
       color: ${theme.colors.greyDark};
-
       font-size: 15px;
     }
 

@@ -17,6 +17,8 @@ export default function CasinoEffect({ count, className }) {
 const CasinoEffectStyled = styled.div`
     position: relative;
     overflow-y: hidden;
+    overflow-x: hidden;
+
   
   span{
     display: inline-block;

@@ -18,5 +18,5 @@ const HintMessageEditStyled = styled.div`
 
   color: ${theme.colors.greyBlue};
   font-size: ${theme.fonts.size.P3};
-  font-family: 'Amatic SC', sans-serif;
+  font-family: ${theme.fonts.family.amatic};
 `;

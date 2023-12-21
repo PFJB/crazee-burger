@@ -16,7 +16,7 @@ const SavingMessageStyled = styled.div`
     display: flex;
     gap: 0.625em;
     color: ${theme.colors.blue};
-    font-family: 'Open Sans', sans-serif;
+    font-family: ${theme.fonts.family.openSans};
     font-weight: ${theme.fonts.weights.regular};
     font-size: ${theme.fonts.size.P0};
 
@@ -24,6 +24,5 @@ const SavingMessageStyled = styled.div`
         display: flex;
         align-items: center;
         font-size: 1.125em;
-        font-size: ${theme.fonts.size.P1};
     }
 `;

@@ -48,12 +48,12 @@ const CardStyled = styled.div`
     position: relative;
     height: 330px;
     width: 240px;
-    box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+    box-shadow: ${theme.shadows.medium};
     padding: 50px 25px 30px 25px;
-    font-family: 'Amatic SC', sans-serif;
+    font-family: ${theme.fonts.family.amatic};
     font-size: ${theme.fonts.size.P3};
     border-radius: ${theme.borderRadius.extraRound};
-    background-color: hsla(0, 0%, 100%, 1);
+    background-color: ${theme.colors.white};
 
     & .card{
         opacity: ${({ $isAvailable }) => !$isAvailable && "70%"};
@@ -70,12 +70,12 @@ const CardStyled = styled.div`
         bottom: 0;
         background-color: hsla(0, 0%, 100%, 0.75);
         border-radius: ${theme.borderRadius.extraRound};
-        animation: ${fadeIn} 500ms;
+        animation: ${fadeIn} ${theme.animationTime.fast};
     
         .epuise{
             width: 80%;
             object-fit: contain;
-            animation: ${fadeInFromTop} 500ms;
+            animation: ${fadeInFromTop} ${theme.animationTime.fast};
         }
     }
 
@@ -99,7 +99,7 @@ const CardStyled = styled.div`
         text-align: start;
         width: 190px;
         height: 46px;
-        font-family: 'Amatic SC', sans-serif;
+        font-family: ${theme.fonts.family.amatic};
         font-weight: ${theme.fonts.weights.bold};
         font-size: ${theme.fonts.size.P4};
         overflow: hidden;
@@ -113,13 +113,16 @@ const CardStyled = styled.div`
         align-items: center;
         width: 190px;
         height: 46px;
-        font-family: 'Open Sans', sans-serif;
+        font-family: ${theme.fonts.family.openSans};
 
         .price{
+            max-width: 95px;
+            text-overflow: ellipsis;
+            overflow-x: hidden;
             font-size: 16px;
-            font-weight: 400;
+            font-weight: ${theme.fonts.weights.regular};
             color: ${theme.colors.primary};
-            font-family: 'Open Sans', sans-serif;
+            font-family: ${theme.fonts.family.openSans};
         }
     }
 
@@ -129,7 +132,7 @@ const CardStyled = styled.div`
         width: 95px;
         height: 38px;
         font-size: 11px;
-        font-weight: 700;
+        font-weight: ${theme.fonts.weights.bold};
 
         cursor: ${({ $isAvailable }) => !$isAvailable && "not-allowed"};
         opacity: ${({ $isAvailable }) => !$isAvailable && "60%"};
@@ -144,7 +147,7 @@ const hoverableStyle = css`
         transform: scale(1.05);
         transition: ease-out 0.2s;
         cursor: pointer;
-        box-shadow: 0px 0px 8px 0px #FF9A23;
+        box-shadow: ${theme.shadows.orangeHighlight};
     }
 `
 

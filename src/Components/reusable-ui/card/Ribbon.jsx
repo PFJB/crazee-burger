@@ -21,7 +21,7 @@ const RibbonStyled = styled.div`
     overflow: hidden;
     position: absolute;
     z-index: 5;
-    animation: ${fadeInFromBottomRightScale} 0.8s;
+    animation: ${fadeInFromBottomRightScale} ${theme.animationTime.fast};
   }
   
 

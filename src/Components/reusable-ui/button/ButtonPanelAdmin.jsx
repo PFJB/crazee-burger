@@ -28,7 +28,7 @@ const ButtonPanelAdminStyled = styled.button`
     border-radius: 5px 5px 0px 0px;
 
     background-color: ${theme.colors.white};
-    box-shadow: 0px -6px 8px -2px #0000001A;
+    box-shadow: ${theme.shadows.subtle};
 
     cursor: pointer;
 

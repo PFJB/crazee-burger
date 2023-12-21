@@ -1,7 +1,7 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import AddContent from "./panelContent/addProduct/AddContent";
-import ModifyContent from "./panelContent/editProduct/ModifyContent";
 import HintMessageEdit from "./panelContent/editProduct/HintMessageEdit";
+import EditContent from "./panelContent/editProduct/EditContent";
 
 export const tabConfigs = (isCardSelected) => [
 
@@ -12,11 +12,10 @@ export const tabConfigs = (isCardSelected) => [
         content: <AddContent />,
     },
     {
-        index: "mod",
+        index: "edit",
         label: "Modifier un produit",
         icone: <AiOutlinePlus />,
-        content: isCardSelected ? <ModifyContent /> : <HintMessageEdit />,
-
+        content: isCardSelected ? <EditContent /> : <HintMessageEdit />,
     },
 
 ]
