@@ -1,13 +1,11 @@
-import { findObjectById } from "../../../../../utils/arrays";
-import { formatPrice } from "../../../../../utils/maths";
+import { convertStringToBoolean, findObjectById } from "../../../../../utils/arrays";
 
 export const calculateTotalPrice = (basketData, menuData) => {
     let total = 0;
 
     basketData.map((product) => {
         const find = findObjectById(product.id, menuData)
-        console.log(product)
-        if (!isNaN(find.price)) {
+        if (!isNaN(find.price) && convertStringToBoolean(find.isAvailable)) {
             total = total + (find.price * product.quantity)
         }
     })

@@ -21,6 +21,11 @@ export default function OrderPage() {
   const titleEditRef = useRef()
   const { userName } = useParams();
 
+
+  const [isAvailable, SetIsAvailable] = useState(true)
+  const [isPubOn, SetIsPubOn] = useState(false)
+
+
   const { basketData, addToBasket, deleteToBasket, setBasketData } = useBasket(userName)
   const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, setMenuData } = useMenu(userName)
 
@@ -31,7 +36,7 @@ export default function OrderPage() {
     handleAdd, newProduct,
     setNewProduct, handleCardDelete, basketData,
     productSelected, setProductSelected, handleEdit, titleEditRef,
-    addToBasket, deleteToBasket, userName
+    addToBasket, deleteToBasket, userName, isAvailable, SetIsAvailable, isPubOn, SetIsPubOn
   }
 
   useEffect(() => {

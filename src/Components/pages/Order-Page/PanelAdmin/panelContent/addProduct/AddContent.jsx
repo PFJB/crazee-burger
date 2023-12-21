@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import OrderContext from "../../../../../../context/OrderContext.jsx";
 import AdminForm from "../adminForm/AdminForm.jsx";
 import SubmitButton from "../adminForm/SubmitButton.jsx";
@@ -10,7 +10,7 @@ export default function AddContent() {
   const { handleAdd, setNewProduct, newProduct } = useContext(OrderContext)
   const { displaySuccessMessage, isSubmitted } = useDisplaySuccessMessage()
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     displaySuccessMessage()
     handleAdd(newProduct)
@@ -20,7 +20,7 @@ export default function AddContent() {
   const handleChange = (event) => { setNewProduct({ ...newProduct, [event.target.name]: event.target.value }) }
 
   return (
-    <AdminForm product={newProduct} onSubmit={handleSubmit} onChange={handleChange}>
+    <AdminForm product={newProduct} onSubmit={handleSubmit} onChange={handleChange}  >
       <SubmitButton isSubmitted={isSubmitted} />
     </AdminForm>
   )

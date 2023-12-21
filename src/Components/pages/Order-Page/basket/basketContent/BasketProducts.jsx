@@ -4,7 +4,7 @@ import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 import { formatPrice } from "../../../../../utils/maths";
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../enums/product";
-import { findObjectById } from "../../../../../utils/arrays";
+import { convertStringToBoolean, findObjectById } from "../../../../../utils/arrays";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { BasketProductsAnimation } from "../../../../../theme/animation";
 
@@ -31,18 +31,20 @@ export default function BasketProducts() {
     return (
         <TransitionGroup component={BasketProductsStyled}>
             {basketData.map((product) => {
-                const cardData = findObjectById(product.id, menuData)
+                const { title, price, imageSource, id, isAdvertised, isAvailable } = findObjectById(product.id, menuData)
                 return (
                     <CSSTransition appear={true} classNames={"animationBasket"} key={product.id} timeout={500}>
                         <BasketCard
-                            title={cardData.title}
-                            price={formatPrice(cardData.price)}
-                            imageSource={cardData.imageSource ? cardData.imageSource : IMAGE_COMING_SOON}
-                            handleDelete={(event) => handleDeleteBasket(event, cardData.id)}
+                            title={title}
+                            price={formatPrice(price)}
+                            imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
+                            handleDelete={(event) => handleDeleteBasket(event, id)}
                             quantity={product.quantity}
-                            onClick={IsAdminOn ? () => onClick(cardData.id) : null}
+                            onClick={IsAdminOn ? () => onClick(id) : null}
                             isAdminOn={IsAdminOn}
-                            isSelected={productSelected.id === cardData.id}
+                            isSelected={productSelected.id === id}
+                            isAvailable={convertStringToBoolean(isAvailable)}
+                            isAdvertised={convertStringToBoolean(isAdvertised)}
                         />
                     </CSSTransition>)
             })}

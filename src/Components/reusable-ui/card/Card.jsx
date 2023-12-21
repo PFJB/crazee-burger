@@ -2,24 +2,39 @@ import styled, { css } from "styled-components";
 import ButtonIcone from "../button/ButtonIcone";
 import { theme } from "../../../theme/theme";
 import { formatPrice } from "../../../utils/maths";
-import { IMAGE_COMING_SOON } from "../../../enums/product";
+import { IMAGE_COMING_SOON, STOCK_EPUISE } from "../../../enums/product";
 import ButtonDeleteCard from "./ButtonDeleteCard";
+import Ribbon from "./Ribbon.jsx";
+import { fadeIn, fadeInFromTop } from "../../../theme/animation";
 
-export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard }) {
+export default function Card({ price, imgSource, title, handleDelete, handleClick, isHoverable, isSelected, handleAddToCard, isAvailable, isAdvertised }) {
 
     return (
-        <CardStyled onClick={handleClick} $isHoverable={isHoverable} $isSelected={isSelected}>
-            {isHoverable && <ButtonDeleteCard handleDelete={handleDelete} isSelected={isSelected} />}
-            <div className="picture">{<img src={imgSource ? imgSource : IMAGE_COMING_SOON} alt={title} />}</div>
-            <div className="title">{title}</div>
-            <div className="priceAdd">
-                <p className="price">{formatPrice(price)}</p>
-                <ButtonIcone
-                    className="versionNormalSmaller"
-                    label={"Ajouter"}
-                    version="normal"
-                    onClick={handleAddToCard}
-                />
+        <CardStyled
+            onClick={handleClick}
+            $isHoverable={isHoverable}
+            $isSelected={isSelected}
+            $isAvailable={isAvailable}
+        >
+            {isAdvertised && <Ribbon label="Nouveau" />}
+            <div className="card">
+                {isHoverable && <ButtonDeleteCard handleDelete={handleDelete} isSelected={isSelected} />}
+                <div className="picture"><img src={imgSource ? imgSource : IMAGE_COMING_SOON} alt={title} /></div>
+                <div className="title">{title}</div>
+                <div className="priceAdd">
+                    <p className="price">{formatPrice(price)}</p>
+                    <ButtonIcone
+                        className="versionNormalSmaller"
+                        label={"Ajouter"}
+                        version="normal"
+                        onClick={handleAddToCard}
+                        disabled={!isAvailable}
+                    />
+                </div>
+                {!isAvailable &&
+                    <div className="rupture" >
+                        <img className="epuise" src={STOCK_EPUISE} alt="Stock épuisé" />
+                    </div>}
             </div>
         </CardStyled>
     )
@@ -37,9 +52,32 @@ const CardStyled = styled.div`
     padding: 50px 25px 30px 25px;
     font-family: 'Amatic SC', sans-serif;
     font-size: ${theme.fonts.size.P3};
-    background-color: ${({ $selected }) => $selected ? "red" : "white"};
     border-radius: ${theme.borderRadius.extraRound};
-    transition: all 0.3s;
+    background-color: hsla(0, 0%, 100%, 1);
+
+    & .card{
+        opacity: ${({ $isAvailable }) => !$isAvailable && "70%"};
+    }
+
+    .rupture{
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: hsla(0, 0%, 100%, 0.75);
+        border-radius: ${theme.borderRadius.extraRound};
+        animation: ${fadeIn} 500ms;
+    
+        .epuise{
+            width: 80%;
+            object-fit: contain;
+            animation: ${fadeInFromTop} 500ms;
+        }
+    }
 
     .picture {
         display: flex;
@@ -86,10 +124,15 @@ const CardStyled = styled.div`
     }
 
     .versionNormalSmaller {
+        position: relative;
+        z-index: 2;
         width: 95px;
         height: 38px;
         font-size: 11px;
         font-weight: 700;
+
+        cursor: ${({ $isAvailable }) => !$isAvailable && "not-allowed"};
+        opacity: ${({ $isAvailable }) => !$isAvailable && "60%"};
     }
 
     ${({ $isHoverable }) => $isHoverable && hoverableStyle}
@@ -117,6 +160,8 @@ const selectedStyle = css`
     .versionNormalSmaller{
         background-color: ${theme.colors.white};
         color: ${theme.colors.primary};
+        border: none;
+        
 
         &:hover {
             color: ${theme.colors.white};

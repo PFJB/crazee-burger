@@ -21,8 +21,8 @@ export default function LogingForm() {
         navigate(`order/${username}`);
         setUsername("");
     }
-    const handleChange = (event) => { setUsername(event.target.value); }
 
+    const handleChange = (event) => { setUsername(event.target.value); }
     const onBlur = (e) => { e.target.placeholder = "Entrez votre prénom" };
     const onFocus = (e) => { e.target.placeholder = '' };
 
@@ -43,11 +43,11 @@ export default function LogingForm() {
                 required
             />
             <ButtonIcone
+                className={"buttond"}
                 label="Accéder à mon espace"
                 iconeButton={<FaChevronRight />}
                 version={"normal"}
             />
-
         </LogingFormStyled>
     )
 }
@@ -71,10 +71,12 @@ const LogingFormStyled = styled.form`
     }
 
     h2 {
+        margin-top: 22px;
         font-size: ${theme.fonts.size.P4};
     }
 
     hr {
+        margin-top: 0.875em;
         background-color: ${theme.colors.hr};
         height: 3px;
         width: 100%;

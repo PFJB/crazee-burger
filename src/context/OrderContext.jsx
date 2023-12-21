@@ -25,7 +25,13 @@ const OrderContext = createContext({
     addToBasket: () => { },
     deleteToBasket: () => { },
 
-    userName: ""
+    userName: "",
+
+    SetIsAvailable: () => { },
+    SetIsPubOn: () => { },
+    isAvailable: true,
+    isPubOn: false,
+
 });
 
 export default OrderContext

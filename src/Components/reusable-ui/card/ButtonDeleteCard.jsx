@@ -5,7 +5,7 @@ import { fadeInFromRigth } from "../../../theme/animation";
 
 export default function ButtonDeleteCard({ handleDelete, isSelected }) {
   return (
-    <ButtonDeleteCardStyled onClick={handleDelete} isSelected={isSelected}>
+    <ButtonDeleteCardStyled onClick={handleDelete} $isSelected={isSelected}>
       <TiDelete size={40} />
     </ButtonDeleteCardStyled>
   )
@@ -16,6 +16,7 @@ const ButtonDeleteCardStyled = styled.button`
   display: grid;
   place-items: center;
   position: absolute;
+  z-index: 2;
   top: 12px;
   right: 12px;
   border: none;
@@ -24,14 +25,15 @@ const ButtonDeleteCardStyled = styled.button`
   animation: ${fadeInFromRigth} 500ms ;
   cursor: pointer;
 
-  :hover{
+
+  &:hover, &:focus{
     color: ${theme.colors.red};
   }
   :active {
       color: ${theme.colors.primary};
   }
 
-  ${({ isSelected }) => isSelected && selectedStyle}
+  ${({ $isSelected }) => $isSelected && selectedStyle}
 
 `;
 

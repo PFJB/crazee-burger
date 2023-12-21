@@ -11,10 +11,11 @@ import BasketBody from './BasketBody';
 export default function Basket() {
 
     const { basketData, menuData } = useContext(OrderContext)
+    const sumToPay = calculateTotalPrice(basketData, menuData)
 
     return (
         <BasketStyled>
-            <HeaderBasket amountToPay={menuData ? formatPrice(calculateTotalPrice(basketData, menuData)) : formatPrice(0)} />
+            <HeaderBasket amountToPay={formatPrice(sumToPay)} />
             <BasketBody />
             <FooterBasket />
         </BasketStyled>
