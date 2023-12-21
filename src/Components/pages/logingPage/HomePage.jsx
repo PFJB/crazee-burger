@@ -6,7 +6,7 @@ import Logo from "../../reusable-ui/logo/Logo";
 export default function HomePage() {
     return (
         <HomePageStyled>
-            <Logo size="home" />
+            <Logo version="home" />
             <LogingForm />
         </HomePageStyled>
     )

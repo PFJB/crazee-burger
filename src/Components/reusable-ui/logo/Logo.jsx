@@ -2,10 +2,10 @@ import styled, { css } from "styled-components"
 import LogoImg from "./logo.png"
 import { theme } from "../../../theme/theme";
 
-export default function Logo({ className, onClick, size = "order" }) {
+export default function Logo({ className, onClick, version = "order" }) {
 
   return (
-    <LogoStyled className={className} onClick={onClick} $size={size}>
+    <LogoStyled className={className} onClick={onClick} $version={version}>
       <p>crazee</p>
       <img src={LogoImg} alt="Logo burger" />
       <p>burger</p>
@@ -25,15 +25,16 @@ const LogoStyled = styled.div`
         letter-spacing: 1.5px;
     }
 
-  ${({ $size }) => GetSize($size)}
+  ${({ $version }) => GetSize($version)}
 `;
 
-const GetSize = (size) => {
-  if (size === "order") { return sizeOrder }
-  if (size === "home") { return sizeHome }
+const GetSize = (version) => {
+  if (version === "order") { return versionOrder }
+  if (version === "home") { return versionHome }
 }
 
-const sizeOrder = css`
+const versionOrder = css`
+ cursor: pointer;
 
   p{
     font-size: ${theme.fonts.size.P4};
@@ -42,9 +43,10 @@ const sizeOrder = css`
     height: 60px;
     width: 80px;
   }
+
 `
 
-const sizeHome = css`
+const versionHome = css`
 
   p{
     font-size: ${theme.fonts.size.P7};

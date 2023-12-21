@@ -3,13 +3,14 @@ import Profile from "./Profile";
 import styled from "styled-components";
 import "react-toastify/dist/ReactToastify.css";
 import ToastAdmin from "./ToastAdmin";
+import { theme } from "../../../../theme/theme";
 
 export default function NavRightSide() {
   return (
     <NavRight>
-        <ToastAdmin />
-        <Profile />
-        <FaCircleUser className='icone'/>
+      <ToastAdmin />
+      <Profile />
+      <FaCircleUser className='icone' />
     </NavRight>
   )
 }
@@ -21,10 +22,8 @@ const NavRight = styled.div`
     justify-content: center;
 
     .icone {
-        aspect-ratio: 1/1;
-        height: 36px;
-        width: auto;
-        margin-left: 10px;
-        color: #747B91;
+      font-size: 36px;
+      margin-left: 10px;
+      color: ${theme.colors.greyBlue};
     }
 `
