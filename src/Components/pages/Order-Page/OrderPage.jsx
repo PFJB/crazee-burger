@@ -18,13 +18,11 @@ export default function OrderPage() {
   const [contentPanel, SetcontentPanel] = useState(<AddContent />);
   const [IsAdminOn, setIsAdminOn] = useState(false);
   const [isCollapse, SetIsCollapse] = useState(true)
-  const titleEditRef = useRef()
-  const { userName } = useParams();
-
-
   const [isAvailable, SetIsAvailable] = useState(true)
   const [isPubOn, SetIsPubOn] = useState(false)
 
+  const titleEditRef = useRef()
+  const { userName } = useParams();
 
   const { basketData, addToBasket, deleteToBasket, setBasketData } = useBasket(userName)
   const { handleAdd, handleCardDelete, handleEdit, menuData, resetMenu, setMenuData } = useMenu(userName)
@@ -32,11 +30,13 @@ export default function OrderPage() {
   const orderContext = {
     IsAdminOn, setIsAdminOn, tabSelected,
     setTabSelected, isCollapse, SetIsCollapse,
-    contentPanel, SetcontentPanel, menuData, resetMenu,
-    handleAdd, newProduct,
+    contentPanel, SetcontentPanel, menuData,
+    resetMenu, handleAdd, newProduct,
     setNewProduct, handleCardDelete, basketData,
-    productSelected, setProductSelected, handleEdit, titleEditRef,
-    addToBasket, deleteToBasket, userName, isAvailable, SetIsAvailable, isPubOn, SetIsPubOn
+    productSelected, setProductSelected, handleEdit,
+    titleEditRef, addToBasket, deleteToBasket,
+    userName, isAvailable, SetIsAvailable,
+    isPubOn, SetIsPubOn
   }
 
   useEffect(() => {
@@ -69,6 +69,5 @@ const OrderPagestyled = styled.div`
       position: relative;
       flex-direction: column;
       width: min(100%, 1400px);
-      height: 95%;
     }
 `;

@@ -32,6 +32,6 @@ const BasketStyled = styled.div`
     height: calc(95vh - 13vh);
     overflow: hidden;
     background-color: ${theme.colors.background_white};
-    box-shadow: 0px 0px 20px 0px #00000033 inset;
+    box-shadow: ${theme.shadows.basket};
     border-bottom-left-radius: ${theme.borderRadius.extraRound};
 `;

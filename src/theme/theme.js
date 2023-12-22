@@ -21,16 +21,6 @@ const colors = {
 
 }
 
-const spacing = {
-  xxs: "4px",
-  xs: "8px",
-  sm: "12px",
-  md: "20px",
-  lg: "32px",
-  xl: "52px",
-  xxl: "84px",
-}
-
 const fonts = {
   size:
   {
@@ -61,17 +51,28 @@ const fonts = {
     openSans: "'Open Sans', sans-serif",
   },
 }
+
 const gridUnit = 8
+
 const borderRadius = {
   subtle: 1,
   round: "5px",
   extraRound: "15px",
   circle: "50%",
 }
-const shadows = {}
-const sizeLogo = {
-  normal: 1,
-  petit: 0.5,
+
+const shadows = {
+  subtle: "0px -6px 8px -2px rgba(0, 0, 0, 0.1)",
+  medium: "-8px 8px 20px 0px rgb(0 0 0 / 20%)",
+  strong: "0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset",
+  orangeHighlight: "0 0 8px 0 rgb(255 154 35 / 100%)",
+  basket: "inset 0px 0px 20px rgba(0, 0, 0, 0.2)",
+  cardBasket: "-4px 4px 15px 0 rgb(0 0 0 / 20%)",
+}
+
+const animationTime = {
+  fast: "500ms",
+  regular: "1s",
 }
 
 export const theme = {
@@ -80,6 +81,5 @@ export const theme = {
   gridUnit,
   borderRadius,
   shadows,
-  spacing,
-  sizeLogo,
+  animationTime,
 }

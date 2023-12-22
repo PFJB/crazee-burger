@@ -19,7 +19,6 @@ export default function ButtonArea() {
     return (
         <ButtonAreaStyled>
             <ButtonPanelAdmin
-                label=""
                 selected={!isCollapse}
                 icone={isCollapse ? <GoChevronDown /> : <GoChevronUp />}
                 handleClick={() => SetIsCollapse(!isCollapse)}

@@ -18,9 +18,9 @@ export default function MenuContent() {
     let selected = menuData.find((product) => product.id === id)
     selected = selected === productSelected ? EMPTY_PRODUCT : selected;
     await SetIsCollapse(true)
-    await setTabSelected("mod")
+    await setTabSelected("edit")
     await setProductSelected(selected)
-    if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
+    if (titleEditRef.current) { titleEditRef.current.focus() }
   }
 
   const handleDelete = (event, id) => {
@@ -28,10 +28,10 @@ export default function MenuContent() {
     handleCardDelete(id)
     deleteToBasket(id, userName)
     id === productSelected.id ? setProductSelected(EMPTY_PRODUCT) : ""
-    if (titleEditRef.current !== null && titleEditRef.current !== undefined) { titleEditRef.current.focus() }
+    if (titleEditRef.current) { titleEditRef.current.focus() }
   }
 
-  async function handleAddToBasket(event, idCardToAdd) {
+  function handleAddToBasket(event, idCardToAdd) {
     event.stopPropagation()
     const selected = menuData.find((product) => product.id === idCardToAdd)
     addToBasket(selected.id, userName)

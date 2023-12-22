@@ -22,9 +22,8 @@ const ButtonDeleteCardStyled = styled.button`
   border: none;
   background: none;
   color: ${theme.colors.primary};
-  animation: ${fadeInFromRigth} 500ms ;
+  animation: ${fadeInFromRigth} ${theme.animationTime.fast};
   cursor: pointer;
-
 
   &:hover, &:focus{
     color: ${theme.colors.red};

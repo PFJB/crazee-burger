@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <OrderPagestyled>
-      <Logo className={"logo-onclick"} onClick={refreshPage} />
+      <Logo onClick={refreshPage} />
       <NavRightSide />
     </OrderPagestyled>
   )
@@ -24,9 +24,5 @@ const OrderPagestyled = styled.nav`
     padding: 0px 70px 0px 20px;
     background-color: white;
     border-radius: ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound} 0 0;
-
-    .logo-onclick {
-      cursor: pointer;
-    }
 `;
 

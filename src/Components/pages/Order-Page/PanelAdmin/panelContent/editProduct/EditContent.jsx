@@ -5,7 +5,7 @@ import HintMessageEditForm from "./HintMessageEditForm"
 import SavingMessage from "./SavingMessage"
 import { useDisplaySuccessMessage } from "../../../../../../hooks/useDisplaySuccessMessage"
 
-export default function ModifyContent() {
+export default function EditContent() {
   const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext)
   const [valueOnFocus, setValueOnFocus] = useState()
   const { displaySuccessMessage, isSubmitted: isSaved } = useDisplaySuccessMessage()

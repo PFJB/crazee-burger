@@ -3,7 +3,7 @@ import { theme } from "../../../../../theme/theme";
 import ButtonIcone from "../../../../reusable-ui/button/ButtonIcone";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
-import { fakeMenu1 } from "../../../../../assets/fakeData/fakeMenu";
+import { fakeMenu2 } from "../../../../../assets/fakeData/fakeMenu";
 
 export default function EmptyMenu() {
 
@@ -14,7 +14,7 @@ export default function EmptyMenu() {
             <h1>Le menu est vide ?</h1>
             <h2>Cliquez ci-dessous pour le réinitialiser</h2>
             <ButtonIcone
-                onClick={() => { resetMenu(fakeMenu1) }}
+                onClick={() => { resetMenu(fakeMenu2) }}
                 label={"Générer de nouveaux produits"}
                 version={"normal"}
             />

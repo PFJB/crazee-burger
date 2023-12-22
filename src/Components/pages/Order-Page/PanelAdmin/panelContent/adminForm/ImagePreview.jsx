@@ -33,13 +33,12 @@ const ImagePreviewStyled = styled.div`
         border-radius: ${theme.borderRadius.round};
         font-size: ${theme.fonts.size.P0};
         font-weight: ${theme.fonts.weights.regular};
-        font-family: 'Open Sans', sans-serif;
+        font-family: ${theme.fonts.family.openSans};
         color: ${theme.colors.greyMedium};
     }
 
     .img{
-        object-fit: contain; 
-        
+        object-fit: contain;  
     }
   
     ${panelImagePreviewAnimation}

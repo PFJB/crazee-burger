@@ -10,7 +10,7 @@ export default function SubmitButton({ isSubmitted }) {
                 label="Ajouter un nouveau produit au menu"
                 version='success'>
             </ButtonIcone>
-            {isSubmitted ? <div className="popup"><span><GrValidate /></span>Ajouté avec succès !</div> : ""}
+            {isSubmitted && <div className="popup"><span><GrValidate /></span>Ajouté avec succès !</div>}
         </SubmitButtonStyled>
     )
 }

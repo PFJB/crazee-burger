@@ -34,6 +34,6 @@ const MainRightSideStyled = styled.div`
   overflow-y: hidden;
   display: grid;
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
-  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: ${theme.shadows.strong};
 
 `

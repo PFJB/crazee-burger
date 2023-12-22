@@ -3,7 +3,7 @@ import TextInput from "../../../../../reusable-ui/textInput/TextInput";
 import ImagePreview from "./ImagePreview";
 import { GetSelectConfigs, GetTextInputConfigs } from "./inputTextConfigs.jsx";
 import React from "react";
-import Select from "./Select.jsx";
+import Select from "../../../../../reusable-ui/select/Select.jsx";
 
 
 const AdminForm = React.forwardRef(({ onSubmit, onChange, product, children, onFocus, onBlur }, ref) => {

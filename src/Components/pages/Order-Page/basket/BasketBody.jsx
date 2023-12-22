@@ -17,6 +17,5 @@ export default function BasketBody() {
 }
 const BasketBodyStyled = styled.div`
     overflow-y: scroll;
-    overflow-x: visible;
     flex: 1;
 `;

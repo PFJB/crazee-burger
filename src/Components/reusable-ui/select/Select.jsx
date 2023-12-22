@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../../../../../theme/theme";
+import { theme } from "../../../theme/theme";
 
 export default function Select({ className, IconeBeforeInput, option, onChange, onBlur, onFocus }) {
 
@@ -48,8 +48,6 @@ const SelectStyled = styled.div`
         color: ${theme.colors.greyMedium};
         option{
         font-size: ${theme.fonts.size.P0};
-
         }
     }
-
 `;

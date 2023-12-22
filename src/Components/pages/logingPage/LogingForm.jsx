@@ -10,11 +10,9 @@ import { authenticateUsers } from "../../../api/user";
 
 export default function LogingForm() {
 
-    // state
     const [username, setUsername] = useState("");
     const navigate = useNavigate();
 
-    // comportements
     const handleSubmit = async (event) => {
         event.preventDefault();
         await authenticateUsers(username)
@@ -26,7 +24,6 @@ export default function LogingForm() {
     const onBlur = (e) => { e.target.placeholder = "Entrez votre prénom" };
     const onFocus = (e) => { e.target.placeholder = '' };
 
-    // affichage
     return (
         <LogingFormStyled action="submit" onSubmit={handleSubmit}>
             <h1>Bienvenue chez nous !</h1>
@@ -43,7 +40,6 @@ export default function LogingForm() {
                 required
             />
             <ButtonIcone
-                className={"buttond"}
                 label="Accéder à mon espace"
                 iconeButton={<FaChevronRight />}
                 version={"normal"}
