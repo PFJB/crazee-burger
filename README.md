@@ -1,9 +1,11 @@
 # Crazee-burger with REACT
 
 Projet Frond End React - Formation Videv.
-Création d'une application web de vente de burger Crazee burger!
+  Création d'une application web de vente de burger Crazee burger!
 
 ## Introduction
+![Screenshot page D'acceuil](./public/images/Screenshot/Home-page.PNG)
+  
 
 ## Technique
 
@@ -17,14 +19,14 @@ Création d'une application web de vente de burger Crazee burger!
 
 - ***React Transition Group/CSSTransition/keyframe*** pour travailler les animations efficacement sur le cycle de vie d'un composant react.
 
-### clean code and best practice
+### Clean code and best practice
 
-- Importance du _clean code_ et _best practise_ dans l'**organisation** et la **gestion de bug**
+- Importance du _clean code_ et _best practise_ dans l'**organisation**, **gestion de bug** et **implementation de nouvel feature** dans un projet sur le long terme.
 
 - Organisation clair et ordonnée du dossier du projet comme souvent utilisé en entreprise.
 ex: dossier _enums_, _utils_, _theme_, _assets_, _api_, etc
 
-### github
+### Github
 
 - Utilisation et introduction a differente fonctionnalite de github pour une organisation d'un projet efficace : _push_, _pull_, _rebase_, _commit_, _stash_, _reset_, etc
 
@@ -34,7 +36,7 @@ ex: dossier _enums_, _utils_, _theme_, _assets_, _api_, etc
 
 - ***Ajout*** et ***sauvegarde*** de chaque nouveau utilisateur avec son propre menu associé a l'aide de ***Firestore Database***.
 
-   - ***Sauvegarde*** du panier de chaque utilisateur dans le **Local storage**.
+- ***Sauvegarde*** du panier de chaque utilisateur dans le **Local storage**.
 
 ### FIGMA :
 
