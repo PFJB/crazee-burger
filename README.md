@@ -1,8 +1,34 @@
-# React + Vite
+# Crazee-burger with REACT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projet Frond End React - Formation Videv
+Création d'une application web de vente de burger Crazee burger!
 
-Currently, two official plugins are available:
+## JAVASCRIPT (React), CSS, HTML : 
+    styled-component
+    react-transition/css transition pour travailler les animations efficacemennt sur le cycle de vie d'un composant react
+    clean code and best practice 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## BDD Firebase / local storage :
+
+   - **Ajout** et **sauvegarde** de chaque nouveau utilisateur avec son propre menu associé a l'aide de **Firestore Database**.
+
+   - **Sauvegarde** du panier de chaque utilisateur dans le **Local storage**.
+
+## FIGMA :
+
+ - Projet assisté d'une maquette Figma pour les differente prise de mesure et de couleur necessaire a la reproduction de la maquette.
+
+## TRELLO outil gestion de projet 
+
+ - Repruction d'un cas d'utilisation classique de TRELLO et autre outils de gestion de projet : 
+ "TODO" "DOING" "TO TEST" "DONE"
+
+## Methode agile SCRUB : une organisation comme en entreprise
+
+## github
+
+
+
+    
+
+
