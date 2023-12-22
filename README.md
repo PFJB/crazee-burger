@@ -3,36 +3,50 @@
 Projet Frond End React - Formation Videv.
 Création d'une application web de vente de burger Crazee burger!
 
-## JAVASCRIPT (React), CSS, HTML : 
-    styled-component
-    react-transition/css transition pour travailler les animations efficacemennt sur le cycle de vie d'un composant react
-    clean code and best practice
-    CRUD 
+## Introduction
 
-## BDD Firebase / local storage :
+## Technique
+
+### JAVASCRIPT (React), CSS, HTML : 
+
+- Introduction et utlisation de _**styled-component**_.
+
+- Création et utilisation de **composant reutilisable**.
+
+- Utilisation des ***custom Hooks*** et des different ***hooks*** de base : _useEffect_, _useContext_, _useNavigate_, _useRef_.
+
+- ***React Transition Group/CSSTransition/keyframe*** pour travailler les animations efficacement sur le cycle de vie d'un composant react.
+
+### clean code and best practice
+
+- Importance du _clean code_ et _best practise_ dans l'**organisation** et la **gestion de bug**
+
+- Organisation clair et ordonnée du dossier du projet comme souvent utilisé en entreprise.
+ex: dossier _enums_, _utils_, _theme_, _assets_, _api_, etc
+
+### github
+
+- Utilisation et introduction a differente fonctionnalite de github pour une organisation d'un projet efficace : _push_, _pull_, _rebase_, _commit_, _stash_, _reset_, etc
+
+- Introduction a l'organisation de git en entreprise.
+
+### BDD Firebase / local storage CRUD:
 
 - ***Ajout*** et ***sauvegarde*** de chaque nouveau utilisateur avec son propre menu associé a l'aide de ***Firestore Database***.
 
    - ***Sauvegarde*** du panier de chaque utilisateur dans le **Local storage**.
 
-## FIGMA :
+### FIGMA :
 
-- Projet assisté d'une maquette ***Figma*** pour les differente ***prise de mesure*** et de couleur necessaire a la ***reproduction*** de la maquette.
+- Projet assisté d'une maquette ***Figma*** pour les differentes ***prise de mesure*** et de couleur necessaire a la ***reproduction*** de la maquette.
 
-## TRELLO outil gestion de projet 
+### TRELLO outil gestion de projet 
 
- - Repruction d'un cas d'utilisation classique de TRELLO et autre outils de gestion de projet : 
- "_TODO_" "_DOING_" "_TO TEST_" "_DONE_"
+ - Reproduction d'un cas d'utilisation classique de TRELLO et autre outils de gestion de projet : "_TODO_" "_DOING_" "_TO TEST_" "_DONE_"
 
-## Methode agile SCRUM : une organisation comme en entreprise
+### Methode agile SCRUM : une organisation comme en entreprise
 
 - Introduction a la methode SCRUM : _Sprint Planning_ , _Daily Scrum_, _Sprint Review_, _Sprint Retrospective_
-
-## github
-
-- Utilisation et introduction a differente fonctionnalite de github pour une organisation d'un projet efficace : _push_, _pull_, _rebase_, _commit_, _stash_, _reset_, etc
-
-- 
 
 
 
