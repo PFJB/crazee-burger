@@ -7,7 +7,7 @@ import { BASKET_MESSAGE } from "../../../../../enums/product";
 
 export default function BasketCard({ title, price, imageSource, quantity, handleDelete, isAdminOn, onClick, isSelected, className, isAvailable, isAdvertised }) {
     return (
-        <BasketCardStyled $isAdminOn={isAdminOn} onClick={onClick} $isSelected={isSelected} className={className}>
+        <BasketCardStyled $isAdminOn={isAdminOn} onClick={onClick} $isSelected={isSelected} $isAvailable={isAvailable} className={className}>
             <div className="pic">
                 <img src={imageSource} alt={title} />
                 {isAdvertised && <Sticker />}
@@ -75,7 +75,7 @@ transition: all 0.3s;
         .price {
             white-space: nowrap;
             text-overflow: ellipsis;
-            overflow-x: hidden;
+            overflow-x: ${({ $isAvailable }) => $isAvailable ? "hidden" : "visible"};
         }
     }
 
