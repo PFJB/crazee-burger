@@ -1,13 +1,29 @@
-# Crazee-burger with REACT
+# Crazee-burger with REACT !
 
 Projet Frond End React - Formation Videv.
   Création d'une application web de vente de burger Crazee burger!
 
-## Introduction
-![Screenshot page D'acceuil](./public/images/Screenshot/Home-page.PNG)
-  
+## INTRODUCTION
 
-## Technique
+En pleine reconversion professionnel, 
+  voici un projet realise dans l'objectif de devenir un developpeur junior operationnel
+
+
+Projet réalisé au sein de la formation d'un lead dev senior Vi https://linktr.ee/videv 
+
+<img src="./public/images/Screenshot/Home-page.PNG" style="width: 500px" alt="Screenshot page d'acceuil"> <img src="./public/images/Screenshot/order.PNG" style="width: 500px" alt="Screenshot page de commande"> 
+
+## Global Projet Feature
+
+- **Enregistrement** et **sauvegarde** de chaque nouvel utilisateur et de son menu associé.
+- **Sauvegarde** du panier de chaque utilisateur.
+- Installation d'un mode admin avec les features suivante :
+  + **Ajout** d'un produit avec les choix suivant : _titre_, _image_ (url), _prix_, _pub_, _stock_
+  + **Modification en _temp reel_** des produits deja existant 
+  + **Synchronisation** constante des produits du panier et des produits du menu
+- **Animation** pour les differents manipulations de l'utilisateur.
+
+## TECHNIQUE
 
 ### JAVASCRIPT (React), CSS, HTML : 
 
@@ -51,7 +67,5 @@ ex: dossier _enums_, _utils_, _theme_, _assets_, _api_, etc
 - Introduction a la methode SCRUM : _Sprint Planning_ , _Daily Scrum_, _Sprint Review_, _Sprint Retrospective_
 
 
-
-    
 
 
