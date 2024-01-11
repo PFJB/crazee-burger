@@ -20,5 +20,5 @@ const HomePageStyled = styled.div`
     height: 100vh;
     background: url("${bgburger}") rgba(0, 0, 0, 0.5) center / cover;
     background-blend-mode: darken;
-    gap: 40px;
+    gap: 2.5rem;
 `;
