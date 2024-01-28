@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: import.meta.env.VITE_AUTH_DOMAIN,
-    authDomain: import.meta.env.VITE_API_KEY,
-    projectId: import.meta.env.VITE_PROJECT_ID,
-    storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
-    messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
-    appId: import.meta.env.VITE_APP_ID
+    apiKey: "AIzaSyB30WrNzJxZ1IqnBw7X6aRJcx9q39wk8FU",
+    authDomain: "crazee-burger-projet-92db2.firebaseapp.com",
+    projectId: "crazee-burger-projet-92db2",
+    storageBucket: "crazee-burger-projet-92db2.appspot.com",
+    messagingSenderId: "641660156137",
+    appId: "1:641660156137:web:38dd1c093cc43d6f3d9878"
 };
 
 // Initialize Firebase
